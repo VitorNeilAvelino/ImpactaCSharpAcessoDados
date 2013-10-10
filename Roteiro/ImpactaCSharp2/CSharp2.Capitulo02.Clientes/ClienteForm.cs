@@ -1,15 +1,37 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using Impacta.Dominio;
 using Impacta.Infra.Apoio;
+using Impacta.Infra.Repositorios.SqlServer;
 
 namespace CSharp2.Capitulo02.Clientes
 {
     public partial class ClienteForm : Form
     {
+        private readonly Cliente _cliente;
+
         public ClienteForm()
         {
             InitializeComponent();
+        }
+
+        public ClienteForm(int clienteId)
+        {
+            InitializeComponent();
+            
+            var cliente = new ClienteRepositorio().Selecionar(clienteId);
+
+            _cliente = cliente;
+
+            PopularFormulario(cliente);
+        }
+
+        private void PopularFormulario(Cliente cliente)
+        {
+            nomeTextBox.Text = cliente.Nome;
+            nascimentoMaskedTextBox.Text = cliente.DataNascimento.ToString("dd/MM/yyyy");
+            emailTextBox.Text = cliente.Email;
         }
 
         private void gravarButton_Click(object sender, EventArgs e)
@@ -21,10 +43,7 @@ namespace CSharp2.Capitulo02.Clientes
 
             try
             {
-                InserirCliente();
-                MessageBox.Show("Cliente gravado com sucesso!");
-                Formulario.Limpar(this);
-                nomeTextBox.Focus();
+                GravarCliente();
             }
             catch (SqlException ex)
             {
@@ -41,6 +60,31 @@ namespace CSharp2.Capitulo02.Clientes
             {
                 ExibirMensagemDeErro(ex);
             }
+        }
+
+        private void GravarCliente()
+        {
+            if (_cliente == null)
+            {
+                InserirCliente();
+                MessageBox.Show("Cliente gravado com sucesso!");
+                Formulario.Limpar(this);
+                nomeTextBox.Focus();
+            }
+            else
+            {
+                AtualizarCliente();
+                this.Close();
+            }
+        }
+
+        private void AtualizarCliente()
+        {
+            _cliente.Nome = nomeTextBox.Text;
+            _cliente.DataNascimento = nascimentoMaskedTextBox.Text.ParaData();
+            _cliente.Email = emailTextBox.Text;
+
+            new ClienteRepositorio().Atualizar(_cliente);
         }
 
         private static void ExibirMensagemDeErro(Exception ex)
