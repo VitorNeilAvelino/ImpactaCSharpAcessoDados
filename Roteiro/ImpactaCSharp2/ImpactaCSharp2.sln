@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.SqlServer", "Impacta.Infra.Repositorios.SqlServer\Impacta.Infra.Repositorios.SqlServer.csproj", "{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Dominio", "Impacta.Dominio\Impacta.Dominio.csproj", "{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
@@ -22,6 +24,9 @@ Global
 		SccProjectUniqueName3 = Impacta.Infra.Repositorios.SqlServer\\Impacta.Infra.Repositorios.SqlServer.csproj
 		SccProjectName3 = Impacta.Infra.Repositorios.SqlServer
 		SccLocalPath3 = Impacta.Infra.Repositorios.SqlServer
+		SccProjectUniqueName4 = Impacta.Dominio\\Impacta.Dominio.csproj
+		SccProjectName4 = Impacta.Dominio
+		SccLocalPath4 = Impacta.Dominio
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +67,16 @@ Global
 		{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -99,6 +99,10 @@
       <Project>{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}</Project>
       <Name>Impacta.Infra.Apoio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
+      <Project>{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}</Project>
+      <Name>Impacta.Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Impacta.Infra.Repositorios.SqlServer\Impacta.Infra.Repositorios.SqlServer.csproj">
       <Project>{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}</Project>
       <Name>Impacta.Infra.Repositorios.SqlServer</Name>

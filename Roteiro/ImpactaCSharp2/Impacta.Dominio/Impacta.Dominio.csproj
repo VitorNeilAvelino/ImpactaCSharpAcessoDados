@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}</ProjectGuid>
+    <ProjectGuid>{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Impacta.Infra.Repositorios.SqlServer</RootNamespace>
-    <AssemblyName>Impacta.Infra.Repositorios.SqlServer</AssemblyName>
+    <RootNamespace>Impacta.Dominio</RootNamespace>
+    <AssemblyName>Impacta.Dominio</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -36,7 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,19 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseRepositorio.cs" />
-    <Compile Include="ClienteRepositorio.cs" />
+    <Compile Include="Cliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Aulas\CSharp\Impacta\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
-      <Project>{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}</Project>
-      <Name>Impacta.Infra.Apoio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
-      <Project>{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}</Project>
-      <Name>Impacta.Dominio</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
