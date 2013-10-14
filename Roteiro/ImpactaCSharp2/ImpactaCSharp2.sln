@@ -9,9 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Dominio", "Impacta.Dominio\Impacta.Dominio.csproj", "{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}"
 EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Oficina.Database", "Oficina.Database\Oficina.Database.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Oficina.Server.Database", "Oficina.Server.Database\Oficina.Server.Database.dbproj", "{9D46045A-4EB2-4695-BAC3-463AE4C17B88}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
@@ -27,6 +31,12 @@ Global
 		SccProjectUniqueName4 = Impacta.Dominio\\Impacta.Dominio.csproj
 		SccProjectName4 = Impacta.Dominio
 		SccLocalPath4 = Impacta.Dominio
+		SccProjectUniqueName5 = Oficina.Database\\Oficina.Database.dbproj
+		SccProjectName5 = Oficina.Database
+		SccLocalPath5 = Oficina.Database
+		SccProjectUniqueName6 = Oficina.Server.Database\\Oficina.Server.Database.dbproj
+		SccProjectName6 = Oficina.Server.Database
+		SccLocalPath6 = Oficina.Server.Database
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +87,32 @@ Global
 		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}.Release|x86.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
