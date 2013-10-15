@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Impacta.Dominio
 {
+    //[TypeForwardedTo(typeof(Impacta.Infra.))]
     public class Cliente
     {
         public int Id { get; set; }

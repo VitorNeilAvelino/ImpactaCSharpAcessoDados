@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo02.Clientes", "CSharp2.Capitulo02.Clientes\CSharp2.Capitulo02.Clientes.csproj", "{F51C248C-09F8-429E-AA44-13EA0D6D209A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\Aulas\CSharp\Impacta\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.SqlServer", "Impacta.Infra.Repositorios.SqlServer\Impacta.Infra.Repositorios.SqlServer.csproj", "{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.SqlServer.Procedures", "Impacta.Infra.Repositorios.SqlServer\Impacta.Infra.Repositorios.SqlServer.Procedures.csproj", "{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Dominio", "Impacta.Dominio\Impacta.Dominio.csproj", "{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}"
 EndProject
@@ -13,30 +13,35 @@ Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Oficina.Database", "Oficina
 EndProject
 Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Oficina.Server.Database", "Oficina.Server.Database\Oficina.Server.Database.dbproj", "{9D46045A-4EB2-4695-BAC3-463AE4C17B88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.SqlServer.Ef", "Impacta.Infra.Repositorios.SqlServer.Ef\Impacta.Infra.Repositorios.SqlServer.Ef.csproj", "{1882C840-38B9-47D9-9330-7AA4414FB02A}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 8
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = CSharp2.Capitulo02.Clientes\\CSharp2.Capitulo02.Clientes.csproj
 		SccProjectName1 = CSharp2.Capitulo02.Clientes
 		SccLocalPath1 = CSharp2.Capitulo02.Clientes
-		SccProjectUniqueName2 = ..\\..\\..\\Aulas\\CSharp\\Impacta\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
+		SccProjectUniqueName2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
 		SccProjectName2 = ../../../ImpactaCSharp1/Roteiro/ImpactaCSharp1/Impacta.Infra.Apoio
-		SccLocalPath2 = ..\\..\\..\\Aulas\\CSharp\\Impacta\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
-		SccProjectUniqueName3 = Impacta.Infra.Repositorios.SqlServer\\Impacta.Infra.Repositorios.SqlServer.csproj
-		SccProjectName3 = Impacta.Infra.Repositorios.SqlServer
-		SccLocalPath3 = Impacta.Infra.Repositorios.SqlServer
-		SccProjectUniqueName4 = Impacta.Dominio\\Impacta.Dominio.csproj
-		SccProjectName4 = Impacta.Dominio
-		SccLocalPath4 = Impacta.Dominio
-		SccProjectUniqueName5 = Oficina.Database\\Oficina.Database.dbproj
-		SccProjectName5 = Oficina.Database
-		SccLocalPath5 = Oficina.Database
-		SccProjectUniqueName6 = Oficina.Server.Database\\Oficina.Server.Database.dbproj
-		SccProjectName6 = Oficina.Server.Database
-		SccLocalPath6 = Oficina.Server.Database
+		SccLocalPath2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
+		SccProjectUniqueName3 = Impacta.Dominio\\Impacta.Dominio.csproj
+		SccProjectName3 = Impacta.Dominio
+		SccLocalPath3 = Impacta.Dominio
+		SccProjectUniqueName4 = Oficina.Database\\Oficina.Database.dbproj
+		SccProjectName4 = Oficina.Database
+		SccLocalPath4 = Oficina.Database
+		SccProjectUniqueName5 = Oficina.Server.Database\\Oficina.Server.Database.dbproj
+		SccProjectName5 = Oficina.Server.Database
+		SccLocalPath5 = Oficina.Server.Database
+		SccProjectUniqueName6 = Impacta.Infra.Repositorios.SqlServer.Ef\\Impacta.Infra.Repositorios.SqlServer.Ef.csproj
+		SccProjectName6 = Impacta.Infra.Repositorios.SqlServer.Ef
+		SccLocalPath6 = Impacta.Infra.Repositorios.SqlServer.Ef
+		SccProjectUniqueName7 = Impacta.Infra.Repositorios.SqlServer\\Impacta.Infra.Repositorios.SqlServer.Procedures.csproj
+		SccProjectName7 = Impacta.Infra.Repositorios.SqlServer
+		SccLocalPath7 = Impacta.Infra.Repositorios.SqlServer
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +118,16 @@ Global
 		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
 		{9D46045A-4EB2-4695-BAC3-463AE4C17B88}.Release|x86.ActiveCfg = Release|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1882C840-38B9-47D9-9330-7AA4414FB02A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
