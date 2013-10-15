@@ -19,15 +19,15 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("OficinaModel", "FK_Veiculo_Cor", "Cor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Cor), "Veiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Veiculo), true)]
-[assembly: EdmRelationshipAttribute("OficinaModel", "FK_Veiculo_Modelo", "Modelo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Modelo), "Veiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Veiculo), true)]
-[assembly: EdmRelationshipAttribute("OficinaModel", "FK_Servico_TipoServico", "TipoServico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.TipoServico), "Servico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Servico), true)]
-[assembly: EdmRelationshipAttribute("OficinaModel", "FK_Servico_Veiculo", "Veiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Veiculo), "Servico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Servico), true)]
-[assembly: EdmRelationshipAttribute("OficinaModel", "ClienteVeiculo", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Cliente), "Veiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Veiculo))]
+[assembly: EdmRelationshipAttribute("OficinaModel", "FK_Veiculo_Cor", "Cor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Cor), "Veiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Veiculo), true)]
+[assembly: EdmRelationshipAttribute("OficinaModel", "FK_Veiculo_Modelo", "Modelo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Modelo), "Veiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Veiculo), true)]
+[assembly: EdmRelationshipAttribute("OficinaModel", "FK_Servico_TipoServico", "TipoServico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.TipoServico), "Servico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Servico), true)]
+[assembly: EdmRelationshipAttribute("OficinaModel", "FK_Servico_Veiculo", "Veiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Veiculo), "Servico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Servico), true)]
+[assembly: EdmRelationshipAttribute("OficinaModel", "ClienteVeiculo", "Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Cliente), "Veiculo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Veiculo))]
 
 #endregion
 
-namespace Impacta.Infra.Repositorios.SqlServer.Ef
+namespace Impacta.Infra.Repositorios.SqlServer.Ef.Designer
 {
     #region Contexts
     
@@ -371,7 +371,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("OficinaModel", "ClienteVeiculo", "Veiculo")]
-        public EntityCollection<Veiculo> Veiculo
+        public EntityCollection<Veiculo> Veiculos
         {
             get
             {
@@ -471,32 +471,6 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef
         #endregion
 
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OficinaModel", "FK_Veiculo_Cor", "Veiculo")]
-        public EntityCollection<Veiculo> Veiculo
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Veiculo>("OficinaModel.FK_Veiculo_Cor", "Veiculo");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Veiculo>("OficinaModel.FK_Veiculo_Cor", "Veiculo", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
     
     /// <summary>
@@ -580,32 +554,6 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef
         #endregion
 
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OficinaModel", "FK_Veiculo_Modelo", "Veiculo")]
-        public EntityCollection<Veiculo> Veiculo
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Veiculo>("OficinaModel.FK_Veiculo_Modelo", "Veiculo");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Veiculo>("OficinaModel.FK_Veiculo_Modelo", "Veiculo", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
     
     /// <summary>
@@ -1224,7 +1172,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("OficinaModel", "FK_Servico_Veiculo", "Servico")]
-        public EntityCollection<Servico> Servico
+        public EntityCollection<Servico> Servicos
         {
             get
             {
@@ -1246,7 +1194,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("OficinaModel", "ClienteVeiculo", "Cliente")]
-        public EntityCollection<Cliente> Cliente
+        public EntityCollection<Cliente> Clientes
         {
             get
             {
