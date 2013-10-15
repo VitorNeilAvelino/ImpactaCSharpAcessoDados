@@ -5,14 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F51C248C-09F8-429E-AA44-13EA0D6D209A}</ProjectGuid>
+    <ProjectGuid>{75C78DE8-0B63-44E2-BA29-282A936B8B86}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharp2.Capitulo02.Clientes</RootNamespace>
-    <AssemblyName>CSharp2.Capitulo02.Clientes</AssemblyName>
+    <RootNamespace>CSharp2.Capitulo03.Oficina</RootNamespace>
+    <AssemblyName>CSharp2.Capitulo03.Oficina</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -39,10 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,25 +51,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClienteForm.cs">
+    <Compile Include="CoresForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClienteForm.Designer.cs">
-      <DependentUpon>ClienteForm.cs</DependentUpon>
+    <Compile Include="CoresForm.Designer.cs">
+      <DependentUpon>CoresForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListagemClientesForm.cs">
+    <Compile Include="ModeloForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListagemClientesForm.Designer.cs">
-      <DependentUpon>ListagemClientesForm.cs</DependentUpon>
+    <Compile Include="ModeloForm.Designer.cs">
+      <DependentUpon>ModeloForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OficinaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OficinaDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ClienteForm.resx">
-      <DependentUpon>ClienteForm.cs</DependentUpon>
+    <EmbeddedResource Include="CoresForm.resx">
+      <DependentUpon>CoresForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListagemClientesForm.resx">
-      <DependentUpon>ListagemClientesForm.cs</DependentUpon>
+    <EmbeddedResource Include="ModeloForm.resx">
+      <DependentUpon>ModeloForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,9 +84,26 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="OficinaDataSet.xsc">
+      <DependentUpon>OficinaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OficinaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OficinaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OficinaDataSet.xss">
+      <DependentUpon>OficinaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Cliente.datasource" />
+    <None Include="Properties\DataSources\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Cor.datasource" />
+    <None Include="Properties\DataSources\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Modelo.datasource" />
+    <None Include="Properties\DataSources\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.OficinaEntities.datasource" />
+    <None Include="Properties\DataSources\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Servico.datasource" />
+    <None Include="Properties\DataSources\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.TipoServico.datasource" />
+    <None Include="Properties\DataSources\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.Veiculo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,21 +115,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
-      <Project>{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}</Project>
-      <Name>Impacta.Infra.Apoio</Name>
+    <ProjectReference Include="..\Impacta.Infra.Repositorios.SqlServer.Ef\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.csproj">
+      <Project>{1882C840-38B9-47D9-9330-7AA4414FB02A}</Project>
+      <Name>Impacta.Infra.Repositorios.SqlServer.Ef.Designer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
-      <Project>{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}</Project>
-      <Name>Impacta.Dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Impacta.Infra.Repositorios.SqlServer\Impacta.Infra.Repositorios.SqlServer.Procedures.csproj">
-      <Project>{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}</Project>
-      <Name>Impacta.Infra.Repositorios.SqlServer.Procedures</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\editarIcone.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

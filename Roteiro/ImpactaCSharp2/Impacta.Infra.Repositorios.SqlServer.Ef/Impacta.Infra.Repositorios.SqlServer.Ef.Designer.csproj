@@ -8,8 +8,8 @@
     <ProjectGuid>{1882C840-38B9-47D9-9330-7AA4414FB02A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Impacta.Infra.Repositorios.SqlServer.Ef</RootNamespace>
-    <AssemblyName>Impacta.Infra.Repositorios.SqlServer.Ef</AssemblyName>
+    <RootNamespace>Impacta.Infra.Repositorios.SqlServer.Ef.Designer</RootNamespace>
+    <AssemblyName>Impacta.Infra.Repositorios.SqlServer.Ef.Designer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="Properties\DataSources\OficinaEntities.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

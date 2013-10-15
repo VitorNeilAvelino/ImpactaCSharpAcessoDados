@@ -218,7 +218,7 @@
           <Property Name="Nome" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="Email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="DataNascimento" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Veiculo" Relationship="OficinaModel.ClienteVeiculo" FromRole="Cliente" ToRole="Veiculo" />
+          <NavigationProperty Name="Veiculos" Relationship="OficinaModel.ClienteVeiculo" FromRole="Cliente" ToRole="Veiculo" />
         </EntityType>
         <EntityType Name="Cor">
           <Key>
@@ -226,7 +226,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Veiculo" Relationship="OficinaModel.FK_Veiculo_Cor" FromRole="Cor" ToRole="Veiculo" />
         </EntityType>
         <EntityType Name="Modelo">
           <Key>
@@ -234,7 +233,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Veiculo" Relationship="OficinaModel.FK_Veiculo_Modelo" FromRole="Modelo" ToRole="Veiculo" />
         </EntityType>
         <EntityType Name="Servico">
           <Key>
@@ -268,8 +266,8 @@
           <Property Name="AnoModelo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cor" Relationship="OficinaModel.FK_Veiculo_Cor" FromRole="Veiculo" ToRole="Cor" />
           <NavigationProperty Name="Modelo" Relationship="OficinaModel.FK_Veiculo_Modelo" FromRole="Veiculo" ToRole="Modelo" />
-          <NavigationProperty Name="Servico" Relationship="OficinaModel.FK_Servico_Veiculo" FromRole="Veiculo" ToRole="Servico" />
-          <NavigationProperty Name="Cliente" Relationship="OficinaModel.ClienteVeiculo" FromRole="Veiculo" ToRole="Cliente" />
+          <NavigationProperty Name="Servicos" Relationship="OficinaModel.FK_Servico_Veiculo" FromRole="Veiculo" ToRole="Servico" />
+          <NavigationProperty Name="Clientes" Relationship="OficinaModel.ClienteVeiculo" FromRole="Veiculo" ToRole="Cliente" />
         </EntityType>
         <Association Name="FK_Veiculo_Cor">
           <End Role="Cor" Type="OficinaModel.Cor" Multiplicity="1" />
@@ -416,22 +414,22 @@
     <Diagrams>
       <Diagram Name="OficinaModel">
         <EntityTypeShape EntityType="OficinaModel.Cliente" Width="1.5" PointX="0.75" PointY="1.5" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="OficinaModel.Cor" Width="1.5" PointX="0.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="OficinaModel.Modelo" Width="1.5" PointX="0.75" PointY="7.125" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Cor" Width="1.5" PointX="0.75" PointY="4.75" Height="1.4033821614583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Modelo" Width="1.5" PointX="0.75" PointY="7.125" Height="1.4033821614583335" IsExpanded="true" />
         <EntityTypeShape EntityType="OficinaModel.Servico" Width="1.5" PointX="5.25" PointY="1.25" Height="2.3648893229166656" IsExpanded="true" />
         <EntityTypeShape EntityType="OficinaModel.TipoServico" Width="1.5" PointX="3" PointY="5.625" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="OficinaModel.Veiculo" Width="1.5" PointX="3" PointY="1" Height="2.9417936197916665" IsExpanded="true" />
         <AssociationConnector Association="OficinaModel.FK_Veiculo_Cor" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="4.75" />
           <ConnectorPoint PointX="2.625" PointY="4.375" />
-          <ConnectorPoint PointX="2.625" PointY="2.4708968098958328" />
-          <ConnectorPoint PointX="3" PointY="2.4708968098958328" />
+          <ConnectorPoint PointX="2.625" PointY="2.4708968098958337" />
+          <ConnectorPoint PointX="3" PointY="2.4708968098958337" />
         </AssociationConnector>
         <AssociationConnector Association="OficinaModel.FK_Veiculo_Modelo" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="7.1873066923076925" />
-          <ConnectorPoint PointX="2.8125" PointY="6.6248066923076934" />
-          <ConnectorPoint PointX="2.8125" PointY="3.2375972148437504" />
-          <ConnectorPoint PointX="3" PointY="3.2375972148437504" />
+          <ConnectorPoint PointX="2.25" PointY="7.18653191015625" />
+          <ConnectorPoint PointX="2.8125" PointY="6.6240319101562513" />
+          <ConnectorPoint PointX="2.8125" PointY="3.2375972148437513" />
+          <ConnectorPoint PointX="3" PointY="3.2375972148437513" />
         </AssociationConnector>
         <AssociationConnector Association="OficinaModel.FK_Servico_TipoServico" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="6.422841796875" />
