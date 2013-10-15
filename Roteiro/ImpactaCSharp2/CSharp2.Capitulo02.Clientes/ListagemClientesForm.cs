@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Impacta.Infra.Apoio;
-using Impacta.Infra.Repositorios.SqlServer;
+using Impacta.Infra.Repositorios.SqlServer.Procedures;
 
 namespace CSharp2.Capitulo02.Clientes
 {

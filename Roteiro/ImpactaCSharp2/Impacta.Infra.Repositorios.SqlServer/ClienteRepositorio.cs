@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using Impacta.Dominio;
 using Impacta.Infra.Apoio;
+using Impacta.Dominio;
 
-namespace Impacta.Infra.Repositorios.SqlServer
+namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
     public class ClienteRepositorio
     {
