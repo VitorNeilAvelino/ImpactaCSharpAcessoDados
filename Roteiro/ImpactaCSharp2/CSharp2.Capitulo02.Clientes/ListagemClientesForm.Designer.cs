@@ -40,6 +40,7 @@
             this.nomeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nascimentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editarColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.excluirColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.toolStrip1.SuspendLayout();
@@ -102,6 +103,7 @@
             this.nomeColumn,
             this.nascimentoColumn,
             this.emailColumn,
+            this.tipoColumn,
             this.editarColumn,
             this.excluirColumn});
             this.clientesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -152,6 +154,13 @@
             this.emailColumn.Name = "emailColumn";
             this.emailColumn.ReadOnly = true;
             // 
+            // tipoColumn
+            // 
+            this.tipoColumn.DataPropertyName = "Tipo";
+            this.tipoColumn.HeaderText = "Tipo";
+            this.tipoColumn.Name = "tipoColumn";
+            this.tipoColumn.ReadOnly = true;
+            // 
             // editarColumn
             // 
             this.editarColumn.HeaderText = "";
@@ -200,6 +209,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoColumn;
         private System.Windows.Forms.DataGridViewButtonColumn editarColumn;
         private System.Windows.Forms.DataGridViewButtonColumn excluirColumn;
     }

@@ -98,7 +98,7 @@ namespace CSharp2.Capitulo02.Clientes
             var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Oficina;Integrated Security=True");
             conexao.Open();
 
-            var instrucao = string.Format("Insert Cliente(Nome, Email, DataNascimento) values('{0}', '{1}', '{2}')", nomeTextBox.Text.Trim(), emailTextBox.Text.Trim(),
+            var instrucao = string.Format("Insert Cliente(Nome, Email, DataNascimento, Tipo) values('{0}', '{1}', '{2}', 0)", nomeTextBox.Text.Trim(), emailTextBox.Text.Trim(),
                 Convert.ToDateTime(nascimentoMaskedTextBox.Text).ToString("yyyy-MM-dd"));
 
             var comando = new SqlCommand(instrucao, conexao);

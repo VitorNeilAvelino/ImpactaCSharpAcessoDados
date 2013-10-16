@@ -9,7 +9,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
     {
         public DataTable Selecionar(string nomeCliente)
         {
-            var dataSet = new DataSet();
+            var dataTable = new DataTable();
 
             using (var conexao = new SqlConnection(BaseRepositorio.OficinaConnectionString))
             {
@@ -19,6 +19,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
                       ,[Nome]
                       ,[Email]
                       ,[DataNascimento]
+                      ,Tipo
                   FROM [Oficina].[dbo].[Cliente]
                   Where Nome like '%' + @nome + '%'";
 
@@ -26,10 +27,10 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
                 comando.Parameters.AddWithValue("@nome", nomeCliente);
 
                 var dataAdapter = new SqlDataAdapter(comando);
-                dataAdapter.Fill(dataSet);
+                dataAdapter.Fill(dataTable);
             }
 
-            return dataSet.Tables[0];
+            return dataTable;
         }
 
         public Cliente Selecionar(int clienteId)
