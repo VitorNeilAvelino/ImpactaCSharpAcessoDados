@@ -13,11 +13,11 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
         public void InserirTeste()
         {
             var veiculo = new Veiculo();
-            veiculo.AnoFabricacao = 2011;
+            veiculo.AnoFabricacao = 2012;
             veiculo.AnoModelo = 2012;
-            veiculo.Cor_Id = 2;
+            veiculo.Cor_Id = 1;
             veiculo.Modelo_Id = 1;
-            veiculo.Placa = "ETH6834";
+            veiculo.Placa = "ETH1217";
 
             _contexto.Veiculo.AddObject(veiculo);
             _contexto.SaveChanges();
@@ -44,14 +44,14 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
 
         private Veiculo Selecionar(string placa)
         {
-            var retornoLinq = from veiculo in _contexto.Veiculo
-                              where veiculo.Placa == placa
+            var retorno = from veiculo in _contexto.Veiculo
+                              where veiculo.Placa == placa //&& veiculo.Modelo_Id == 2
                               select veiculo;
 
-            var retornoLambda =  _contexto.Veiculo.Where(x => x.Placa == placa);
+            //var retornoLambda =  _contexto.Veiculo.Where(x => x.Placa == placa);
             
-            //return retornoLinq.FirstOrDefault();
-            return retornoLambda.FirstOrDefault();
+            return retorno.FirstOrDefault();
+            //return retornoLambda.FirstOrDefault();
         }
     }
 }

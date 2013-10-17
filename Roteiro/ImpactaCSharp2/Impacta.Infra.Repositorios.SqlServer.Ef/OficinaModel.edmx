@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OficinaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="OficinaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="OficinaModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="OficinaModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ClienteVeiculo" EntityType="OficinaModel.Store.ClienteVeiculo" store:Type="Tables" store:Schema="dbo" store:Name="ClienteVeiculo">
@@ -51,6 +51,7 @@
           <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
           <Property Name="DataNascimento" Type="date" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'Oficina.dbo.ClienteVeiculo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -177,8 +178,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OficinaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -219,6 +219,7 @@
           <Property Name="Email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="DataNascimento" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Veiculos" Relationship="OficinaModel.ClienteVeiculo" FromRole="Cliente" ToRole="Veiculo" />
+          <Property Type="Int32" Name="Tipo" Nullable="false" />
         </EntityType>
         <EntityType Name="Cor">
           <Key>
@@ -330,6 +331,7 @@
           <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="OficinaModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -412,37 +414,41 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="OficinaModel">
-        <EntityTypeShape EntityType="OficinaModel.Cliente" Width="1.5" PointX="0.75" PointY="1.5" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="OficinaModel.Cor" Width="1.5" PointX="0.75" PointY="4.75" Height="1.4033821614583326" IsExpanded="true" />
-        <EntityTypeShape EntityType="OficinaModel.Modelo" Width="1.5" PointX="0.75" PointY="7.125" Height="1.4033821614583335" IsExpanded="true" />
-        <EntityTypeShape EntityType="OficinaModel.Servico" Width="1.5" PointX="5.25" PointY="1.25" Height="2.3648893229166656" IsExpanded="true" />
-        <EntityTypeShape EntityType="OficinaModel.TipoServico" Width="1.5" PointX="3" PointY="5.625" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="OficinaModel.Veiculo" Width="1.5" PointX="3" PointY="1" Height="2.9417936197916665" IsExpanded="true" />
+      <Diagram Name="OficinaModel" ZoomLevel="82">
+        <EntityTypeShape EntityType="OficinaModel.Cliente" Width="1.5" PointX="0.75" PointY="1.375" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Cor" Width="1.5" PointX="0.75" PointY="4.625" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Modelo" Width="1.5" PointX="0.75" PointY="6.75" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Servico" Width="1.5" PointX="5.25" PointY="1.25" Height="2.3648893237113953" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.TipoServico" Width="1.5" PointX="3" PointY="5.625" Height="1.5956835933029652" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Veiculo" Width="1.5" PointX="3" PointY="1" Height="2.9417936205863953" IsExpanded="true" />
         <AssociationConnector Association="OficinaModel.FK_Veiculo_Cor" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="4.75" />
-          <ConnectorPoint PointX="2.625" PointY="4.375" />
-          <ConnectorPoint PointX="2.625" PointY="2.4708968098958337" />
-          <ConnectorPoint PointX="3" PointY="2.4708968098958337" />
+          <ConnectorPoint PointX="2.2499999999130758" PointY="4.625" />
+          <ConnectorPoint PointX="2.625" PointY="4.2499999999130758" />
+          <ConnectorPoint PointX="2.625" PointY="4.3167936205863953" />
+          <ConnectorPoint PointX="2.6285744349011204" PointY="4.3132191856852735" />
+          <ConnectorPoint PointX="2.7464255650988791" PointY="4.1953680554875161" />
+          <ConnectorPoint PointX="3" PointY="3.9417936205863953" />
         </AssociationConnector>
         <AssociationConnector Association="OficinaModel.FK_Veiculo_Modelo" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="7.18653191015625" />
-          <ConnectorPoint PointX="2.8125" PointY="6.6240319101562513" />
-          <ConnectorPoint PointX="2.8125" PointY="3.2375972148437513" />
-          <ConnectorPoint PointX="3" PointY="3.2375972148437513" />
+          <ConnectorPoint PointX="2.25" PointY="6.8115319100769485" />
+          <ConnectorPoint PointX="2.6875" PointY="6.3740319100769476" />
+          <ConnectorPoint PointX="2.6875" PointY="2.4396448102931965" />
+          <ConnectorPoint PointX="3" PointY="2.4396448102931965" />
         </AssociationConnector>
         <AssociationConnector Association="OficinaModel.FK_Servico_TipoServico" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="6.422841796875" />
-          <ConnectorPoint PointX="6" PointY="6.422841796875" />
-          <ConnectorPoint PointX="6" PointY="3.6148893229166656" />
+          <ConnectorPoint PointX="4.5" PointY="6.4228417966514826" />
+          <ConnectorPoint PointX="6" PointY="6.4228417966514826" />
+          <ConnectorPoint PointX="6" PointY="3.6148893237113953" />
         </AssociationConnector>
         <AssociationConnector Association="OficinaModel.FK_Servico_Veiculo" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="2.4324446614583328" />
-          <ConnectorPoint PointX="5.25" PointY="2.4324446614583328" />
+          <ConnectorPoint PointX="4.5" PointY="2.4324446618556976" />
+          <ConnectorPoint PointX="5.25" PointY="2.4324446618556976" />
         </AssociationConnector>
         <AssociationConnector Association="OficinaModel.ClienteVeiculo" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="1.9229484049479164" />
-          <ConnectorPoint PointX="3" PointY="1.9229484049479164" />
+          <ConnectorPoint PointX="2.25" PointY="3.0561163503473394" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="3.056116350347339" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="3.0561163503473394" />
+          <ConnectorPoint PointX="3" PointY="3.0561163503473394" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
