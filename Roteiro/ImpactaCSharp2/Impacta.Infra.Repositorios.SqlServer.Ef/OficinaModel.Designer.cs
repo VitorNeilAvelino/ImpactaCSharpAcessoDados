@@ -247,12 +247,14 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef.Designer
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="nome">Initial value of the Nome property.</param>
         /// <param name="dataNascimento">Initial value of the DataNascimento property.</param>
-        public static Cliente CreateCliente(global::System.Int32 id, global::System.String nome, global::System.DateTime dataNascimento)
+        /// <param name="tipo">Initial value of the Tipo property.</param>
+        public static Cliente CreateCliente(global::System.Int32 id, global::System.String nome, global::System.DateTime dataNascimento, global::System.Int32 tipo)
         {
             Cliente cliente = new Cliente();
             cliente.Id = id;
             cliente.Nome = nome;
             cliente.DataNascimento = dataNascimento;
+            cliente.Tipo = tipo;
             return cliente;
         }
 
@@ -358,6 +360,30 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef.Designer
         private global::System.DateTime _DataNascimento;
         partial void OnDataNascimentoChanging(global::System.DateTime value);
         partial void OnDataNascimentoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Tipo
+        {
+            get
+            {
+                return _Tipo;
+            }
+            set
+            {
+                OnTipoChanging(value);
+                ReportPropertyChanging("Tipo");
+                _Tipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Tipo");
+                OnTipoChanged();
+            }
+        }
+        private global::System.Int32 _Tipo;
+        partial void OnTipoChanging(global::System.Int32 value);
+        partial void OnTipoChanged();
 
         #endregion
 
