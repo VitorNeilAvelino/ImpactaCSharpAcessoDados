@@ -107,6 +107,10 @@
       <Project>{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}</Project>
       <Name>Impacta.Infra.Repositorios.SqlServer.Procedures</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Impacta.WindowsForms.UserControls\Impacta.Apoio.WindowsForms.Controles.csproj">
+      <Project>{939BA8B9-62E2-439D-863A-BC4D7D4A119D}</Project>
+      <Name>Impacta.Apoio.WindowsForms.Controles</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\editarIcone.png" />

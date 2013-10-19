@@ -29,14 +29,14 @@ namespace CSharp2.Capitulo02.Clientes
 
         private void PopularFormulario(Cliente cliente)
         {
-            nomeTextBox.Text = cliente.Nome;
+            nomeEnterTextBox.Text = cliente.Nome;
             nascimentoMaskedTextBox.Text = cliente.DataNascimento.ToString("dd/MM/yyyy");
             emailTextBox.Text = cliente.Email;
         }
 
         private void gravarButton_Click(object sender, EventArgs e)
         {
-            if (!Formulario.ValidarCamposObrigatorios(this, clienteErrorProvider) | !Formulario.ValidarTipoDosDados(this, clienteErrorProvider))
+            if (!Formulario.ValidarCamposObrigatorios(this, clienteErrorProvider) || !Formulario.ValidarTipoDosDados(this, clienteErrorProvider))
             {
                 return;
             }
@@ -69,7 +69,7 @@ namespace CSharp2.Capitulo02.Clientes
                 InserirCliente();
                 MessageBox.Show("Cliente gravado com sucesso!");
                 Formulario.Limpar(this);
-                nomeTextBox.Focus();
+                nomeEnterTextBox.Focus();
             }
             else
             {
@@ -80,7 +80,7 @@ namespace CSharp2.Capitulo02.Clientes
 
         private void AtualizarCliente()
         {
-            _cliente.Nome = nomeTextBox.Text;
+            _cliente.Nome = nomeEnterTextBox.Text;
             _cliente.DataNascimento = nascimentoMaskedTextBox.Text.ParaData();
             _cliente.Email = emailTextBox.Text;
 
@@ -98,7 +98,7 @@ namespace CSharp2.Capitulo02.Clientes
             var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Oficina;Integrated Security=True");
             conexao.Open();
 
-            var instrucao = string.Format("Insert Cliente(Nome, Email, DataNascimento, Tipo) values('{0}', '{1}', '{2}', 0)", nomeTextBox.Text.Trim(), emailTextBox.Text.Trim(),
+            var instrucao = string.Format("Insert Cliente(Nome, Email, DataNascimento, Tipo) values('{0}', '{1}', '{2}', 0)", nomeEnterTextBox.Text.Trim(), emailTextBox.Text.Trim(),
                 Convert.ToDateTime(nascimentoMaskedTextBox.Text).ToString("yyyy-MM-dd"));
 
             var comando = new SqlCommand(instrucao, conexao);
