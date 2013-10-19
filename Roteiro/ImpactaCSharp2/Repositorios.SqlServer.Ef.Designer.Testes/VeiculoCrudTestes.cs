@@ -48,7 +48,7 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
                               where veiculo.Placa == placa //&& veiculo.Modelo_Id == 2
                               select veiculo;
 
-            //var retornoLambda =  _contexto.Veiculo.Where(x => x.Placa == placa);
+            var retornoLambda =  _contexto.Veiculo.Where(x => x.Placa == placa);
             
             return retorno.FirstOrDefault();
             //return retornoLambda.FirstOrDefault();

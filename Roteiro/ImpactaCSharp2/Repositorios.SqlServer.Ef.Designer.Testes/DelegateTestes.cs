@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Repositorios.SqlServer.Ef.Designer.Testes
@@ -9,7 +6,7 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
     public delegate Decimal EfetuarOperacao(decimal valor1, decimal valor2);
 
     [TestClass]
-    public class DelegateTeste
+    public class DelegateTestes
     {
         //public delegate Decimal EfetuarOperacao(decimal valor1, decimal valor2);
 
@@ -33,6 +30,31 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
 
             Console.WriteLine(operacao(1, 2));
         }
+
+        [TestMethod]
+        public void MetodoAnonimoTeste()
+        {
+            EfetuarOperacao operacao = delegate(decimal x, decimal y)
+            {
+                return x / y;
+            };
+
+            Console.WriteLine(operacao(1, 2));
+        }
+
+        [TestMethod]
+        public void ExpressaoLambdaTeste()
+        {
+            EfetuarOperacao operacao = (x, y) => x * y;
+
+            //EfetuarOperacao operacao = (x, y) =>
+            //{
+            //    var w = x * y;
+            //    return w + 3;
+            //};
+
+            Console.WriteLine(operacao(1, 2));
+        }
     }
 
     public class Calculadora
@@ -49,17 +71,17 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
             return x - y;
         }
 
-        public Testes.EfetuarOperacao DefinirOperacao()
+        public EfetuarOperacao DefinirOperacao()
         {
             TipoOperacao = Testes.TipoOperacao.Soma;
 
             switch (TipoOperacao)
             {
                 case TipoOperacao.Soma:
-                    return new Testes.EfetuarOperacao(Somar);
+                    return new EfetuarOperacao(Somar);
                     break;
                 case TipoOperacao.Subtracao:
-                    return new Testes.EfetuarOperacao(Subtrair);
+                    return new EfetuarOperacao(Subtrair);
                     break;
             }
             throw new Exception();
@@ -71,9 +93,4 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
         Soma,
         Subtracao
     }
-
-        //public class CalculadoraAplicacao
-    //{
-    //    public delegate Decimal EfetuarOperacao(decimal valor1, decimal valor2);
-    //}
 }
