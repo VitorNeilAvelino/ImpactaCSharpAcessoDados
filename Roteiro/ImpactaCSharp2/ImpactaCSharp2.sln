@@ -28,9 +28,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo03.Oficina", "CSharp2.Capitulo03.Oficina\CSharp2.Capitulo03.Oficina.csproj", "{75C78DE8-0B63-44E2-BA29-282A936B8B86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Apoio.WindowsForms.Controles", "Impacta.WindowsForms.UserControls\Impacta.Apoio.WindowsForms.Controles.csproj", "{939BA8B9-62E2-439D-863A-BC4D7D4A119D}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
@@ -62,6 +64,9 @@ Global
 		SccProjectUniqueName9 = CSharp2.Capitulo03.Oficina\\CSharp2.Capitulo03.Oficina.csproj
 		SccProjectName9 = CSharp2.Capitulo03.Oficina
 		SccLocalPath9 = CSharp2.Capitulo03.Oficina
+		SccProjectUniqueName10 = Impacta.WindowsForms.UserControls\\Impacta.Apoio.WindowsForms.Controles.csproj
+		SccProjectName10 = Impacta.WindowsForms.UserControls
+		SccLocalPath10 = Impacta.WindowsForms.UserControls
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ImpactaCSharp2.vsmdi
@@ -171,6 +176,16 @@ Global
 		{75C78DE8-0B63-44E2-BA29-282A936B8B86}.Release|Mixed Platforms.Build.0 = Release|x86
 		{75C78DE8-0B63-44E2-BA29-282A936B8B86}.Release|x86.ActiveCfg = Release|x86
 		{75C78DE8-0B63-44E2-BA29-282A936B8B86}.Release|x86.Build.0 = Release|x86
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
