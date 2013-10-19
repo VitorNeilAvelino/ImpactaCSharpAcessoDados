@@ -92,5 +92,49 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
                 Console.WriteLine("{0} - {1}", item.Placa, item.Modelo);
             }
         }
+
+        [TestMethod]
+        public void LikeTeste()
+        {
+            var lista = from modelo in _contexto.Modelo
+                        where modelo.Descricao.Contains("c")
+                        orderby modelo.Descricao
+                        select modelo;
+
+            foreach (var modelo in lista)
+            {
+                Console.WriteLine(modelo.Descricao);
+            }
+        }
+
+        [TestMethod]
+        public void MinTeste()
+        {
+            // Página 35
+
+            var sql = @"SELECT        MIN(DataNascimento) AS MenorData
+                        FROM            Cliente";
+
+            var clienteMaisVelho = (from cliente in _contexto.Cliente
+                                    orderby cliente.DataNascimento
+                                    select cliente).FirstOrDefault();
+
+            if (clienteMaisVelho != null)
+            {
+                Console.WriteLine("{0} - {1}", clienteMaisVelho.Nome, clienteMaisVelho.DataNascimento);
+            }
+        }
+
+        [TestMethod]
+        public void SumTeste()
+        {
+            var sql = @"SELECT SUM(valor) FROM Servico WHERE DataInicio >= '2013-10-01' AND DataFim < = '2013-11-01'";
+
+            var mediaDoMes = (from servico in _contexto.Servico
+                             where servico.DataInicio >= new DateTime(2013, 10, 01) && servico.DataFim < new DateTime(2013, 11, 01)
+                             select servico.Valor).Sum();
+
+            Console.WriteLine(mediaDoMes);
+        }
     }
 }

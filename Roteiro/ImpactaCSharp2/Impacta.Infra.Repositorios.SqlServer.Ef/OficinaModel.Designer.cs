@@ -733,6 +733,30 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef.Designer
         private Nullable<global::System.DateTime> _DataFim;
         partial void OnDataFimChanging(Nullable<global::System.DateTime> value);
         partial void OnDataFimChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Valor
+        {
+            get
+            {
+                return _Valor;
+            }
+            set
+            {
+                OnValorChanging(value);
+                ReportPropertyChanging("Valor");
+                _Valor = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Valor");
+                OnValorChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Valor;
+        partial void OnValorChanging(Nullable<global::System.Decimal> value);
+        partial void OnValorChanged();
 
         #endregion
 
