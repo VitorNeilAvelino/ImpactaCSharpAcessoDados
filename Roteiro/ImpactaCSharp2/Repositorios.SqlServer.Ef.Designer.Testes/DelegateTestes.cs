@@ -61,12 +61,12 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
     {
         private TipoOperacao TipoOperacao { get; set; }
 
-        private decimal Somar(decimal x, decimal y)
+        private static decimal Somar(decimal x, decimal y)
         {
             return x + y;
         }
 
-        private decimal Subtrair(decimal x, decimal y)
+        private static decimal Subtrair(decimal x, decimal y)
         {
             return x - y;
         }
@@ -78,12 +78,11 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
             switch (TipoOperacao)
             {
                 case TipoOperacao.Soma:
-                    return new EfetuarOperacao(Somar);
-                    break;
+                    return Somar;
                 case TipoOperacao.Subtracao:
-                    return new EfetuarOperacao(Subtrair);
-                    break;
+                    return Subtrair;
             }
+
             throw new Exception();
         }
     }
