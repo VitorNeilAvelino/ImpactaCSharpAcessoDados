@@ -53,7 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
+    <ProjectReference Include="..\..\..\..\Aulas\CSharp\Impacta\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
       <Project>{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}</Project>
       <Name>Impacta.Infra.Apoio</Name>
     </ProjectReference>
