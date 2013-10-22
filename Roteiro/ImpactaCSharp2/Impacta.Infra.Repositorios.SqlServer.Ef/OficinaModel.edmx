@@ -421,7 +421,7 @@
         <EntityTypeShape EntityType="OficinaModel.Cliente" Width="1.5" PointX="0.75" PointY="1.375" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="OficinaModel.Cor" Width="1.5" PointX="0.75" PointY="4.625" Height="1.4033821614583317" IsExpanded="true" />
         <EntityTypeShape EntityType="OficinaModel.Modelo" Width="1.5" PointX="0.75" PointY="6.75" Height="1.4033821614583335" IsExpanded="true" />
-        <EntityTypeShape EntityType="OficinaModel.Servico" Width="1.5" PointX="5.25" PointY="1.25" Height="2.5571907552083339" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Servico" Width="1.5" PointX="5.25" PointY="1.125" Height="2.5571907552083344" IsExpanded="true" />
         <EntityTypeShape EntityType="OficinaModel.TipoServico" Width="1.5" PointX="3" PointY="5.625" Height="1.5956835933029652" IsExpanded="true" />
         <EntityTypeShape EntityType="OficinaModel.Veiculo" Width="1.5" PointX="3" PointY="1" Height="2.9417936205863953" IsExpanded="true" />
         <AssociationConnector Association="OficinaModel.FK_Veiculo_Cor" ManuallyRouted="false">
@@ -441,11 +441,11 @@
         <AssociationConnector Association="OficinaModel.FK_Servico_TipoServico" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="6.4228417966514826" />
           <ConnectorPoint PointX="6" PointY="6.4228417966514826" />
-          <ConnectorPoint PointX="6" PointY="3.8071907552083339" />
+          <ConnectorPoint PointX="6" PointY="3.6821907552083344" />
         </AssociationConnector>
         <AssociationConnector Association="OficinaModel.FK_Servico_Veiculo" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="2.5285953776041667" />
-          <ConnectorPoint PointX="5.25" PointY="2.5285953776041667" />
+          <ConnectorPoint PointX="4.5" PointY="2.4035953776041672" />
+          <ConnectorPoint PointX="5.25" PointY="2.4035953776041672" />
         </AssociationConnector>
         <AssociationConnector Association="OficinaModel.ClienteVeiculo" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="3.0561163503473394" />

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Transactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Impacta.Infra.Repositorios.SqlServer.Ef.Designer;
 
@@ -13,14 +15,24 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
         public void InserirTeste()
         {
             var veiculo = new Veiculo();
-            veiculo.AnoFabricacao = 2012;
+            veiculo.AnoFabricacao = 2011;
             veiculo.AnoModelo = 2012;
             veiculo.Cor_Id = 1;
             veiculo.Modelo_Id = 1;
-            veiculo.Placa = "ETH1217";
+            veiculo.Placa = "ETH2019";
 
             _contexto.Veiculo.AddObject(veiculo);
-            _contexto.SaveChanges();
+            //_contexto.SaveChanges();
+
+            using (var transacao = new TransactionScope())
+            {
+                _contexto.SaveChanges();
+
+                // Log
+                throw  new Exception();
+
+                transacao.Complete();
+            }
         }
 
         [TestMethod]
