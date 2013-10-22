@@ -1,4 +1,4 @@
-﻿namespace Impacta.WindowsForms.Controles
+﻿namespace Impacta.Apoio.WindowsForms.Controles
 {
     partial class CustomControl1
     {

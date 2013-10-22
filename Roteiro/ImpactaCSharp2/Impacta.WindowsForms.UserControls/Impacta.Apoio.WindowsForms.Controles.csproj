@@ -59,6 +59,15 @@
     <Compile Include="CustomControl1.Designer.cs">
       <DependentUpon>CustomControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnderecoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EnderecoUserControl.Designer.cs">
+      <DependentUpon>EnderecoUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnterMaskedTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EnterTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -68,6 +77,7 @@
     <Compile Include="EnterTextBoxUserControl.Designer.cs">
       <DependentUpon>EnterTextBoxUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensoes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -77,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl1.resx">
       <DependentUpon>CustomControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnderecoUserControl.resx">
+      <DependentUpon>EnderecoUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EnterTextBoxUserControl.resx">
       <DependentUpon>EnterTextBoxUserControl.cs</DependentUpon>

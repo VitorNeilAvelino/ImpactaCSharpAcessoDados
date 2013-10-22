@@ -30,8 +30,8 @@ namespace CSharp2.Capitulo02.Clientes
         private void PopularFormulario(Cliente cliente)
         {
             nomeEnterTextBox.Text = cliente.Nome;
-            nascimentoMaskedTextBox.Text = cliente.DataNascimento.ToString("dd/MM/yyyy");
-            emailTextBox.Text = cliente.Email;
+            nascimentoEnterMaskedTextBox.Text = cliente.DataNascimento.ToString("dd/MM/yyyy");
+            emailEnterTextBox.Text = cliente.Email;
         }
 
         private void gravarButton_Click(object sender, EventArgs e)
@@ -81,8 +81,8 @@ namespace CSharp2.Capitulo02.Clientes
         private void AtualizarCliente()
         {
             _cliente.Nome = nomeEnterTextBox.Text;
-            _cliente.DataNascimento = nascimentoMaskedTextBox.Text.ParaData();
-            _cliente.Email = emailTextBox.Text;
+            _cliente.DataNascimento = nascimentoEnterMaskedTextBox.Text.ParaData();
+            _cliente.Email = emailEnterTextBox.Text;
 
             new ClienteRepositorio().Atualizar(_cliente);
         }
@@ -98,8 +98,8 @@ namespace CSharp2.Capitulo02.Clientes
             var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Oficina;Integrated Security=True");
             conexao.Open();
 
-            var instrucao = string.Format("Insert Cliente(Nome, Email, DataNascimento, Tipo) values('{0}', '{1}', '{2}', 0)", nomeEnterTextBox.Text.Trim(), emailTextBox.Text.Trim(),
-                Convert.ToDateTime(nascimentoMaskedTextBox.Text).ToString("yyyy-MM-dd"));
+            var instrucao = string.Format("Insert Cliente(Nome, Email, DataNascimento, Tipo) values('{0}', '{1}', '{2}', 0)", nomeEnterTextBox.Text.Trim(), emailEnterTextBox.Text.Trim(),
+                Convert.ToDateTime(nascimentoEnterMaskedTextBox.Text).ToString("yyyy-MM-dd"));
 
             var comando = new SqlCommand(instrucao, conexao);
             comando.ExecuteNonQuery();
