@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
-namespace Impacta.WindowsForms.Controles
+namespace Impacta.Apoio.WindowsForms.Controles
 {
     public class EnterTextBox : TextBox
     {
         public EnterTextBox()
         {
-            base.KeyDown += FocarProximoControle;
+            base.KeyDown += this.FocarProximoControle;
         }
 
-        private void FocarProximoControle(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                SendKeys.Send("{tab}");
-            }
-        }
+        //private static void FocarProximoControle(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        SendKeys.Send("{tab}");
+        //    }
+        //}
     }
 }

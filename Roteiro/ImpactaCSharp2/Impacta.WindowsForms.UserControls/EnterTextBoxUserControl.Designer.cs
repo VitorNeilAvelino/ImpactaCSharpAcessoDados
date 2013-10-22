@@ -1,4 +1,4 @@
-﻿namespace Impacta.WindowsForms.UserControls
+﻿namespace Impacta.Apoio.WindowsForms.Controles
 {
     partial class EnterTextBoxUserControl
     {
