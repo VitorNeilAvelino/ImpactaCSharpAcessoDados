@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo02.Clientes", "CSharp2.Capitulo02.Clientes\CSharp2.Capitulo02.Clientes.csproj", "{F51C248C-09F8-429E-AA44-13EA0D6D209A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\Aulas\CSharp\Impacta\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.SqlServer.Procedures", "Impacta.Infra.Repositorios.SqlServer\Impacta.Infra.Repositorios.SqlServer.Procedures.csproj", "{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}"
 EndProject
@@ -30,18 +30,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo03.Oficina"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Apoio.WindowsForms.Controles", "Impacta.WindowsForms.UserControls\Impacta.Apoio.WindowsForms.Controles.csproj", "{939BA8B9-62E2-439D-863A-BC4D7D4A119D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Dominio.Testes", "Impacta.Dominio.Testes\Impacta.Dominio.Testes.csproj", "{9F72F9CF-9618-4534-BD28-96722BD9993C}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = CSharp2.Capitulo02.Clientes\\CSharp2.Capitulo02.Clientes.csproj
 		SccProjectName1 = CSharp2.Capitulo02.Clientes
 		SccLocalPath1 = CSharp2.Capitulo02.Clientes
-		SccProjectUniqueName2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
+		SccProjectUniqueName2 = ..\\..\\..\\Aulas\\CSharp\\Impacta\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
 		SccProjectName2 = ../../../ImpactaCSharp1/Roteiro/ImpactaCSharp1/Impacta.Infra.Apoio
-		SccLocalPath2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
+		SccLocalPath2 = ..\\..\\..\\Aulas\\CSharp\\Impacta\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
 		SccProjectUniqueName3 = Impacta.Dominio\\Impacta.Dominio.csproj
 		SccProjectName3 = Impacta.Dominio
 		SccLocalPath3 = Impacta.Dominio
@@ -67,6 +69,9 @@ Global
 		SccProjectUniqueName10 = Impacta.WindowsForms.UserControls\\Impacta.Apoio.WindowsForms.Controles.csproj
 		SccProjectName10 = Impacta.WindowsForms.UserControls
 		SccLocalPath10 = Impacta.WindowsForms.UserControls
+		SccProjectUniqueName11 = Impacta.Dominio.Testes\\Impacta.Dominio.Testes.csproj
+		SccProjectName11 = Impacta.Dominio.Testes
+		SccLocalPath11 = Impacta.Dominio.Testes
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ImpactaCSharp2.vsmdi
@@ -186,6 +191,16 @@ Global
 		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{939BA8B9-62E2-439D-863A-BC4D7D4A119D}.Release|x86.ActiveCfg = Release|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9F72F9CF-9618-4534-BD28-96722BD9993C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
