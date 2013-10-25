@@ -1,0 +1,17 @@
+﻿<Window x:Class="CSharp2.Capitulo08.Wpf.ServicosWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Serviços" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="486" Width="788">
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF212121" Offset="0" />
+                <GradientStop Color="#FFCEC9C9" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label Content="Placa" Height="28" HorizontalAlignment="Left" Margin="10,10,0,0" Name="label1" VerticalAlignment="Top" VerticalContentAlignment="Center" TabIndex="0" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="54,12,0,0" Name="placaTextBox" VerticalAlignment="Top" Width="120" TabIndex="1" />
+        <Button Content="Pesquisar" Height="23" HorizontalAlignment="Left" Margin="180,12,0,0" Name="consultarPlacaButton" VerticalAlignment="Top" Width="75" TabIndex="2" IsDefault="True" />
+        <Label Height="28" HorizontalAlignment="Left" Margin="261,10,0,0" Name="descricaoVeiculoLabel" VerticalAlignment="Top" TabIndex="3" />
+    </Grid>
+</Window>
