@@ -5,7 +5,7 @@ using Impacta.Dominio;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
-    public class ClienteRepositorio
+    public class ClienteRepositorio : IClienteRepositorio
     {
         public DataTable Selecionar(string nomeCliente)
         {
@@ -31,6 +31,11 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
             }
 
             return dataTable;
+        }
+
+        public void Inserir(Cliente cliente)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Cliente Selecionar(int clienteId)
