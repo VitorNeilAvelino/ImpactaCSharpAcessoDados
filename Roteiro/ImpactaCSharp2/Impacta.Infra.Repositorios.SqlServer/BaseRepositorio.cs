@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace Impacta.Infra.Repositorios.SqlServer
+namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
     public static class BaseRepositorio
     {
