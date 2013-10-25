@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Apoio.WindowsForms.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Dominio.Testes", "Impacta.Dominio.Testes\Impacta.Dominio.Testes.csproj", "{9F72F9CF-9618-4534-BD28-96722BD9993C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 12
@@ -39,6 +41,7 @@ Global
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = CSharp2.Capitulo02.Clientes\\CSharp2.Capitulo02.Clientes.csproj
+		SccProjectTopLevelParentUniqueName1 = ImpactaCSharp2.sln
 		SccProjectName1 = CSharp2.Capitulo02.Clientes
 		SccLocalPath1 = CSharp2.Capitulo02.Clientes
 		SccProjectUniqueName2 = ..\\..\\..\\Aulas\\CSharp\\Impacta\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
@@ -64,12 +67,15 @@ Global
 		SccProjectName8 = Repositorios.SqlServer.Ef.Designer.Testes
 		SccLocalPath8 = Repositorios.SqlServer.Ef.Designer.Testes
 		SccProjectUniqueName9 = CSharp2.Capitulo03.Oficina\\CSharp2.Capitulo03.Oficina.csproj
+		SccProjectTopLevelParentUniqueName9 = ImpactaCSharp2.sln
 		SccProjectName9 = CSharp2.Capitulo03.Oficina
 		SccLocalPath9 = CSharp2.Capitulo03.Oficina
 		SccProjectUniqueName10 = Impacta.WindowsForms.UserControls\\Impacta.Apoio.WindowsForms.Controles.csproj
+		SccProjectTopLevelParentUniqueName10 = ImpactaCSharp2.sln
 		SccProjectName10 = Impacta.WindowsForms.UserControls
 		SccLocalPath10 = Impacta.WindowsForms.UserControls
 		SccProjectUniqueName11 = Impacta.Dominio.Testes\\Impacta.Dominio.Testes.csproj
+		SccProjectTopLevelParentUniqueName11 = ImpactaCSharp2.sln
 		SccProjectName11 = Impacta.Dominio.Testes
 		SccLocalPath11 = Impacta.Dominio.Testes
 	EndGlobalSection
@@ -208,5 +214,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8E6ED25B-7A28-4634-9112-84B38902D3CB} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{ACABDD54-D05E-4A96-A1D9-DFCAFCE97061} = {2882447B-037B-4C48-B78B-0B668AB67922}
+		{9F72F9CF-9618-4534-BD28-96722BD9993C} = {2882447B-037B-4C48-B78B-0B668AB67922}
+		{F51C248C-09F8-429E-AA44-13EA0D6D209A} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
+		{939BA8B9-62E2-439D-863A-BC4D7D4A119D} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
+		{75C78DE8-0B63-44E2-BA29-282A936B8B86} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
 	EndGlobalSection
 EndGlobal
