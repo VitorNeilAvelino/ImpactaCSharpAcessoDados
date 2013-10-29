@@ -88,6 +88,8 @@
           <Property Name="DataInicio" Type="datetime" />
           <Property Name="DataFim" Type="datetime" />
           <Property Name="Valor" Type="decimal" Scale="2" />
+          <Property Name="Custo" Type="decimal" Scale="2" />
+          <Property Name="Sigla" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TipoServico">
           <Key>
@@ -248,6 +250,8 @@
           <NavigationProperty Name="TipoServico" Relationship="OficinaModel.FK_Servico_TipoServico" FromRole="Servico" ToRole="TipoServico" />
           <NavigationProperty Name="Veiculo" Relationship="OficinaModel.FK_Servico_Veiculo" FromRole="Servico" ToRole="Veiculo" />
           <Property Type="Decimal" Name="Valor" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Custo" Precision="18" Scale="2" />
+          <Property Type="String" Name="Sigla" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TipoServico">
           <Key>
@@ -360,6 +364,8 @@
           <EntitySetMapping Name="Servico">
             <EntityTypeMapping TypeName="OficinaModel.Servico">
               <MappingFragment StoreEntitySet="Servico">
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Custo" ColumnName="Custo" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Veiculo_Id" ColumnName="Veiculo_Id" />

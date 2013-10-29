@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using Impacta.Aplicacao;
 using Impacta.Infra.Repositorios.SqlServer.Ef.Designer;
 using System.ComponentModel;
+using System.Xml.Linq;
+using Impacta.Infra.Apoio;
 
 namespace CSharp2.Capitulo08.Wpf
 {
@@ -46,6 +48,8 @@ namespace CSharp2.Capitulo08.Wpf
             }
         }
 
+        ConsultaPrecoServiceReference.StockQuoteSoapClient _servicoConsulta;
+
         //public Veiculo Veiculo { get; set; }
 
         public ServicosWindow()
@@ -57,15 +61,46 @@ namespace CSharp2.Capitulo08.Wpf
 
         private void consultarPlacaButton_Click(object sender, RoutedEventArgs e)
         {
+            _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
+
             //using (var _contexto = new OficinaEntities())
             //{
-                Veiculo = _contexto.Veiculo.Where(x => x.Placa == placaTextBox.Text).FirstOrDefault();
-                PropertyChanged(this, new PropertyChangedEventArgs("Veiculo"));
-                //_contexto.Connection.Close();
+            Veiculo = _contexto.Veiculo.Where(x => x.Placa == placaTextBox.Text).FirstOrDefault();
+            ObterCotacao();
+            PropertyChanged(this, new PropertyChangedEventArgs("Veiculo"));
+            //_contexto.Connection.Close();
             //}
         }
 
+        private void ObterCotacao()
+        {
+            foreach (var servico in Veiculo.Servicos)
+            {
+                servico.Custo = ObterCotacao(servico.Sigla);
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void consultarCustoButton_Click(object sender, RoutedEventArgs e)
+        {
+            _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
+            var respostaMs = ObterCotacao("MSFT");
+            var respostaGoogle = ObterCotacao("GOOG");
+            var respostaApple = ObterCotacao("AAPL");
+            //Veiculo.Servicos. = (respostaMs + respostaGoogle + respostaApple) / 3;
+        }
+
+        private decimal ObterCotacao(string sigla)
+        {
+            return XDocument.Parse(_servicoConsulta.GetQuote(sigla)).Descendants("Last").First().Value.Replace(".", ",").ParaDecimal();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //protected void OnPropertyChanged(string propertyName)
         //{
         //    PropertyChangedEventHandler handler = PropertyChanged;
