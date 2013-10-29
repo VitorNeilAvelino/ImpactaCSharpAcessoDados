@@ -757,6 +757,54 @@ namespace Impacta.Infra.Repositorios.SqlServer.Ef.Designer
         private Nullable<global::System.Decimal> _Valor;
         partial void OnValorChanging(Nullable<global::System.Decimal> value);
         partial void OnValorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> Custo
+        {
+            get
+            {
+                return _Custo;
+            }
+            set
+            {
+                OnCustoChanging(value);
+                ReportPropertyChanging("Custo");
+                _Custo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Custo");
+                OnCustoChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _Custo;
+        partial void OnCustoChanging(Nullable<global::System.Decimal> value);
+        partial void OnCustoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Sigla
+        {
+            get
+            {
+                return _Sigla;
+            }
+            set
+            {
+                OnSiglaChanging(value);
+                ReportPropertyChanging("Sigla");
+                _Sigla = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Sigla");
+                OnSiglaChanged();
+            }
+        }
+        private global::System.String _Sigla;
+        partial void OnSiglaChanging(global::System.String value);
+        partial void OnSiglaChanged();
 
         #endregion
 

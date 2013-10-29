@@ -1,0 +1,20 @@
+﻿<StockQuotes>
+  <Stock>
+    <Symbol>MS</Symbol>
+    <Last>28.97</Last>
+    <Date>10/28/2013</Date>
+    <Time>4:00pm</Time>
+    <Change>-0.26</Change>
+    <Open>29.23</Open>
+    <High>29.25</High>
+    <Low>28.945</Low>
+    <Volume>10543464</Volume>
+    <MktCap>57.940B</MktCap>
+    <PreviousClose>29.23</PreviousClose>
+    <PercentageChange>-0.89%</PercentageChange>
+    <AnnRange>14.81 - 28.40</AnnRange>
+    <Earns>1.611</Earns>
+    <P-E>18.14</P-E>
+    <Name>Morgan Stanley Co</Name>
+  </Stock>
+</StockQuotes>
