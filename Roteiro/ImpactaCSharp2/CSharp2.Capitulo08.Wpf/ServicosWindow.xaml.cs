@@ -1,40 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Impacta.Aplicacao;
 using Impacta.Infra.Repositorios.SqlServer.Ef.Designer;
 using System.ComponentModel;
 using System.Xml.Linq;
 using Impacta.Infra.Apoio;
+using System.Threading;
 
 namespace CSharp2.Capitulo08.Wpf
 {
-    /// <summary>
-    /// Interaction logic for ServicosWindow.xaml
-    /// </summary>
     public partial class ServicosWindow : Window, INotifyPropertyChanged
     {
+        public ServicosWindow()
+        {
+            InitializeComponent();
+
+            placaTextBox.Focus();
+        }
+
         OficinaEntities _contexto = new OficinaEntities();
 
-        //public Veiculo Veiculo
-        //{
-        //    get { return (Veiculo)GetValue(VeiculoDp); }
-        //    set { SetValue(VeiculoDp, value); }
-        //}
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        //// Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty VeiculoDp =
-        //    DependencyProperty.Register("Veiculo", typeof(Veiculo), typeof(ServicosWindow), new UIPropertyMetadata(0));
+        ConsultaPrecoServiceReference.StockQuoteSoapClient _servicoConsulta;
 
         private Veiculo _veiculo;
 
@@ -48,39 +35,24 @@ namespace CSharp2.Capitulo08.Wpf
             }
         }
 
-        ConsultaPrecoServiceReference.StockQuoteSoapClient _servicoConsulta;
-
-        //public Veiculo Veiculo { get; set; }
-
-        public ServicosWindow()
-        {
-            InitializeComponent();
-
-            placaTextBox.Focus();
-        }
-
         private void consultarPlacaButton_Click(object sender, RoutedEventArgs e)
         {
-            _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
-
-            //using (var _contexto = new OficinaEntities())
-            //{
             Veiculo = _contexto.Veiculo.Where(x => x.Placa == placaTextBox.Text).FirstOrDefault();
-            ObterCotacao();
+
+            ThreadPool.QueueUserWorkItem(delegate { ObterCotacao(); });
+
             PropertyChanged(this, new PropertyChangedEventArgs("Veiculo"));
-            //_contexto.Connection.Close();
-            //}
         }
 
         private void ObterCotacao()
         {
+            _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
+
             foreach (var servico in Veiculo.Servicos)
             {
                 servico.Custo = ObterCotacao(servico.Sigla);
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void consultarCustoButton_Click(object sender, RoutedEventArgs e)
         {
@@ -94,11 +66,6 @@ namespace CSharp2.Capitulo08.Wpf
         private decimal ObterCotacao(string sigla)
         {
             return XDocument.Parse(_servicoConsulta.GetQuote(sigla)).Descendants("Last").First().Value.Replace(".", ",").ParaDecimal();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         //protected void OnPropertyChanged(string propertyName)
