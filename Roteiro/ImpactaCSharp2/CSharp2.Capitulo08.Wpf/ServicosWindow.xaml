@@ -3,7 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Serviços" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="486" Width="788" 
-        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        xmlns:userControls="clr-namespace:CSharp2.Capitulo08.Wpf.UserControls">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </Window.Resources>
     <Grid >
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -27,17 +31,16 @@
                 <DataGridTextColumn Header="Início" Binding="{Binding Path=DataInicio, StringFormat=\{0:d\}}" MinWidth="100" />
                 <DataGridTextColumn Header="Fim" Binding="{Binding Path=DataFim, StringFormat=\{0:dd/MM/yyyy\}}" MinWidth="100" />
                 <DataGridTextColumn Header="Valor" Binding="{Binding Path=Valor, StringFormat=\{0:c\}}" MinWidth="100" />
-                <DataGridTemplateColumn Header="Custo" MinWidth="100">
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate />
-                    </DataGridTemplateColumn.CellEditingTemplate>
+                <!--<DataGridTemplateColumn Header="Custo" MinWidth="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <!--<Button Content="Consultar"  Click="consultarCustoButton_Click" Name="consultarCustoButton" />-->
+                            <userControls:UcSpinnerDotCircle Background="LightGray"  x:Name="aguardeUserControl" Visibility="{Binding Path=Custo.IsDirty, Converter={StaticResource BooleanToVisibility}}"/>
+                            <Button Content="Consultar"  Click="consultarCustoButton_Click" Name="consultarCustoButton" />
                         </DataTemplate >
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>-->
                 <DataGridTextColumn Header="Custo" Binding="{Binding Path=Custo, StringFormat=\{0:c\}}" MinWidth="100"  />
+                <!--<DataGridTextColumn Header="Sigla" Binding="{Binding Path=Sigla}" MinWidth="100"  />-->
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
