@@ -54,14 +54,14 @@ namespace CSharp2.Capitulo08.Wpf
             }
         }
 
-        private void consultarCustoButton_Click(object sender, RoutedEventArgs e)
-        {
-            _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
-            var respostaMs = ObterCotacao("MSFT");
-            var respostaGoogle = ObterCotacao("GOOG");
-            var respostaApple = ObterCotacao("AAPL");
-            //Veiculo.Servicos. = (respostaMs + respostaGoogle + respostaApple) / 3;
-        }
+        //private void consultarCustoButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
+        //    var respostaMs = ObterCotacao("MSFT");
+        //    var respostaGoogle = ObterCotacao("GOOG");
+        //    var respostaApple = ObterCotacao("AAPL");
+        //    //Veiculo.Servicos. = (respostaMs + respostaGoogle + respostaApple) / 3;
+        //}
 
         private decimal ObterCotacao(string sigla)
         {
