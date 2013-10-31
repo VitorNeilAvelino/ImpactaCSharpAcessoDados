@@ -102,6 +102,11 @@ namespace CSharp2.Capitulo02.Clientes
         {
             new ClienteForm().ShowDialog();
         }
+
+        private void imprimirToolStripButton_Click(object sender, EventArgs e)
+        {
+            new RelatorioClientesForm().ShowDialog();
+        }
     }
 
     internal class GridClientesModelView
