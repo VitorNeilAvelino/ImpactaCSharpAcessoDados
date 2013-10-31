@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using Impacta.Infra.Apoio;
 using Impacta.Dominio;
@@ -56,14 +57,20 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
                 if (registro.Read())
                 {
-                    cliente = new Cliente();
-                    cliente.Id = registro["Id"].ParaInteiro();
-                    cliente.Nome = registro["Nome"].ToString();
-                    cliente.DataNascimento = registro["DataNascimento"].ParaData();
-                    cliente.Email = registro["Email"].ToString();
+                    cliente = MapearCliente(registro);
                 }
             }
 
+            return cliente;
+        }
+
+        private static Cliente MapearCliente(SqlDataReader registro)
+        {
+            var cliente = new Cliente();
+            cliente.Id = registro["Id"].ParaInteiro();
+            cliente.Nome = registro["Nome"].ToString();
+            cliente.DataNascimento = registro["DataNascimento"].ParaData();
+            cliente.Email = registro["Email"].ToString();
             return cliente;
         }
 
@@ -100,6 +107,31 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
                 comando.ExecuteNonQuery();
             }
+        }
+
+        public List<Cliente> Selecionar()
+        {
+            var retorno = new List<Cliente>();
+
+            using (var conexao = new SqlConnection(BaseRepositorio.OficinaConnectionString))
+            {
+                conexao.Open();
+
+                const string nomeProcedure = "SelecionarCliente";
+
+                var comando = new SqlCommand(nomeProcedure, conexao);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@id", null);
+
+                var registros = comando.ExecuteReader();
+
+                while (registros.Read())
+                {
+                    retorno.Add(MapearCliente(registros));
+                }
+            }
+
+            return retorno;
         }
     }
 }

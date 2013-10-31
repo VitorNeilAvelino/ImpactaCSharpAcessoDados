@@ -15,7 +15,7 @@ namespace CSharp2.Capitulo02.Clientes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ListagemClientesForm());
         }
     }
 }
