@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Impacta.Infra.Apoio;
 using Impacta.Dominio;
+using System.Configuration;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
@@ -12,7 +13,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
         {
             var dataTable = new DataTable();
 
-            using (var conexao = new SqlConnection(BaseRepositorio.OficinaConnectionString))
+            using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["oficinaConnectionString"].ConnectionString))
             {
                 conexao.Open();
 
@@ -49,15 +50,18 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
                 const string nomeProcedure = "SelecionarCliente";
 
-                var comando = new SqlCommand(nomeProcedure, conexao);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@id", clienteId);
-
-                var registro = comando.ExecuteReader();
-
-                if (registro.Read())
+                using (var comando = new SqlCommand(nomeProcedure, conexao))
                 {
-                    cliente = MapearCliente(registro);
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@id", clienteId);
+
+                    using (var registro = comando.ExecuteReader())
+                    {
+                        if (registro.Read())
+                        {
+                            cliente = MapearCliente(registro);
+                        }
+                    }
                 }
             }
 

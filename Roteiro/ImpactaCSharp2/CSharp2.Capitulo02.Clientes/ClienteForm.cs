@@ -16,15 +16,13 @@ namespace CSharp2.Capitulo02.Clientes
             InitializeComponent();
         }
 
-        public ClienteForm(int clienteId)
+        public ClienteForm(int clienteId) : this()
         {
-            InitializeComponent();
+            //InitializeComponent();
             
-            var cliente = new ClienteRepositorio().Selecionar(clienteId);
+            _cliente = new ClienteRepositorio().Selecionar(clienteId);
 
-            _cliente = cliente;
-
-            PopularFormulario(cliente);
+            PopularFormulario(_cliente);
         }
 
         private void PopularFormulario(Cliente cliente)
