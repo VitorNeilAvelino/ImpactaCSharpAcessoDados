@@ -96,6 +96,8 @@ namespace CSharp2.Capitulo02.Clientes
         private void InserirCliente()
         {
             var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Oficina;Integrated Security=True");
+            //var conexao = new SqlConnection("Data Source=.;Initial Catalog=Oficina;Persist Security Info=True;User ID=oficinausuario;Password=oficina123");
+            //Data Source=.;Initial Catalog=Oficina;Persist Security Info=True;User ID=oficinausuario;Password=***********
             conexao.Open();
 
             var instrucao = string.Format("Insert Cliente(Nome, Email, DataNascimento, Tipo) values('{0}', '{1}', '{2}', 0)", nomeEnterTextBox.Text.Trim(), emailEnterTextBox.Text.Trim(),
