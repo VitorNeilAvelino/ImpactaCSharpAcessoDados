@@ -66,21 +66,21 @@ namespace CSharp2.Capitulo02.Clientes
 
         private void clientesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var celula = clientesDataGridView.CurrentCell;
+            if (e.RowIndex == -1) return;
 
-            if (!celula.Value.Equals("Editar") && !celula.Value.Equals("Excluir"))
+            var celulaClicada = clientesDataGridView.CurrentCell;
+            var acaoFormulario = DefinirAcaoFormulario(celulaClicada);
+
+            if (acaoFormulario == AcaoFormulario.NaoDefinida) return;
+
+            var clienteId = Convert.ToInt32(celulaClicada.OwningRow.Cells[idClienteColumn.Index].Value);
+
+            switch (acaoFormulario)
             {
-                return;
-            }
-
-            var clienteId = clientesDataGridView.Rows[e.RowIndex].Cells[0].Value.ParaInteiro();
-
-            switch (celula.Value.ToString())
-            {
-                case "Editar":
+                case AcaoFormulario.Editar:
                     AbrirFormularioParaEdicao(clienteId);
                     break;
-                case "Excluir":
+                case AcaoFormulario.Excluir:
                     var resposta = MessageBox.Show("Deseja realmente excluir este Cliente?", "Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resposta == DialogResult.Yes)
                     {
@@ -90,6 +90,21 @@ namespace CSharp2.Capitulo02.Clientes
             }
 
             Pesquisar();
+        }
+
+        private AcaoFormulario DefinirAcaoFormulario(DataGridViewCell celulaClicada)
+        {
+            if (celulaClicada.OwningColumn.Index == editarClienteColumn.Index)
+            {
+                return AcaoFormulario.Editar;
+            }
+
+            if (celulaClicada.OwningColumn.Index == excluirClienteColumn.Index)
+            {
+                return AcaoFormulario.Excluir;
+            }
+
+            return AcaoFormulario.NaoDefinida;
         }
 
         private static void AbrirFormularioParaEdicao(int clienteId)
