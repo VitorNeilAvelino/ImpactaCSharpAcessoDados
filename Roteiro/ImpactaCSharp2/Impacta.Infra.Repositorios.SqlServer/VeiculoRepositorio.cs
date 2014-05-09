@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using Impacta.Dominio;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
-    public class VeiculoRepositorio : IVeiculoRepositorio
+    public class VeiculoRepositorio : BaseRepositorio, IVeiculoRepositorio
     {
         public void Inserir(Veiculo entidade)
         {
@@ -23,7 +25,9 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
         public void Excluir(int entidadeId)
         {
-            throw new NotImplementedException();
+            Comando.CommandText = string.Format("Delete from Veiculo where Id = {0}", entidadeId);
+            Comando.CommandType = CommandType.Text;
+            Comando.ExecuteNonQuery();
         }
 
         //public List<Veiculo> PesquisarPor(Func<Veiculo, bool> expressaoLambda)

@@ -74,7 +74,7 @@ namespace CSharp2.Capitulo02.Clientes
             if (acaoFormulario == AcaoFormulario.NaoDefinida) return;
 
             var clienteId = Convert.ToInt32(celulaClicada.OwningRow.Cells[idClienteColumn.Index].Value);
-
+            
             switch (acaoFormulario)
             {
                 case AcaoFormulario.Editar:
