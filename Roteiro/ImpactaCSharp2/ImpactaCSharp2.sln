@@ -34,9 +34,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo08.Wpf", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Aplicacao", "Impacta.Aplicacao\Impacta.Aplicacao.csproj", "{6706BF76-0359-402E-AD04-E66EBF19ED7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.SqlServer.Procedures.Tests", "Impacta.Infra.Repositorios.SqlServer.Procedures.Tests\Impacta.Infra.Repositorios.SqlServer.Procedures.Tests.csproj", "{18843B70-993B-464C-BAF4-33C75E149EF1}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 13
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
@@ -79,6 +81,10 @@ Global
 		SccProjectUniqueName11 = Impacta.Aplicacao\\Impacta.Aplicacao.csproj
 		SccProjectName11 = Impacta.Aplicacao
 		SccLocalPath11 = Impacta.Aplicacao
+		SccProjectUniqueName12 = Impacta.Infra.Repositorios.SqlServer.Procedures.Tests\\Impacta.Infra.Repositorios.SqlServer.Procedures.Tests.csproj
+		SccProjectTopLevelParentUniqueName12 = ImpactaCSharp2.sln
+		SccProjectName12 = Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
+		SccLocalPath12 = Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ImpactaCSharp2.vsmdi
@@ -202,6 +208,16 @@ Global
 		{6706BF76-0359-402E-AD04-E66EBF19ED7C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6706BF76-0359-402E-AD04-E66EBF19ED7C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6706BF76-0359-402E-AD04-E66EBF19ED7C}.Release|x86.ActiveCfg = Release|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,6 +226,7 @@ Global
 		{ACABDD54-D05E-4A96-A1D9-DFCAFCE97061} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{8E6ED25B-7A28-4634-9112-84B38902D3CB} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{9F72F9CF-9618-4534-BD28-96722BD9993C} = {2882447B-037B-4C48-B78B-0B668AB67922}
+		{18843B70-993B-464C-BAF4-33C75E149EF1} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{F51C248C-09F8-429E-AA44-13EA0D6D209A} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
 		{75C78DE8-0B63-44E2-BA29-282A936B8B86} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
 		{939BA8B9-62E2-439D-863A-BC4D7D4A119D} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}

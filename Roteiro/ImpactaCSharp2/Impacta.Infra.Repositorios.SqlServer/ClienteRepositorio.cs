@@ -7,7 +7,7 @@ using System.Configuration;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
-    public class ClienteRepositorio : IClienteRepositorio
+    public class ClienteRepositorio : BaseRepositorio, IClienteRepositorio
     {
         public DataTable Selecionar(string nomeCliente)
         {
@@ -44,7 +44,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
         {
             Cliente cliente = null;
 
-            using (var conexao = new SqlConnection(BaseRepositorio.OficinaConnectionString))
+            using (var conexao = new SqlConnection(OficinaConnectionString))
             {
                 conexao.Open();
 
@@ -80,7 +80,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
         public void Atualizar(Cliente cliente)
         {
-            using (var conexao = new SqlConnection(BaseRepositorio.OficinaConnectionString))
+            using (var conexao = new SqlConnection(OficinaConnectionString))
             {
                 conexao.Open();
 
@@ -99,7 +99,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
         public void Excluir(int clienteId)
         {
-            using (var conexao = new SqlConnection(BaseRepositorio.OficinaConnectionString))
+            using (var conexao = new SqlConnection(OficinaConnectionString))
             {
                 conexao.Open();
 
@@ -117,7 +117,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
         {
             var retorno = new List<Cliente>();
 
-            using (var conexao = new SqlConnection(BaseRepositorio.OficinaConnectionString))
+            using (var conexao = new SqlConnection(OficinaConnectionString))
             {
                 conexao.Open();
 
@@ -136,6 +136,28 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
             }
 
             return retorno;
+        }
+
+        public Cliente Atualizar(string nome, int id)
+        {
+            Comando.CommandText = string.Format("Update Cliente set Nome = @nome where Id = {0}", id);
+            Comando.CommandType = CommandType.Text;
+            Comando.ExecuteNonQuery();
+
+            var cliente = new Cliente();
+            Comando.CommandText = "SelecionarCliente";
+            Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.AddWithValue("@id", id);
+
+            using (var registro = Comando.ExecuteReader())
+            {
+                if (registro.Read())
+                {
+                    cliente = MapearCliente(registro);
+                }
+            }
+
+            return cliente;
         }
     }
 }
