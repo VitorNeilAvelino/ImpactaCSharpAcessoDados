@@ -29,7 +29,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
         // Se vem da interface, tem que ser publico.
         public void Dispose()
         {
-            Conexao.Close();
+            //Comando.Close() // eh chamado pelo Dispose.
             Comando.Dispose();
             Conexao.Dispose();
         }
