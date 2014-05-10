@@ -10,16 +10,16 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
         {
             using (var veiculoRepositorio = new VeiculoRepositorio())
             {
-                try
-                {
+                //try
+                //{
                     veiculoRepositorio.Excluir(1);
-                }
-                catch 
-                {
-                    veiculoRepositorio.Conexao.Close();
-                    veiculoRepositorio.Conexao.Dispose();
-                    throw;
-                }
+                //}
+                //catch 
+                //{
+                //    veiculoRepositorio.Conexao.Close();
+                //    veiculoRepositorio.Conexao.Dispose();
+                //    throw;
+                //}
             }
 
             // O desenvolvedor pode esquecer de usar o using...
