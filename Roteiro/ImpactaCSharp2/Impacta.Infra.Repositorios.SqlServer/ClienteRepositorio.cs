@@ -4,7 +4,6 @@ using System.Data.SqlClient;
 using Impacta.Infra.Apoio;
 using Impacta.Dominio;
 using System.Configuration;
-using System;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
@@ -165,6 +164,63 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
             }
 
             return cliente;
+        }
+
+        public SqlDataReader RetornarDataReader(int id)
+        {
+            SqlDataReader cliente = null;
+
+            //var conexao = new SqlConnection(OficinaConnectionString);
+            using (var conexao = new SqlConnection(OficinaConnectionString))
+            {
+                conexao.Open();
+
+                const string nomeProcedure = "SelecionarCliente";
+
+                using (var comando = new SqlCommand(nomeProcedure, conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@id", id);
+
+                    var registro = comando.ExecuteReader();
+                    registro.Read();
+                    cliente = registro;
+                }
+            }
+
+            return cliente;
+        }
+
+        public void AtualizarComTransacao()
+        {
+            using (var conexao = new SqlConnection(OficinaConnectionString))
+            {
+                conexao.Open();
+
+                using(var transacao = conexao.BeginTransaction())
+                {
+                    var instrucao1 = "Update Cliente set Nome = 'Vítr' where Id = 1";
+                    var instrucao2 = "Update Cliente set Nome = 'Avelino' where Id = 3";
+
+                    using (var comando = conexao.CreateCommand())
+                    {
+                        comando.Transaction = transacao;
+                        comando.CommandText = instrucao1;
+                        comando.ExecuteNonQuery();
+                    }
+
+                    //throw new Exception();
+
+                    using (var comando = conexao.CreateCommand())
+                    {
+                        comando.Transaction = transacao;
+                        comando.CommandText = instrucao2;
+                        comando.ExecuteNonQuery();
+                    }
+
+                    transacao.Commit();
+                }
+            }
         }
     }
 }
