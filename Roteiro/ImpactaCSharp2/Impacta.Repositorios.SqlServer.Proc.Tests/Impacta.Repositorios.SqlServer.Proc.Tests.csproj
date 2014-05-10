@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{18843B70-993B-464C-BAF4-33C75E149EF1}</ProjectGuid>
+    <ProjectGuid>{75A26BFD-A251-41BD-A276-124A7F115F25}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Impacta.Infra.Repositorios.SqlServer.Procedures.Tests</RootNamespace>
-    <AssemblyName>Impacta.Infra.Repositorios.SqlServer.Procedures.Tests</AssemblyName>
+    <RootNamespace>Impacta.Repositorios.SqlServer.Proc.Tests</RootNamespace>
+    <AssemblyName>Impacta.Repositorios.SqlServer.Proc.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -40,7 +40,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -55,18 +54,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ClienteRepositorioTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VeiculoRepositorioTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
-      <Project>{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}</Project>
+      <Project>{ca5c0d85-79cc-47ca-9d34-3c7722d983ef}</Project>
       <Name>Impacta.Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Impacta.Infra.Repositorios.SqlServer\Impacta.Repositorios.SqlServer.Proc.csproj">
       <Project>{B7DECE22-0584-477A-8BD5-5324C2CE1DD8}</Project>
       <Name>Impacta.Repositorios.SqlServer.Proc</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

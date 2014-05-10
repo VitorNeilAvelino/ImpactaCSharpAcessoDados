@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
-    public class BaseRepositorio : IDisposable
+    public abstract class BaseRepositorio : IDisposable
     {
-        public BaseRepositorio()
+        protected BaseRepositorio()
         {
             Conexao = new SqlConnection(OficinaConnectionString);
             Conexao.Open();
@@ -15,6 +15,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
         public SqlCommand Comando { get; set; }
 
+        // Poderia ser private.
         public String OficinaConnectionString
         {
             get
@@ -23,8 +24,9 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
             }
         }
 
-        public SqlConnection Conexao { get; set; }
+        private SqlConnection Conexao { get; set; }
 
+        // Se vem da interface, tem que ser publico.
         public void Dispose()
         {
             Conexao.Close();

@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using Impacta.Infra.Apoio;
 using Impacta.Dominio;
 using System.Configuration;
+using System;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
@@ -105,11 +106,13 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
                 const string nomeProcedure = "ExcluirCliente";
 
-                var comando = new SqlCommand(nomeProcedure, conexao);
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@id", clienteId);
+                using (var comando = new SqlCommand(nomeProcedure, conexao))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@id", clienteId);
 
-                comando.ExecuteNonQuery();
+                    comando.ExecuteNonQuery();
+                }
             }
         }
 
@@ -141,12 +144,16 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
         public Cliente Atualizar(string nome, int id)
         {
             Comando.CommandText = string.Format("Update Cliente set Nome = @nome where Id = {0}", id);
+            Comando.Parameters.AddWithValue("@nome", nome);
             Comando.CommandType = CommandType.Text;
             Comando.ExecuteNonQuery();
+
+            //throw new Exception();
 
             var cliente = new Cliente();
             Comando.CommandText = "SelecionarCliente";
             Comando.CommandType = CommandType.StoredProcedure;
+            Comando.Parameters.Clear();
             Comando.Parameters.AddWithValue("@id", id);
 
             using (var registro = Comando.ExecuteReader())
