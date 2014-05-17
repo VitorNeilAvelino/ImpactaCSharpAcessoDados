@@ -38,7 +38,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Repositorios.SqlServer.Proc.Tests", "Impacta.Repositorios.SqlServer.Proc.Tests\Impacta.Repositorios.SqlServer.Proc.Tests.csproj", "{75A26BFD-A251-41BD-A276-124A7F115F25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\CSharp1\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -50,9 +50,9 @@ Global
 		SccProjectTopLevelParentUniqueName1 = ImpactaCSharp2.sln
 		SccProjectName1 = CSharp2.Capitulo02.Clientes
 		SccLocalPath1 = CSharp2.Capitulo02.Clientes
-		SccProjectUniqueName2 = ..\\..\\..\\CSharp1\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
+		SccProjectUniqueName2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
 		SccProjectName2 = ../../../ImpactaCSharp1/Roteiro/ImpactaCSharp1/Impacta.Infra.Apoio
-		SccLocalPath2 = ..\\..\\..\\CSharp1\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
+		SccLocalPath2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
 		SccProjectUniqueName3 = Impacta.Dominio\\Impacta.Dominio.csproj
 		SccProjectName3 = Impacta.Dominio
 		SccLocalPath3 = Impacta.Dominio
