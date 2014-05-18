@@ -59,7 +59,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
                     {
                         if (registro.Read())
                         {
-                            cliente = MapearCliente(registro);
+                            cliente = Mapear(registro);
                         }
                     }
                 }
@@ -68,7 +68,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
             return cliente;
         }
 
-        private static Cliente MapearCliente(SqlDataReader registro)
+        private static Cliente Mapear(SqlDataReader registro)
         {
             var cliente = new Cliente();
             cliente.Id = registro["Id"].ParaInteiro();
@@ -88,13 +88,18 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
                 var comando = new SqlCommand(nomeProcedure, conexao);
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@id", cliente.Id);
-                comando.Parameters.AddWithValue("@nome", cliente.Nome);
-                comando.Parameters.AddWithValue("@dataNascimento", cliente.DataNascimento);
-                comando.Parameters.AddWithValue("@email", cliente.Email);
+                Mapear(cliente, comando);
 
                 comando.ExecuteNonQuery();
             }
+        }
+
+        private static void Mapear(Cliente cliente, SqlCommand comando)
+        {
+            comando.Parameters.AddWithValue("@id", cliente.Id);
+            comando.Parameters.AddWithValue("@nome", cliente.Nome);
+            comando.Parameters.AddWithValue("@dataNascimento", cliente.DataNascimento);
+            comando.Parameters.AddWithValue("@email", cliente.Email);
         }
 
         public void Excluir(int clienteId)
@@ -133,13 +138,16 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
                 while (registros.Read())
                 {
-                    retorno.Add(MapearCliente(registros));
+                    retorno.Add(Mapear(registros));
                 }
             }
 
             return retorno;
         }
 
+        /// <summary>
+        /// Teste para as propriedades do BaseRepositorio.
+        /// </summary>
         public Cliente Atualizar(string nome, int id)
         {
             Comando.CommandText = string.Format("Update Cliente set Nome = @nome where Id = {0}", id);
@@ -159,18 +167,20 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
             {
                 if (registro.Read())
                 {
-                    cliente = MapearCliente(registro);
+                    cliente = Mapear(registro);
                 }
             }
 
             return cliente;
         }
 
+        /// <summary>
+        /// Teste para o tempo de vida do SqlDataReader - morre junto com a conexão.
+        /// </summary>
         public SqlDataReader RetornarDataReader(int id)
         {
             SqlDataReader cliente = null;
 
-            //var conexao = new SqlConnection(OficinaConnectionString);
             using (var conexao = new SqlConnection(OficinaConnectionString))
             {
                 conexao.Open();
@@ -199,7 +209,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 
                 using(var transacao = conexao.BeginTransaction())
                 {
-                    var instrucao1 = "Update Cliente set Nome = 'Vítr' where Id = 1";
+                    var instrucao1 = "Update Cliente set Nome = 'Vítor' where Id = 1";
                     var instrucao2 = "Update Cliente set Nome = 'Avelino' where Id = 3";
 
                     using (var comando = conexao.CreateCommand())
