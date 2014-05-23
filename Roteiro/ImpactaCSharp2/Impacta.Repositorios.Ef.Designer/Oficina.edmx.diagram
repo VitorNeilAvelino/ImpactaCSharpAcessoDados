@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f5f213b631994a65b93eec43925b754d" Name="Diagram1">
+        <EntityTypeShape EntityType="OficinaModel.Cliente" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Cor" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Modelo" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Servico" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.TipoServico" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OficinaModel.Veiculo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="OficinaModel.FK_Veiculo_Cor" ManuallyRouted="false" />
+        <AssociationConnector Association="OficinaModel.FK_Veiculo_Modelo" ManuallyRouted="false" />
+        <AssociationConnector Association="OficinaModel.FK_Servico_TipoServico" ManuallyRouted="false" />
+        <AssociationConnector Association="OficinaModel.FK_Servico_Veiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="OficinaModel.ClienteVeiculo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
