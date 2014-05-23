@@ -9,8 +9,6 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         [TestMethod]
         public void InserirTeste()
         {
-            var db = new OficinaEntities();
-
             using (OficinaEntities contexto = new OficinaEntities())
             {
                 var veiculo = new Veiculo();
