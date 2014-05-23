@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OficinaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="OficinaModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="OficinaModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClienteVeiculo" EntityType="OficinaModel.Store.ClienteVeiculo" store:Type="Tables" store:Schema="dbo" store:Name="ClienteVeiculo">
+            <DefiningQuery>SELECT 
+      [ClienteVeiculo].[Cliente_Id] AS [Cliente_Id], 
+      [ClienteVeiculo].[Veiculo_Id] AS [Veiculo_Id]
+      FROM [dbo].[ClienteVeiculo] AS [ClienteVeiculo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Cor" EntityType="OficinaModel.Store.Cor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Modelo" EntityType="OficinaModel.Store.Modelo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Servico" EntityType="OficinaModel.Store.Servico" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TipoServico" EntityType="OficinaModel.Store.TipoServico" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Veiculo" EntityType="OficinaModel.Store.Veiculo" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ClienteVeiculo_Cliente" Association="OficinaModel.Store.FK_ClienteVeiculo_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ClienteVeiculo" EntitySet="ClienteVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteVeiculo_Veiculo" Association="OficinaModel.Store.FK_ClienteVeiculo_Veiculo">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="ClienteVeiculo" EntitySet="ClienteVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servico_TipoServico" Association="OficinaModel.Store.FK_Servico_TipoServico">
+            <End Role="TipoServico" EntitySet="TipoServico" />
+            <End Role="Servico" EntitySet="Servico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servico_Veiculo" Association="OficinaModel.Store.FK_Servico_Veiculo">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="Servico" EntitySet="Servico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veiculo_Cor" Association="OficinaModel.Store.FK_Veiculo_Cor">
+            <End Role="Cor" EntitySet="Cor" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veiculo_Modelo" Association="OficinaModel.Store.FK_Veiculo_Modelo">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="DataNascimento" Type="date" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Oficina.dbo.ClienteVeiculo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ClienteVeiculo">
+          <Key>
+            <PropertyRef Name="Cliente_Id" />
+            <PropertyRef Name="Veiculo_Id" />
+          </Key>
+          <Property Name="Cliente_Id" Type="int" Nullable="false" />
+          <Property Name="Veiculo_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Servico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Veiculo_Id" Type="int" Nullable="false" />
+          <Property Name="TipoServico_Id" Type="int" Nullable="false" />
+          <Property Name="DataInicio" Type="datetime" />
+          <Property Name="DataFim" Type="datetime" />
+          <Property Name="Valor" Type="decimal" Scale="2" />
+          <Property Name="Custo" Type="decimal" Scale="2" />
+          <Property Name="Sigla" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoServico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Veiculo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Modelo_Id" Type="int" Nullable="false" />
+          <Property Name="Cor_Id" Type="int" Nullable="false" />
+          <Property Name="Placa" Type="char" Nullable="false" MaxLength="7" />
+          <Property Name="AnoFabricacao" Type="int" Nullable="false" />
+          <Property Name="AnoModelo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ClienteVeiculo_Cliente">
+          <End Role="Cliente" Type="OficinaModel.Store.Cliente" Multiplicity="1" />
+          <End Role="ClienteVeiculo" Type="OficinaModel.Store.ClienteVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClienteVeiculo">
+              <PropertyRef Name="Cliente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClienteVeiculo_Veiculo">
+          <End Role="Veiculo" Type="OficinaModel.Store.Veiculo" Multiplicity="1" />
+          <End Role="ClienteVeiculo" Type="OficinaModel.Store.ClienteVeiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClienteVeiculo">
+              <PropertyRef Name="Veiculo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servico_TipoServico">
+          <End Role="TipoServico" Type="OficinaModel.Store.TipoServico" Multiplicity="1" />
+          <End Role="Servico" Type="OficinaModel.Store.Servico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoServico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servico">
+              <PropertyRef Name="TipoServico_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servico_Veiculo">
+          <End Role="Veiculo" Type="OficinaModel.Store.Veiculo" Multiplicity="1" />
+          <End Role="Servico" Type="OficinaModel.Store.Servico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servico">
+              <PropertyRef Name="Veiculo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veiculo_Cor">
+          <End Role="Cor" Type="OficinaModel.Store.Cor" Multiplicity="1" />
+          <End Role="Veiculo" Type="OficinaModel.Store.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="Cor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veiculo_Modelo">
+          <End Role="Modelo" Type="OficinaModel.Store.Modelo" Multiplicity="1" />
+          <End Role="Veiculo" Type="OficinaModel.Store.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="Modelo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OficinaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OficinaEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="OficinaModel.Cliente" />
+          <EntitySet Name="Cor" EntityType="OficinaModel.Cor" />
+          <EntitySet Name="Modelo" EntityType="OficinaModel.Modelo" />
+          <EntitySet Name="Servico" EntityType="OficinaModel.Servico" />
+          <EntitySet Name="TipoServico" EntityType="OficinaModel.TipoServico" />
+          <EntitySet Name="Veiculo" EntityType="OficinaModel.Veiculo" />
+          <AssociationSet Name="FK_Veiculo_Cor" Association="OficinaModel.FK_Veiculo_Cor">
+            <End Role="Cor" EntitySet="Cor" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veiculo_Modelo" Association="OficinaModel.FK_Veiculo_Modelo">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servico_TipoServico" Association="OficinaModel.FK_Servico_TipoServico">
+            <End Role="TipoServico" EntitySet="TipoServico" />
+            <End Role="Servico" EntitySet="Servico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servico_Veiculo" Association="OficinaModel.FK_Servico_Veiculo">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="Servico" EntitySet="Servico" />
+          </AssociationSet>
+          <AssociationSet Name="ClienteVeiculo" Association="OficinaModel.ClienteVeiculo">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Veiculo" Relationship="OficinaModel.ClienteVeiculo" FromRole="Cliente" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Cor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Veiculo" Relationship="OficinaModel.FK_Veiculo_Cor" FromRole="Cor" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Veiculo" Relationship="OficinaModel.FK_Veiculo_Modelo" FromRole="Modelo" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Servico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DataInicio" Type="DateTime" Precision="3" />
+          <Property Name="DataFim" Type="DateTime" Precision="3" />
+          <Property Name="Valor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Custo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Sigla" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="TipoServico" Relationship="OficinaModel.FK_Servico_TipoServico" FromRole="Servico" ToRole="TipoServico" />
+          <NavigationProperty Name="Veiculo" Relationship="OficinaModel.FK_Servico_Veiculo" FromRole="Servico" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="TipoServico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Servico" Relationship="OficinaModel.FK_Servico_TipoServico" FromRole="TipoServico" ToRole="Servico" />
+        </EntityType>
+        <EntityType Name="Veiculo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Placa" Type="String" Nullable="false" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="AnoFabricacao" Type="Int32" Nullable="false" />
+          <Property Name="AnoModelo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cor" Relationship="OficinaModel.FK_Veiculo_Cor" FromRole="Veiculo" ToRole="Cor" />
+          <NavigationProperty Name="Modelo" Relationship="OficinaModel.FK_Veiculo_Modelo" FromRole="Veiculo" ToRole="Modelo" />
+          <NavigationProperty Name="Servico" Relationship="OficinaModel.FK_Servico_Veiculo" FromRole="Veiculo" ToRole="Servico" />
+          <NavigationProperty Name="Cliente" Relationship="OficinaModel.ClienteVeiculo" FromRole="Veiculo" ToRole="Cliente" />
+        </EntityType>
+        <Association Name="FK_Veiculo_Cor">
+          <End Role="Cor" Type="OficinaModel.Cor" Multiplicity="1" />
+          <End Role="Veiculo" Type="OficinaModel.Veiculo" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Veiculo_Modelo">
+          <End Role="Modelo" Type="OficinaModel.Modelo" Multiplicity="1" />
+          <End Role="Veiculo" Type="OficinaModel.Veiculo" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Servico_TipoServico">
+          <End Role="TipoServico" Type="OficinaModel.TipoServico" Multiplicity="1" />
+          <End Role="Servico" Type="OficinaModel.Servico" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Servico_Veiculo">
+          <End Role="Veiculo" Type="OficinaModel.Veiculo" Multiplicity="1" />
+          <End Role="Servico" Type="OficinaModel.Servico" Multiplicity="*" />
+        </Association>
+        <Association Name="ClienteVeiculo">
+          <End Role="Cliente" Type="OficinaModel.Cliente" Multiplicity="*" />
+          <End Role="Veiculo" Type="OficinaModel.Veiculo" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OficinaModelStoreContainer" CdmEntityContainer="OficinaEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="OficinaModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cor">
+            <EntityTypeMapping TypeName="OficinaModel.Cor">
+              <MappingFragment StoreEntitySet="Cor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modelo">
+            <EntityTypeMapping TypeName="OficinaModel.Modelo">
+              <MappingFragment StoreEntitySet="Modelo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servico">
+            <EntityTypeMapping TypeName="OficinaModel.Servico">
+              <MappingFragment StoreEntitySet="Servico">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+                <ScalarProperty Name="DataFim" ColumnName="DataFim" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Custo" ColumnName="Custo" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoServico">
+            <EntityTypeMapping TypeName="OficinaModel.TipoServico">
+              <MappingFragment StoreEntitySet="TipoServico">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Veiculo">
+            <EntityTypeMapping TypeName="OficinaModel.Veiculo">
+              <MappingFragment StoreEntitySet="Veiculo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="AnoFabricacao" ColumnName="AnoFabricacao" />
+                <ScalarProperty Name="AnoModelo" ColumnName="AnoModelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Veiculo_Cor" TypeName="OficinaModel.FK_Veiculo_Cor" StoreEntitySet="Veiculo">
+            <EndProperty Name="Cor">
+              <ScalarProperty Name="Id" ColumnName="Cor_Id" />
+            </EndProperty>
+            <EndProperty Name="Veiculo">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Veiculo_Modelo" TypeName="OficinaModel.FK_Veiculo_Modelo" StoreEntitySet="Veiculo">
+            <EndProperty Name="Modelo">
+              <ScalarProperty Name="Id" ColumnName="Modelo_Id" />
+            </EndProperty>
+            <EndProperty Name="Veiculo">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Servico_TipoServico" TypeName="OficinaModel.FK_Servico_TipoServico" StoreEntitySet="Servico">
+            <EndProperty Name="TipoServico">
+              <ScalarProperty Name="Id" ColumnName="TipoServico_Id" />
+            </EndProperty>
+            <EndProperty Name="Servico">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Servico_Veiculo" TypeName="OficinaModel.FK_Servico_Veiculo" StoreEntitySet="Servico">
+            <EndProperty Name="Veiculo">
+              <ScalarProperty Name="Id" ColumnName="Veiculo_Id" />
+            </EndProperty>
+            <EndProperty Name="Servico">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ClienteVeiculo" TypeName="OficinaModel.ClienteVeiculo" StoreEntitySet="ClienteVeiculo">
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="Id" ColumnName="Cliente_Id" />
+            </EndProperty>
+            <EndProperty Name="Veiculo">
+              <ScalarProperty Name="Id" ColumnName="Veiculo_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
