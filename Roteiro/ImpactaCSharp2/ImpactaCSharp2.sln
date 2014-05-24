@@ -38,7 +38,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Repositorios.SqlServer.Proc.Tests", "Impacta.Repositorios.SqlServer.Proc.Tests\Impacta.Repositorios.SqlServer.Proc.Tests.csproj", "{75A26BFD-A251-41BD-A276-124A7F115F25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\CSharp1\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Repositorios.Ef.Designer", "Impacta.Repositorios.Ef.Designer\Impacta.Repositorios.Ef.Designer.csproj", "{F5C82A1F-849D-481F-AD36-4DA72462D73E}"
 EndProject
@@ -54,9 +54,9 @@ Global
 		SccProjectTopLevelParentUniqueName1 = ImpactaCSharp2.sln
 		SccProjectName1 = CSharp2.Capitulo02.Clientes
 		SccLocalPath1 = CSharp2.Capitulo02.Clientes
-		SccProjectUniqueName2 = ..\\..\\..\\CSharp1\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
+		SccProjectUniqueName2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
 		SccProjectName2 = ../../../ImpactaCSharp1/Roteiro/ImpactaCSharp1/Impacta.Infra.Apoio
-		SccLocalPath2 = ..\\..\\..\\CSharp1\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
+		SccLocalPath2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
 		SccProjectUniqueName3 = Impacta.Dominio\\Impacta.Dominio.csproj
 		SccProjectName3 = Impacta.Dominio
 		SccLocalPath3 = Impacta.Dominio
@@ -97,6 +97,7 @@ Global
 		SccProjectName13 = Impacta.Infra.Repositorios.SqlServer
 		SccLocalPath13 = Impacta.Infra.Repositorios.SqlServer
 		SccProjectUniqueName14 = Impacta.Repositorios.SqlServer.Proc.Tests\\Impacta.Repositorios.SqlServer.Proc.Tests.csproj
+		SccProjectTopLevelParentUniqueName14 = ImpactaCSharp2.sln
 		SccProjectName14 = Impacta.Repositorios.SqlServer.Proc.Tests
 		SccLocalPath14 = Impacta.Repositorios.SqlServer.Proc.Tests
 		SccProjectUniqueName15 = Impacta.Repositorios.Ef.Designer\\Impacta.Repositorios.Ef.Designer.csproj
@@ -289,6 +290,7 @@ Global
 		{9F72F9CF-9618-4534-BD28-96722BD9993C} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{18843B70-993B-464C-BAF4-33C75E149EF1} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{245054A9-DDB9-4660-9B39-892FB81AF5C7} = {2882447B-037B-4C48-B78B-0B668AB67922}
+		{75A26BFD-A251-41BD-A276-124A7F115F25} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{F51C248C-09F8-429E-AA44-13EA0D6D209A} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
 		{75C78DE8-0B63-44E2-BA29-282A936B8B86} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
 		{939BA8B9-62E2-439D-863A-BC4D7D4A119D} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
