@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Windows;
-using Impacta.Infra.Repositorios.SqlServer.Ef.Designer;
 using System.ComponentModel;
 using System.Xml.Linq;
 using Impacta.Infra.Apoio;
 using System.Threading;
+using Impacta.Repositorios.Ef.Designer;
 
 namespace CSharp2.Capitulo08.Wpf
 {
@@ -48,7 +48,7 @@ namespace CSharp2.Capitulo08.Wpf
         {
             _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
 
-            foreach (var servico in Veiculo.Servicos)
+            foreach (var servico in Veiculo.Servico)
             {
                 servico.Custo = ObterCotacao(servico.Sigla);
             }

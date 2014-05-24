@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CSharp2.Capitulo08.Wpf</RootNamespace>
     <AssemblyName>CSharp2.Capitulo08.Wpf</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -30,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -39,12 +40,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>CSharp2.Capitulo08.Wpf.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -217,9 +223,9 @@
       <Project>{6706BF76-0359-402E-AD04-E66EBF19ED7C}</Project>
       <Name>Impacta.Aplicacao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Impacta.Infra.Repositorios.SqlServer.Ef\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.csproj">
-      <Project>{1882C840-38B9-47D9-9330-7AA4414FB02A}</Project>
-      <Name>Impacta.Infra.Repositorios.SqlServer.Ef.Designer</Name>
+    <ProjectReference Include="..\Impacta.Repositorios.Ef.Designer\Impacta.Repositorios.Ef.Designer.csproj">
+      <Project>{f5c82a1f-849d-481f-ad36-4da72462d73e}</Project>
+      <Name>Impacta.Repositorios.Ef.Designer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -59,6 +59,9 @@
     <Compile Include="Modelo.cs">
       <DependentUpon>Oficina.tt</DependentUpon>
     </Compile>
+    <Compile Include="Montadora.cs">
+      <DependentUpon>Oficina.tt</DependentUpon>
+    </Compile>
     <Compile Include="Oficina.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,7 +87,6 @@
     <Compile Include="Veiculo.cs">
       <DependentUpon>Oficina.tt</DependentUpon>
     </Compile>
-    <Compile Include="VeiculoRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Oficina.edmx">

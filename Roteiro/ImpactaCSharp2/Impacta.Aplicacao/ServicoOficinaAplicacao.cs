@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Impacta.Repositorios.Ef.Designer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Impacta.Infra.Repositorios.SqlServer.Ef.Designer;
 
 namespace Impacta.Aplicacao
 {

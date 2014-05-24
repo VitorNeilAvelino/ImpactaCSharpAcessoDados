@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{245054A9-DDB9-4660-9B39-892FB81AF5C7}</ProjectGuid>
+    <ProjectGuid>{B5B05F34-ED0B-472B-B324-8BAF6076CE40}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Impacta.Repositorios.Ef.Designer.Testes</RootNamespace>
-    <AssemblyName>Impacta.Repositorios.Ef.Designer.Testes</AssemblyName>
+    <RootNamespace>Impacta.Repositorios.Ef.CodeFirst.Tests</RootNamespace>
+    <AssemblyName>Impacta.Repositorios.Ef.CodeFirst.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -60,14 +60,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ModeloRepositorioTeste.cs" />
-    <Compile Include="VeiculoRepositorioTeste.cs" />
+    <Compile Include="OficinaDbContextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Impacta.Repositorios.Ef.Designer\Impacta.Repositorios.Ef.Designer.csproj">
-      <Project>{f5c82a1f-849d-481f-ad36-4da72462d73e}</Project>
-      <Name>Impacta.Repositorios.Ef.Designer</Name>
+    <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
+      <Project>{ca5c0d85-79cc-47ca-9d34-3c7722d983ef}</Project>
+      <Name>Impacta.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Impacta.Repositorios.Ef.CodeFirst\Impacta.Repositorios.Ef.CodeFirst.csproj">
+      <Project>{001192A0-757B-4D28-9111-42ABE10BB205}</Project>
+      <Name>Impacta.Repositorios.Ef.CodeFirst</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

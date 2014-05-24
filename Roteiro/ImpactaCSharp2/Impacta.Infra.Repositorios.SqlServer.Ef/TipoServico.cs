@@ -7,22 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Impacta.Repositorios.Ef.Designer
+namespace Impacta.Infra.Repositorios.SqlServer.Ef.Designer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Modelo
+    public partial class TipoServico
     {
-        public Modelo()
+        public TipoServico()
         {
-            this.Veiculo = new HashSet<Veiculo>();
+            this.Servico = new HashSet<Servico>();
         }
     
         public int Id { get; set; }
         public string Descricao { get; set; }
     
-        public virtual ICollection<Veiculo> Veiculo { get; set; }
-        public virtual Montadora Montadora { get; set; }
+        public virtual ICollection<Servico> Servico { get; set; }
     }
 }
