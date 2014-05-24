@@ -61,6 +61,12 @@
     <Compile Include="ClienteForm.Designer.cs">
       <DependentUpon>ClienteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CorForm.Designer.cs">
+      <DependentUpon>CorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,17 @@
     </Compile>
     <Compile Include="ListagemClientesForm.Designer.cs">
       <DependentUpon>ListagemClientesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModeloForm.Designer.cs">
+      <DependentUpon>ModeloForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OficinaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OficinaDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,11 +102,17 @@
       <DependentUpon>ClienteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientesReport.rdlc" />
+    <EmbeddedResource Include="CorForm.resx">
+      <DependentUpon>CorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListagemClientesForm.resx">
       <DependentUpon>ListagemClientesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModeloForm.resx">
+      <DependentUpon>ModeloForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -105,6 +128,17 @@
       <DependentUpon>RelatorioClientesForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="OficinaDataSet.xsc">
+      <DependentUpon>OficinaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OficinaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OficinaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OficinaDataSet.xss">
+      <DependentUpon>OficinaDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\Impacta.Dominio.Cliente.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -117,7 +151,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\CSharp1\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
+    <ProjectReference Include="..\..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
       <Project>{fd6f45c4-9958-4ede-a068-be52dbdc1db8}</Project>
       <Name>Impacta.Infra.Apoio</Name>
     </ProjectReference>
