@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OficinaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OficinaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="OficinaModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="OficinaModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ClienteVeiculo" EntityType="OficinaModel.Store.ClienteVeiculo" store:Type="Tables" store:Schema="dbo" store:Name="ClienteVeiculo">
@@ -15,6 +15,7 @@
           </EntitySet>
           <EntitySet Name="Cor" EntityType="OficinaModel.Store.Cor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Modelo" EntityType="OficinaModel.Store.Modelo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Montadora" EntityType="OficinaModel.Store.Montadora" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Servico" EntityType="OficinaModel.Store.Servico" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TipoServico" EntityType="OficinaModel.Store.TipoServico" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Veiculo" EntityType="OficinaModel.Store.Veiculo" store:Type="Tables" Schema="dbo" />
@@ -25,6 +26,10 @@
           <AssociationSet Name="FK_ClienteVeiculo_Veiculo" Association="OficinaModel.Store.FK_ClienteVeiculo_Veiculo">
             <End Role="Veiculo" EntitySet="Veiculo" />
             <End Role="ClienteVeiculo" EntitySet="ClienteVeiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modelo_Montadora" Association="OficinaModel.Store.FK_Modelo_Montadora">
+            <End Role="Montadora" EntitySet="Montadora" />
+            <End Role="Modelo" EntitySet="Modelo" />
           </AssociationSet>
           <AssociationSet Name="FK_Servico_TipoServico" Association="OficinaModel.Store.FK_Servico_TipoServico">
             <End Role="TipoServico" EntitySet="TipoServico" />
@@ -76,7 +81,15 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Montadora_Id" Type="int" />
           <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Montadora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="Servico">
           <Key>
@@ -133,6 +146,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Modelo_Montadora">
+          <End Role="Montadora" Type="OficinaModel.Store.Montadora" Multiplicity="0..1" />
+          <End Role="Modelo" Type="OficinaModel.Store.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Montadora">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Modelo">
+              <PropertyRef Name="Montadora_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Servico_TipoServico">
           <End Role="TipoServico" Type="OficinaModel.Store.TipoServico" Multiplicity="1" />
           <End Role="Servico" Type="OficinaModel.Store.Servico" Multiplicity="*" />
@@ -181,8 +206,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OficinaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -213,6 +237,11 @@
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Veiculo" EntitySet="Veiculo" />
           </AssociationSet>
+          <EntitySet Name="Montadora" EntityType="OficinaModel.Montadora" />
+          <AssociationSet Name="FK_Modelo_Montadora" Association="OficinaModel.FK_Modelo_Montadora">
+            <End Role="Montadora" EntitySet="Montadora" />
+            <End Role="Modelo" EntitySet="Modelo" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cliente">
           <Key>
@@ -240,6 +269,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Veiculo" Relationship="OficinaModel.FK_Veiculo_Modelo" FromRole="Modelo" ToRole="Veiculo" />
+          <NavigationProperty Name="Montadora" Relationship="OficinaModel.FK_Modelo_Montadora" FromRole="Modelo" ToRole="Montadora" />
         </EntityType>
         <EntityType Name="Servico">
           <Key>
@@ -294,6 +324,18 @@
         <Association Name="ClienteVeiculo">
           <End Role="Cliente" Type="OficinaModel.Cliente" Multiplicity="*" />
           <End Role="Veiculo" Type="OficinaModel.Veiculo" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Montadora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nome" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Modelo" Relationship="OficinaModel.FK_Modelo_Montadora" FromRole="Montadora" ToRole="Modelo" />
+        </EntityType>
+        <Association Name="FK_Modelo_Montadora">
+          <End Type="OficinaModel.Montadora" Role="Montadora" Multiplicity="0..1" />
+          <End Type="OficinaModel.Modelo" Role="Modelo" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -397,6 +439,23 @@
             <EndProperty Name="Veiculo">
               <ScalarProperty Name="Id" ColumnName="Veiculo_Id" />
             </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Montadora">
+            <EntityTypeMapping TypeName="OficinaModel.Montadora">
+              <MappingFragment StoreEntitySet="Montadora">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Modelo_Montadora" TypeName="OficinaModel.FK_Modelo_Montadora" StoreEntitySet="Modelo">
+            <EndProperty Name="Modelo">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Montadora">
+              <ScalarProperty Name="Id" ColumnName="Montadora_Id" />
+            </EndProperty>
+            <Condition ColumnName="Montadora_Id" IsNull="false" />
           </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>

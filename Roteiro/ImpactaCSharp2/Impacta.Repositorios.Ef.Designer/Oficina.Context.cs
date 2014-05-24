@@ -31,5 +31,6 @@ namespace Impacta.Repositorios.Ef.Designer
         public DbSet<Servico> Servico { get; set; }
         public DbSet<TipoServico> TipoServico { get; set; }
         public DbSet<Veiculo> Veiculo { get; set; }
+        public DbSet<Montadora> Montadora { get; set; }
     }
 }

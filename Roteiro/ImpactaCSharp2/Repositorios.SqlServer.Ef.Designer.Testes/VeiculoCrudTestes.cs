@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Transactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Impacta.Infra.Repositorios.SqlServer.Ef.Designer;
+using Impacta.Repositorios.Ef.Designer;
 
 namespace Repositorios.SqlServer.Ef.Designer.Testes
 {

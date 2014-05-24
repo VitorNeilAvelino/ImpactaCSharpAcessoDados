@@ -114,12 +114,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Impacta.Infra.Repositorios.SqlServer.Ef\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.csproj">
-      <Project>{1882C840-38B9-47D9-9330-7AA4414FB02A}</Project>
-      <Name>Impacta.Infra.Repositorios.SqlServer.Ef.Designer</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

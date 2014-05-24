@@ -11,13 +11,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Repositorios.SqlServer.Ef.Designer.Testes</RootNamespace>
     <AssemblyName>Repositorios.SqlServer.Ef.Designer.Testes</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,10 +37,15 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -55,16 +62,16 @@
     <Compile Include="DelegateTestes.cs" />
     <Compile Include="LinqTestes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VeiculoCrudTestes.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Impacta.Infra.Repositorios.SqlServer.Ef\Impacta.Infra.Repositorios.SqlServer.Ef.Designer.csproj">
-      <Project>{1882C840-38B9-47D9-9330-7AA4414FB02A}</Project>
-      <Name>Impacta.Infra.Repositorios.SqlServer.Ef.Designer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Impacta.Repositorios.Ef.Designer\Impacta.Repositorios.Ef.Designer.csproj">
+      <Project>{f5c82a1f-849d-481f-ad36-4da72462d73e}</Project>
+      <Name>Impacta.Repositorios.Ef.Designer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
