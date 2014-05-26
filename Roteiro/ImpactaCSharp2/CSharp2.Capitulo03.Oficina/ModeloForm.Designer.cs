@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModeloForm));
+            System.Windows.Forms.Label idLabel;
+            System.Windows.Forms.Label descricaoLabel;
+            System.Windows.Forms.Label montadora_IdLabel;
             this.oficinaDataSet = new CSharp2.Capitulo03.Oficina.OficinaDataSet();
             this.modeloBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.modeloTableAdapter = new CSharp2.Capitulo03.Oficina.OficinaDataSetTableAdapters.ModeloTableAdapter();
@@ -47,14 +50,16 @@
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.modeloBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.modeloDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idLabel1 = new System.Windows.Forms.Label();
+            this.descricaoTextBox = new System.Windows.Forms.TextBox();
+            this.montadora_IdComboBox = new System.Windows.Forms.ComboBox();
+            idLabel = new System.Windows.Forms.Label();
+            descricaoLabel = new System.Windows.Forms.Label();
+            montadora_IdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.oficinaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeloBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modeloBindingNavigator)).BeginInit();
             this.modeloBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modeloDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // oficinaDataSet
@@ -74,9 +79,15 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClienteTableAdapter = null;
+            this.tableAdapterManager.ClienteVeiculoTableAdapter = null;
             this.tableAdapterManager.CorTableAdapter = null;
             this.tableAdapterManager.ModeloTableAdapter = this.modeloTableAdapter;
+            this.tableAdapterManager.MontadoraTableAdapter = null;
+            this.tableAdapterManager.ServicoTableAdapter = null;
+            this.tableAdapterManager.TipoServicoTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CSharp2.Capitulo03.Oficina.OficinaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.VeiculoTableAdapter = null;
             // 
             // modeloBindingNavigator
             // 
@@ -200,41 +211,72 @@
             this.modeloBindingNavigatorSaveItem.Name = "modeloBindingNavigatorSaveItem";
             this.modeloBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 23);
             this.modeloBindingNavigatorSaveItem.Text = "Save Data";
-            this.modeloBindingNavigatorSaveItem.Click += new System.EventHandler(this.modeloBindingNavigatorSaveItem_Click);
+            this.modeloBindingNavigatorSaveItem.Click += new System.EventHandler(this.modeloBindingNavigatorSaveItem_Click_1);
             // 
-            // modeloDataGridView
+            // idLabel
             // 
-            this.modeloDataGridView.AutoGenerateColumns = false;
-            this.modeloDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.modeloDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.modeloDataGridView.DataSource = this.modeloBindingSource;
-            this.modeloDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeloDataGridView.Location = new System.Drawing.Point(0, 25);
-            this.modeloDataGridView.Name = "modeloDataGridView";
-            this.modeloDataGridView.Size = new System.Drawing.Size(514, 362);
-            this.modeloDataGridView.TabIndex = 1;
+            idLabel.AutoSize = true;
+            idLabel.Location = new System.Drawing.Point(23, 49);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(19, 13);
+            idLabel.TabIndex = 1;
+            idLabel.Text = "Id:";
             // 
-            // dataGridViewTextBoxColumn1
+            // idLabel1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.idLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modeloBindingSource, "Id", true));
+            this.idLabel1.Location = new System.Drawing.Point(102, 49);
+            this.idLabel1.Name = "idLabel1";
+            this.idLabel1.Size = new System.Drawing.Size(121, 23);
+            this.idLabel1.TabIndex = 2;
+            this.idLabel1.Text = "label1";
             // 
-            // dataGridViewTextBoxColumn2
+            // descricaoLabel
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Descricao";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Descricao";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            descricaoLabel.AutoSize = true;
+            descricaoLabel.Location = new System.Drawing.Point(23, 78);
+            descricaoLabel.Name = "descricaoLabel";
+            descricaoLabel.Size = new System.Drawing.Size(58, 13);
+            descricaoLabel.TabIndex = 3;
+            descricaoLabel.Text = "Descricao:";
+            // 
+            // descricaoTextBox
+            // 
+            this.descricaoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modeloBindingSource, "Descricao", true));
+            this.descricaoTextBox.Location = new System.Drawing.Point(102, 75);
+            this.descricaoTextBox.Name = "descricaoTextBox";
+            this.descricaoTextBox.Size = new System.Drawing.Size(121, 20);
+            this.descricaoTextBox.TabIndex = 4;
+            // 
+            // montadora_IdLabel
+            // 
+            montadora_IdLabel.AutoSize = true;
+            montadora_IdLabel.Location = new System.Drawing.Point(23, 104);
+            montadora_IdLabel.Name = "montadora_IdLabel";
+            montadora_IdLabel.Size = new System.Drawing.Size(73, 13);
+            montadora_IdLabel.TabIndex = 5;
+            montadora_IdLabel.Text = "Montadora Id:";
+            // 
+            // montadora_IdComboBox
+            // 
+            this.montadora_IdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.modeloBindingSource, "Montadora_Id", true));
+            this.montadora_IdComboBox.FormattingEnabled = true;
+            this.montadora_IdComboBox.Location = new System.Drawing.Point(102, 101);
+            this.montadora_IdComboBox.Name = "montadora_IdComboBox";
+            this.montadora_IdComboBox.Size = new System.Drawing.Size(121, 21);
+            this.montadora_IdComboBox.TabIndex = 6;
             // 
             // ModeloForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 387);
-            this.Controls.Add(this.modeloDataGridView);
+            this.Controls.Add(idLabel);
+            this.Controls.Add(this.idLabel1);
+            this.Controls.Add(descricaoLabel);
+            this.Controls.Add(this.descricaoTextBox);
+            this.Controls.Add(montadora_IdLabel);
+            this.Controls.Add(this.montadora_IdComboBox);
             this.Controls.Add(this.modeloBindingNavigator);
             this.Name = "ModeloForm";
             this.Text = "Modelos";
@@ -244,7 +286,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.modeloBindingNavigator)).EndInit();
             this.modeloBindingNavigator.ResumeLayout(false);
             this.modeloBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modeloDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,9 +310,10 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton modeloBindingNavigatorSaveItem;
-        private System.Windows.Forms.DataGridView modeloDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Label idLabel1;
+        private System.Windows.Forms.TextBox descricaoTextBox;
+        private System.Windows.Forms.ComboBox montadora_IdComboBox;
+
 
 
     }

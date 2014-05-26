@@ -28,6 +28,16 @@ namespace CSharp2.Capitulo03.Oficina
         {
             // TODO: This line of code loads data into the 'oficinaDataSet.Modelo' table. You can move, or remove it, as needed.
             this.modeloTableAdapter.Fill(this.oficinaDataSet.Modelo);
+            // TODO: This line of code loads data into the 'oficinaDataSet.Modelo' table. You can move, or remove it, as needed.
+            this.modeloTableAdapter.Fill(this.oficinaDataSet.Modelo);
+
+        }
+
+        private void modeloBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.modeloBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.oficinaDataSet);
 
         }
     }
