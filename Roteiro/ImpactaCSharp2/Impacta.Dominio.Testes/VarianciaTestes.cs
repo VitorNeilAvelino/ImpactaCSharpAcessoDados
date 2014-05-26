@@ -10,17 +10,17 @@ namespace Impacta.Dominio.Testes
         [TestMethod]
         public void CovarianciaTeste()
         {
-            var veiculo = new Veiculo();
-            var caminhao = new Caminhao();
+            //var veiculo = new Veiculo();
+            //var caminhao = new Caminhao();
 
-            veiculo = caminhao;
-            //caminhao = veiculo;
+            //veiculo = caminhao;
+            ////caminhao = veiculo;
 
-            var veiculos = Selecionar<Veiculo>();
-            var caminhoes = Selecionar<Caminhao>();
+            //var veiculos = Selecionar<Veiculo>();
+            //var caminhoes = Selecionar<Caminhao>();
 
-            veiculos = caminhoes;
-            //caminhoes = veiculos;
+            //veiculos = caminhoes;
+            ////caminhoes = veiculos;
         }
 
         private static IEnumerable<T> Selecionar<T>()
