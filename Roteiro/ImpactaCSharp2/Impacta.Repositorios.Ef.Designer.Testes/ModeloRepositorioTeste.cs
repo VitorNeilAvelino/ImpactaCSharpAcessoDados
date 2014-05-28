@@ -15,7 +15,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                               where m.Descricao == "C4"
                               select m;
 
-                var montadora = new Montadora { Nome = "Ford" };
+                var montadora = new Montadora { Descricao = "Ford" };
 
                 foreach (var modelo in modelos)
                 {
