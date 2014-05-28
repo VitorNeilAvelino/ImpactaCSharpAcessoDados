@@ -81,15 +81,15 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Montadora_Id" Type="int" />
           <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Montadora_Id" Type="int" />
         </EntityType>
         <EntityType Name="Montadora">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="Servico">
           <Key>
@@ -330,8 +330,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nome" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Modelo" Relationship="OficinaModel.FK_Modelo_Montadora" FromRole="Montadora" ToRole="Modelo" />
+          <Property Type="String" Name="Descricao" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Modelo_Montadora">
           <End Type="OficinaModel.Montadora" Role="Montadora" Multiplicity="0..1" />
@@ -443,7 +443,7 @@
           <EntitySetMapping Name="Montadora">
             <EntityTypeMapping TypeName="OficinaModel.Montadora">
               <MappingFragment StoreEntitySet="Montadora">
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

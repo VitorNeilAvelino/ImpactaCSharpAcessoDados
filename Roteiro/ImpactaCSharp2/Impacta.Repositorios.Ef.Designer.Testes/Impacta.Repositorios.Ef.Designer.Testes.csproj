@@ -62,6 +62,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ModeloRepositorioTeste.cs" />
+    <Compile Include="LinqTeste.cs" />
     <Compile Include="VeiculoRepositorioTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
