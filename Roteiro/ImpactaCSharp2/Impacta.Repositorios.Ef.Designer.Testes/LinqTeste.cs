@@ -29,6 +29,16 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
             }
         }
 
-        //Não esquecer de diferenciar Where de Select.
+        [TestMethod]
+        public void CountTeste()
+        {
+            using (var db = new OficinaEntities())
+            {
+                Console.WriteLine(db.Veiculo.Count());
+                Console.WriteLine(db.Veiculo.Count(v => v.AnoFabricacao == 2014));
+            }
+        }
+
+        //ToDo: Não esquecer de diferenciar Where de Select.
     }
 }
