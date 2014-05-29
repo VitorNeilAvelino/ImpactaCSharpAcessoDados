@@ -39,6 +39,23 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
             }
         }
 
+        [TestMethod]
+        public void GroupByTeste()
+        {
+            using (var db = new OficinaEntities())
+            {
+                var agrupamento = db.Veiculo.GroupBy(v => v.AnoModelo).Select(g => new { AnoModelo = g.Key, Total = g.Count() });
+                
+                agrupamento = db.Veiculo.GroupBy(v => v.AnoModelo/*, v => v.Modelo.Descricao*/).Where(g => g.Count() > 1)
+                    .Select(g => new { AnoModelo = g.Key, Total = g.Count() });
+
+                foreach (var item in agrupamento)
+                {
+                    Console.WriteLine("{0} - {1}", item.Total, item.AnoModelo);
+                }
+            }
+        }
+
         //ToDo: Não esquecer de diferenciar Where de Select.
     }
 }
