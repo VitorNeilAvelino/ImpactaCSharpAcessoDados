@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Impacta.Repositorios.Ef.Designer.Testes
 {
@@ -40,6 +41,32 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         }
 
         [TestMethod]
+        public void MinTeste()
+        {
+            using (var db = new OficinaEntities())
+            {
+                Console.WriteLine("Menor data de nascimento: {0}", db.Cliente.Min(c => c.DataNascimento));
+
+                var clienteMaisAntigo = db.Cliente.OrderBy(c => c.DataNascimento).First();
+                Console.WriteLine("Cliente mais antigo: {0} - {1}", clienteMaisAntigo.Nome, clienteMaisAntigo.DataNascimento);
+            }
+        }
+
+        [TestMethod]
+        public void LikeTeste()
+        {
+            using (var db = new OficinaEntities())
+            {
+                db.Modelo
+                    .Where(m => m.Descricao.Contains("c"))
+                    .Where(m => m.Descricao.StartsWith("c"))
+                    .Where(m => m.Descricao.EndsWith("c"))
+                    .ToList()
+                    .ForEach(m => Console.WriteLine(m.Descricao));
+            }
+        }
+
+        [TestMethod]
         public void GroupByTeste()
         {
             using (var db = new OficinaEntities())
@@ -74,29 +101,70 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         }
 
         [TestMethod]
-        public void LikeTeste()
+        public void JoinTeste()
         {
-            using (var db = new OficinaEntities())
+            var veiculos = new[] { 
+                new { Placa = "ABC1111", ModeloId = 1 }, 
+                new { Placa = "ABC2222", ModeloId = 2 }, 
+                new { Placa = "ABC3333", ModeloId = 3 } 
+            };
+            var modelos = new[] { 
+                new { Id = 1, Descricao = "Fiesta" }, 
+                new { Id = 2, Descricao = "Corsa" } 
+            };
+
+            var consulta = veiculos.Join(
+                modelos,
+                v => v.ModeloId,
+                m => m.Id,
+                (v, m) => new { Placa = v.Placa, Modelo = m.Descricao });
+
+            foreach (var item in consulta)
             {
-                db.Modelo
-                    .Where(m => m.Descricao.Contains("c"))
-                    .Where(m => m.Descricao.StartsWith("c"))
-                    .Where(m => m.Descricao.EndsWith("c"))
-                    .ToList()
-                    .ForEach(m => Console.WriteLine(m.Descricao));
+                Console.WriteLine("{0} - {1}", item.Placa, item.Modelo);
             }
         }
 
         [TestMethod]
-        public void MinTeste()
+        public void LeftJoinTeste()
         {
-            using (var db = new OficinaEntities())
-            {
-                Console.WriteLine("Menor data de nascimento: {0}", db.Cliente.Min(c => c.DataNascimento));
+            var veiculos = new[] { 
+                new { Placa = "ABC1111", ModeloId = 1 }, 
+                new { Placa = "ABC2222", ModeloId = 2 }, 
+                new { Placa = "ABC3333", ModeloId = 3 } 
+            };
+            var modelos = new[] { 
+                new { Id = 1, Descricao = "Fiesta" }, 
+                new { Id = 2, Descricao = "Corsa" } 
+            };
 
-                var clienteMaisAntigo = db.Cliente.OrderBy(c => c.DataNascimento).First();
-                Console.WriteLine("Cliente mais antigo: {0} - {1}", clienteMaisAntigo.Nome, clienteMaisAntigo.DataNascimento);
+            var consulta = veiculos.GroupJoin(
+                modelos,
+                v => v.ModeloId,
+                m => m.Id,
+                (v, ms) => new { Veiculo = v, Modelos = ms.DefaultIfEmpty() })
+                .SelectMany(j => j.Modelos.Select(m => new { Placa = j.Veiculo.Placa, Modelo = m != null ? m.Descricao : null }));
+
+            foreach (var item in consulta)
+            {
+                //if (item == null)
+                //{
+                //    continue;
+                //}
+                Console.WriteLine("{0} - {1}", item.Placa, item.Modelo);
             }
+
+            //foreach (var item in consulta)
+            //{
+            //    var modelo = item.Modelos.SingleOrDefault(m => m != null && m.Id == item.Veiculo.ModeloId);
+            //    Console.WriteLine("{0} - {1}", item.Veiculo.Placa, modelo != null ? modelo.Descricao : null);
+            //}
         }
+
+        // Transação
+        //SQL
+        // SEM LAMBDA
+        // distinct
+        //quando vai ao banco?
     }
 }
