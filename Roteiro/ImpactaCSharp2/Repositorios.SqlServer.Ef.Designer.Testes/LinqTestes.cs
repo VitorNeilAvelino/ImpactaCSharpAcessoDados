@@ -72,7 +72,8 @@ namespace Repositorios.SqlServer.Ef.Designer.Testes
                                    AnoModelo = veiculo.AnoModelo
                                };
 
-            lista = _contexto.Veiculo.Join(_contexto.Modelo, v => v.Modelo.Id, m => m.Id, (v, m) => new { Modelo = m.Descricao, AnoModelo = v.AnoModelo });
+            lista = _contexto.Veiculo
+                .Join(_contexto.Modelo, v => v.Modelo.Id, m => m.Id, (v, m) => new { Modelo = m.Descricao, AnoModelo = v.AnoModelo });
 
             foreach (var item in lista)
             {
