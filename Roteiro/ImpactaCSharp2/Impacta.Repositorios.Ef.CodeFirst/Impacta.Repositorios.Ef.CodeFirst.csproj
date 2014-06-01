@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="OficinaDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicoRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

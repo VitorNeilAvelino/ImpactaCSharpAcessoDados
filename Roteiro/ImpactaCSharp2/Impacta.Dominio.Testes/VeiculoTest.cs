@@ -17,10 +17,10 @@ namespace Impacta.Dominio.Testes
 
             foreach (var veiculo in veiculos)
             {
-                if (veiculo["ETH6834"] != null)
-                {
-                    Console.WriteLine(veiculo.Id);
-                }
+                //if (veiculo["ETH6834"] != null)
+                //{
+                //    Console.WriteLine(veiculo.Id);
+                //}
             }
 
             var veiculoLambda = veiculos.FirstOrDefault(v => v.Placa == "ETH6834");

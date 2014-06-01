@@ -101,6 +101,18 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         }
 
         [TestMethod]
+        public void DistinctTeste()
+        {
+            using (var db = new OficinaEntities())
+            {
+                foreach (var cor in db.Veiculo.Select(v => v.Cor).Distinct())
+                {
+                    Console.WriteLine(cor.Descricao);
+                }
+            }
+        }
+
+        [TestMethod]
         public void JoinTeste()
         {
             var veiculos = new[] { 
@@ -126,6 +138,22 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         }
 
         [TestMethod]
+        public void SelectManyTeste()
+        {
+            using (var db = new OficinaEntities())
+            {
+                foreach (var servico in db.Veiculo.Select(v => v.Servico))
+                {
+                    Console.WriteLine(servico);
+                }
+                foreach (var servico in db.Veiculo.SelectMany(v => v.Servico))
+                {
+                    Console.WriteLine(servico.Valor);
+                }
+            }
+        }
+
+        [TestMethod]
         public void LeftJoinTeste()
         {
             var veiculos = new[] { 
@@ -143,14 +171,10 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                 v => v.ModeloId,
                 m => m.Id,
                 (v, ms) => new { Veiculo = v, Modelos = ms.DefaultIfEmpty() })
-                .SelectMany(j => j.Modelos.Select(m => new { Placa = j.Veiculo.Placa, Modelo = m != null ? m.Descricao : null }));
+                .SelectMany(join => join.Modelos.Select(m => new { Placa = join.Veiculo.Placa, Modelo = m != null ? m.Descricao : null }));
 
             foreach (var item in consulta)
             {
-                //if (item == null)
-                //{
-                //    continue;
-                //}
                 Console.WriteLine("{0} - {1}", item.Placa, item.Modelo);
             }
 
@@ -160,11 +184,10 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
             //    Console.WriteLine("{0} - {1}", item.Veiculo.Placa, modelo != null ? modelo.Descricao : null);
             //}
         }
-
+        
         // Transação
         //SQL
         // SEM LAMBDA
-        // distinct
         //quando vai ao banco?
     }
 }

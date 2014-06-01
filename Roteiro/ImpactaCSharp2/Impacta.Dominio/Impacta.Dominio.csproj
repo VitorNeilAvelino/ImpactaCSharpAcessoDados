@@ -49,12 +49,18 @@
   <ItemGroup>
     <Compile Include="Caminhao.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Cor.cs" />
     <Compile Include="IClienteRepositorio.cs" />
     <Compile Include="ICrudBase.cs" />
+    <Compile Include="IServicoRepositorio.cs" />
     <Compile Include="IVeiculoRepositorio.cs" />
+    <Compile Include="Modelo.cs" />
+    <Compile Include="Montadora.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuantidadeEixos.cs" />
+    <Compile Include="Servico.cs" />
     <Compile Include="TipoCliente.cs" />
+    <Compile Include="TipoServico.cs" />
     <Compile Include="Veiculo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
