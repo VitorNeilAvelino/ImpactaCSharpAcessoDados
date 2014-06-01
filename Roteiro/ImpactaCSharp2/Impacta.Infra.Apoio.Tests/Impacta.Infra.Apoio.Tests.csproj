@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{245054A9-DDB9-4660-9B39-892FB81AF5C7}</ProjectGuid>
+    <ProjectGuid>{C8733029-DCAA-4832-9B97-D2C5C41D4F5A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Impacta.Repositorios.Ef.Designer.Testes</RootNamespace>
-    <AssemblyName>Impacta.Repositorios.Ef.Designer.Testes</AssemblyName>
+    <RootNamespace>Impacta.Infra.Apoio.Tests</RootNamespace>
+    <AssemblyName>Impacta.Infra.Apoio.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -39,14 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -61,21 +54,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DelegateTestes.cs" />
-    <Compile Include="ModeloRepositorioTeste.cs" />
-    <Compile Include="LinqTeste.cs" />
-    <Compile Include="VeiculoRepositorioTeste.cs" />
+    <Compile Include="ExtensoesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Impacta.Repositorios.Ef.Designer\Impacta.Repositorios.Ef.Designer.csproj">
-      <Project>{f5c82a1f-849d-481f-ad36-4da72462d73e}</Project>
-      <Name>Impacta.Repositorios.Ef.Designer</Name>
+    <ProjectReference Include="..\..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
+      <Project>{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}</Project>
+      <Name>Impacta.Infra.Apoio</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
