@@ -52,6 +52,7 @@
     <Compile Include="Cor.cs" />
     <Compile Include="IClienteRepositorio.cs" />
     <Compile Include="ICrudBase.cs" />
+    <Compile Include="IEntidade.cs" />
     <Compile Include="IServicoRepositorio.cs" />
     <Compile Include="IVeiculoRepositorio.cs" />
     <Compile Include="Modelo.cs" />

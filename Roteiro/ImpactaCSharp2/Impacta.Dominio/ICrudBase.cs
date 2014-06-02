@@ -1,4 +1,7 @@
-﻿namespace Impacta.Dominio
+﻿using System;
+using System.Collections.Generic;
+
+namespace Impacta.Dominio
 {
     public interface ICrudBase<T>
     {
