@@ -28,11 +28,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo08.Wpf", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Aplicacao", "Impacta.Aplicacao\Impacta.Aplicacao.csproj", "{6706BF76-0359-402E-AD04-E66EBF19ED7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Repositorios.SqlServer.Procedures.Tests", "Impacta.Infra.Repositorios.SqlServer.Procedures.Tests\Impacta.Infra.Repositorios.SqlServer.Procedures.Tests.csproj", "{18843B70-993B-464C-BAF4-33C75E149EF1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Repositorios.SqlServer.Proc.Tests", "Impacta.Repositorios.SqlServer.Proc.Tests\Impacta.Repositorios.SqlServer.Proc.Tests.csproj", "{75A26BFD-A251-41BD-A276-124A7F115F25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio", "..\..\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Repositorios.Ef.Designer", "Impacta.Repositorios.Ef.Designer\Impacta.Repositorios.Ef.Designer.csproj", "{F5C82A1F-849D-481F-AD36-4DA72462D73E}"
 EndProject
@@ -46,7 +44,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio.Tests",
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 17
+		SccNumberOfProjects = 16
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
@@ -54,9 +52,9 @@ Global
 		SccProjectTopLevelParentUniqueName1 = ImpactaCSharp2.sln
 		SccProjectName1 = CSharp2.Capitulo02.Clientes
 		SccLocalPath1 = CSharp2.Capitulo02.Clientes
-		SccProjectUniqueName2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
+		SccProjectUniqueName2 = ..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio\\Impacta.Infra.Apoio.csproj
 		SccProjectName2 = ../../../ImpactaCSharp1/Roteiro/ImpactaCSharp1/Impacta.Infra.Apoio
-		SccLocalPath2 = ..\\..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
+		SccLocalPath2 = ..\\..\\ImpactaCSharp1\\Roteiro\\ImpactaCSharp1\\Impacta.Infra.Apoio
 		SccProjectUniqueName3 = Impacta.Dominio\\Impacta.Dominio.csproj
 		SccProjectName3 = Impacta.Dominio
 		SccLocalPath3 = Impacta.Dominio
@@ -79,35 +77,31 @@ Global
 		SccProjectUniqueName8 = Impacta.Aplicacao\\Impacta.Aplicacao.csproj
 		SccProjectName8 = Impacta.Aplicacao
 		SccLocalPath8 = Impacta.Aplicacao
-		SccProjectUniqueName9 = Impacta.Infra.Repositorios.SqlServer.Procedures.Tests\\Impacta.Infra.Repositorios.SqlServer.Procedures.Tests.csproj
-		SccProjectTopLevelParentUniqueName9 = ImpactaCSharp2.sln
-		SccProjectName9 = Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
-		SccLocalPath9 = Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
-		SccProjectUniqueName10 = Impacta.Infra.Repositorios.SqlServer\\Impacta.Repositorios.SqlServer.Proc.csproj
-		SccProjectName10 = Impacta.Infra.Repositorios.SqlServer
-		SccLocalPath10 = Impacta.Infra.Repositorios.SqlServer
-		SccProjectUniqueName11 = Impacta.Repositorios.SqlServer.Proc.Tests\\Impacta.Repositorios.SqlServer.Proc.Tests.csproj
-		SccProjectTopLevelParentUniqueName11 = ImpactaCSharp2.sln
-		SccProjectName11 = Impacta.Repositorios.SqlServer.Proc.Tests
-		SccLocalPath11 = Impacta.Repositorios.SqlServer.Proc.Tests
-		SccProjectUniqueName12 = Impacta.Repositorios.Ef.Designer\\Impacta.Repositorios.Ef.Designer.csproj
-		SccProjectName12 = Impacta.Repositorios.Ef.Designer
-		SccLocalPath12 = Impacta.Repositorios.Ef.Designer
-		SccProjectUniqueName13 = Impacta.Repositorios.Ef.Designer.Testes\\Impacta.Repositorios.Ef.Designer.Testes.csproj
-		SccProjectTopLevelParentUniqueName13 = ImpactaCSharp2.sln
-		SccProjectName13 = Impacta.Repositorios.Ef.Designer.Testes
-		SccLocalPath13 = Impacta.Repositorios.Ef.Designer.Testes
-		SccProjectUniqueName14 = Impacta.Repositorios.Ef.CodeFirst\\Impacta.Repositorios.Ef.CodeFirst.csproj
-		SccProjectName14 = Impacta.Repositorios.Ef.CodeFirst
-		SccLocalPath14 = Impacta.Repositorios.Ef.CodeFirst
-		SccProjectUniqueName15 = Impacta.Repositorios.Ef.CodeFirst.Tests\\Impacta.Repositorios.Ef.CodeFirst.Tests.csproj
+		SccProjectUniqueName9 = Impacta.Infra.Repositorios.SqlServer\\Impacta.Repositorios.SqlServer.Proc.csproj
+		SccProjectName9 = Impacta.Infra.Repositorios.SqlServer
+		SccLocalPath9 = Impacta.Infra.Repositorios.SqlServer
+		SccProjectUniqueName10 = Impacta.Repositorios.SqlServer.Proc.Tests\\Impacta.Repositorios.SqlServer.Proc.Tests.csproj
+		SccProjectTopLevelParentUniqueName10 = ImpactaCSharp2.sln
+		SccProjectName10 = Impacta.Repositorios.SqlServer.Proc.Tests
+		SccLocalPath10 = Impacta.Repositorios.SqlServer.Proc.Tests
+		SccProjectUniqueName11 = Impacta.Repositorios.Ef.Designer\\Impacta.Repositorios.Ef.Designer.csproj
+		SccProjectName11 = Impacta.Repositorios.Ef.Designer
+		SccLocalPath11 = Impacta.Repositorios.Ef.Designer
+		SccProjectUniqueName12 = Impacta.Repositorios.Ef.Designer.Testes\\Impacta.Repositorios.Ef.Designer.Testes.csproj
+		SccProjectTopLevelParentUniqueName12 = ImpactaCSharp2.sln
+		SccProjectName12 = Impacta.Repositorios.Ef.Designer.Testes
+		SccLocalPath12 = Impacta.Repositorios.Ef.Designer.Testes
+		SccProjectUniqueName13 = Impacta.Repositorios.Ef.CodeFirst\\Impacta.Repositorios.Ef.CodeFirst.csproj
+		SccProjectName13 = Impacta.Repositorios.Ef.CodeFirst
+		SccLocalPath13 = Impacta.Repositorios.Ef.CodeFirst
+		SccProjectUniqueName14 = Impacta.Repositorios.Ef.CodeFirst.Tests\\Impacta.Repositorios.Ef.CodeFirst.Tests.csproj
+		SccProjectTopLevelParentUniqueName14 = ImpactaCSharp2.sln
+		SccProjectName14 = Impacta.Repositorios.Ef.CodeFirst.Tests
+		SccLocalPath14 = Impacta.Repositorios.Ef.CodeFirst.Tests
+		SccProjectUniqueName15 = Impacta.Infra.Apoio.Tests\\Impacta.Infra.Apoio.Tests.csproj
 		SccProjectTopLevelParentUniqueName15 = ImpactaCSharp2.sln
-		SccProjectName15 = Impacta.Repositorios.Ef.CodeFirst.Tests
-		SccLocalPath15 = Impacta.Repositorios.Ef.CodeFirst.Tests
-		SccProjectUniqueName16 = Impacta.Infra.Apoio.Tests\\Impacta.Infra.Apoio.Tests.csproj
-		SccProjectTopLevelParentUniqueName16 = ImpactaCSharp2.sln
-		SccProjectName16 = Impacta.Infra.Apoio.Tests
-		SccLocalPath16 = Impacta.Infra.Apoio.Tests
+		SccProjectName15 = Impacta.Infra.Apoio.Tests
+		SccLocalPath15 = Impacta.Infra.Apoio.Tests
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ImpactaCSharp2.vsmdi
@@ -201,16 +195,6 @@ Global
 		{6706BF76-0359-402E-AD04-E66EBF19ED7C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6706BF76-0359-402E-AD04-E66EBF19ED7C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6706BF76-0359-402E-AD04-E66EBF19ED7C}.Release|x86.ActiveCfg = Release|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{18843B70-993B-464C-BAF4-33C75E149EF1}.Release|x86.ActiveCfg = Release|Any CPU
 		{75A26BFD-A251-41BD-A276-124A7F115F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75A26BFD-A251-41BD-A276-124A7F115F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75A26BFD-A251-41BD-A276-124A7F115F25}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -288,7 +272,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{ACABDD54-D05E-4A96-A1D9-DFCAFCE97061} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{9F72F9CF-9618-4534-BD28-96722BD9993C} = {2882447B-037B-4C48-B78B-0B668AB67922}
-		{18843B70-993B-464C-BAF4-33C75E149EF1} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{75A26BFD-A251-41BD-A276-124A7F115F25} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{245054A9-DDB9-4660-9B39-892FB81AF5C7} = {2882447B-037B-4C48-B78B-0B668AB67922}
 		{B5B05F34-ED0B-472B-B324-8BAF6076CE40} = {2882447B-037B-4C48-B78B-0B668AB67922}

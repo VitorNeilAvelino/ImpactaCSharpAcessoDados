@@ -1,6 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Impacta.Infra.Repositorios.SqlServer.Procedures;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
+namespace Impacta.Repositorios.SqlServer.Proc.Tests
 {
     [TestClass]
     public class VeiculoRepositorioTests
@@ -12,7 +13,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
             {
                 //try
                 //{
-                    veiculoRepositorio.Excluir(1);
+                veiculoRepositorio.Excluir(1);
                 //}
                 //catch 
                 //{
