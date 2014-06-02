@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="ClienteRepositorioTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VeiculoRepositorioTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
