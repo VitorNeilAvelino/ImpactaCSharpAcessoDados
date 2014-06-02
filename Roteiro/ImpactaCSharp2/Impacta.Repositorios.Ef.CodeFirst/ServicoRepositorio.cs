@@ -1,26 +1,25 @@
 ﻿using Impacta.Dominio;
-using System.Linq;
 
 namespace Impacta.Repositorios.Ef.CodeFirst
 {
-    public class ServicoRepositorio : IServicoRepositorio
+    public class ServicoRepositorio : BaseRepositorio<Servico>,  IServicoRepositorio
     {
-        public void Inserir(Servico servico)
-        {
-            using (var db = new OficinaDbContext())
-            {
-                db.Servicos.Add(servico);
-                db.SaveChanges();
-            }
-        }
+        //public void Inserir(Servico servico)
+        //{
+        //    using (var db = new OficinaDbContext())
+        //    {
+        //        db.Servicos.Add(servico);
+        //        db.SaveChanges();
+        //    }
+        //}
 
-        public Servico Selecionar(int servicoId)
-        {
-            using (var db = new OficinaDbContext())
-            {
-                return db.Servicos.SingleOrDefault(s => s.Id == servicoId);
-            }
-        }
+        //public Servico Selecionar(int servicoId)
+        //{
+        //    using (var db = new OficinaDbContext())
+        //    {
+        //        return db.Servicos.SingleOrDefault(s => s.Id == servicoId);
+        //    }
+        //}
 
         public void Atualizar(Servico servico)
         {
@@ -30,15 +29,15 @@ namespace Impacta.Repositorios.Ef.CodeFirst
             }
         }
 
-        public void Excluir(int servicoId)
-        {
-            var servico = Selecionar(servicoId);
+        //public void Excluir(int servicoId)
+        //{
+        //    var servico = Selecionar(servicoId);
 
-            using (var db = new OficinaDbContext())
-            {
-                db.Servicos.Remove(servico);
-                db.SaveChanges();
-            }
-        }
+        //    using (var db = new OficinaDbContext())
+        //    {
+        //        db.Servicos.Remove(servico);
+        //        db.SaveChanges();
+        //    }
+        //}
     }
 }
