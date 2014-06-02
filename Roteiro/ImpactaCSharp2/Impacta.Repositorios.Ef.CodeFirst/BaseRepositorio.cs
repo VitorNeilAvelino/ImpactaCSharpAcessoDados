@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data;
+using System.Linq;
 using Impacta.Dominio;
 
 namespace Impacta.Repositorios.Ef.CodeFirst
@@ -20,6 +21,16 @@ namespace Impacta.Repositorios.Ef.CodeFirst
             using (var db = new OficinaDbContext())
             {
                 return db.Set<T>().SingleOrDefault(x => x.Id == entidadeId);
+            }
+        }
+
+        public void Atualizar(T entidade)
+        {
+            using (var db = new OficinaDbContext())
+            {
+                db.Set<T>().Attach(entidade);
+                db.Entry(entidade).State = EntityState.Modified;
+                db.SaveChanges();
             }
         }
 
