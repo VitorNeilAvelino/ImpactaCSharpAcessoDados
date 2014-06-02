@@ -21,13 +21,13 @@ namespace Impacta.Repositorios.Ef.CodeFirst
         //    }
         //}
 
-        public void Atualizar(Servico servico)
-        {
-            using (var db = new OficinaDbContext())
-            {
+        //public void Atualizar(Servico servico)
+        //{
+        //    using (var db = new OficinaDbContext())
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         //public void Excluir(int servicoId)
         //{
