@@ -3,7 +3,7 @@ namespace Impacta.Dominio
     using System;
     using System.Collections.Generic;
     
-    public partial class Cor
+    public partial class Cor : IEntidade
     {
         public Cor()
         {
