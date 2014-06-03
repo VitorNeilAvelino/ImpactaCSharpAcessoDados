@@ -23,12 +23,11 @@ namespace Impacta.Repositorios.Ef.CodeFirst
         }
 
         public DbSet<Servico> Servicos { get; set; }
-
-        //public DbSet<Cliente> Clientes { get; set; }
-        //public DbSet<Cor> Cores { get; set; }
-        //public DbSet<Modelo> Modelos { get; set; }
-        //public DbSet<TipoServico> TipoServicos { get; set; }
-        //public DbSet<Veiculo> Veiculos { get; set; }
-        //public DbSet<Montadora> Montadoras { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Cor> Cores { get; set; }
+        public DbSet<Modelo> Modelos { get; set; }
+        public DbSet<TipoServico> TipoServicos { get; set; }
+        public DbSet<Veiculo> Veiculos { get; set; }
+        public DbSet<Montadora> Montadoras { get; set; }
     }
 }

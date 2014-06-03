@@ -41,5 +41,10 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
         {
             throw new NotImplementedException();
         }
+
+        Veiculo IVeiculoRepositorio.PesquisarPorPlaca(string placa)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

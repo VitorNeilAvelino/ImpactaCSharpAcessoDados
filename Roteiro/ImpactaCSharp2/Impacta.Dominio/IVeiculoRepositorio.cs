@@ -8,6 +8,6 @@ namespace Impacta.Dominio
         //Veiculo Selecionar(int veiculoId);
         //void Atualizar(Veiculo veiculo);
         //void Excluir(int veiculoId);
-        List<Veiculo> PesquisarPorPlaca(string placa);
+        Veiculo PesquisarPorPlaca(string placa);
     }
 }
