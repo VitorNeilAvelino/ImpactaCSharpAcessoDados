@@ -6,6 +6,11 @@ namespace Impacta.Repositorios.Ef.CodeFirst
     {
         private OficinaDbContext _contexto;
 
+        public ServicoRepositorio()
+        {
+            
+        }
+
         public ServicoRepositorio(OficinaDbContext contexto) : base(contexto)
         {
             _contexto = contexto;
