@@ -1,13 +1,16 @@
 ﻿using Impacta.Dominio;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Impacta.Repositorios.Ef.CodeFirst
 {
     public class VeiculoRepositorio : BaseRepositorio<Veiculo>, IVeiculoRepositorio
     {
-        private OficinaDbContext _contexto;
+        private readonly OficinaDbContext _contexto = new OficinaDbContext();
+
+        public VeiculoRepositorio()
+        {
+            
+        }
 
         public VeiculoRepositorio(OficinaDbContext contexto) : base(contexto)
         {

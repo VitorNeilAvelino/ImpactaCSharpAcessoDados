@@ -1,13 +1,17 @@
 ﻿using System.Data;
 using System.Linq;
 using Impacta.Dominio;
-using System;
 
 namespace Impacta.Repositorios.Ef.CodeFirst
 {
     public class BaseRepositorio<T> where T : class, IEntidade
     {
-        private OficinaDbContext _contexto;
+        private readonly OficinaDbContext _contexto;// = new OficinaDbContext();
+
+        public BaseRepositorio()
+        {
+
+        }
 
         public BaseRepositorio(OficinaDbContext contexto)
         {
@@ -18,8 +22,9 @@ namespace Impacta.Repositorios.Ef.CodeFirst
         {
             //using (var db = new OficinaDbContext())
             //{
-                _contexto.Set<T>().Add(entidade);
-                //db.Servicos.Add(entidade);
+            _contexto.Set<T>().Add(entidade);
+            //_contexto.SaveChanges();
+            //db.Servicos.Add(entidade);
             //    db.SaveChanges();
             //}
         }
@@ -38,7 +43,7 @@ namespace Impacta.Repositorios.Ef.CodeFirst
             //{
             _contexto.Set<T>().Attach(entidade);
             _contexto.Entry(entidade).State = EntityState.Modified;
-                //db.SaveChanges();
+            //db.SaveChanges();
             //}
         }
 
@@ -48,9 +53,9 @@ namespace Impacta.Repositorios.Ef.CodeFirst
 
             //using (var db = new OficinaDbContext())
             //{
-                //db.Servicos.Remove(servico);
+            //db.Servicos.Remove(servico);
             _contexto.Set<T>().Remove(entidade);
-                //db.SaveChanges();
+            //db.SaveChanges();
             //}
         }
     }
