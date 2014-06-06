@@ -9,6 +9,6 @@ namespace Impacta.Dominio
         T Selecionar(int entidadeId);
         void Atualizar(T entidade);
         void Excluir(int entidadeId);
-        //List<T> PesquisarPor(Func<T, bool> expressaoLambda);
+        List<T> SelecionarPor(Func<T, bool> expressaoLambda);
     }
 }

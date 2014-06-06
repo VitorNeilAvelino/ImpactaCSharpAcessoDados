@@ -6,7 +6,7 @@ using Impacta.Dominio;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
-    public class VeiculoRepositorio : BaseRepositorio, IVeiculoRepositorio
+    public class VeiculoRepositorio : BaseRepositorio//, IVeiculoRepositorio
     {
         public void Inserir(Veiculo entidade)
         {
@@ -37,12 +37,7 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
         //    return listaVeiculos.Where(expressaoLambda).ToList();
         //}
 
-        public List<Veiculo> PesquisarPorPlaca(string placa)
-        {
-            throw new NotImplementedException();
-        }
-
-        Veiculo IVeiculoRepositorio.PesquisarPorPlaca(string placa)
+        Veiculo PesquisarPorPlaca(string placa)
         {
             throw new NotImplementedException();
         }

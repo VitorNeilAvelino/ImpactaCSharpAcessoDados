@@ -1,6 +1,8 @@
 ﻿using System.Data;
 using System.Linq;
 using Impacta.Dominio;
+using System.Collections.Generic;
+using System;
 
 namespace Impacta.Repositorios.Ef.CodeFirst
 {
@@ -57,6 +59,11 @@ namespace Impacta.Repositorios.Ef.CodeFirst
             _contexto.Set<T>().Remove(entidade);
             //db.SaveChanges();
             //}
+        }
+
+        public List<T> SelecionarPor(Func<T, bool> expressaoLambda)
+        {
+            return _contexto.Set<T>().Where(expressaoLambda).ToList();
         }
     }
 }

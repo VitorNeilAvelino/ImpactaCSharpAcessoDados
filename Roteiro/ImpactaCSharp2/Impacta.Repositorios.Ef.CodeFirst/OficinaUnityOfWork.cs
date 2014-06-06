@@ -3,7 +3,7 @@ using System;
 
 namespace Impacta.Repositorios.Ef.CodeFirst
 {
-    public class UnityOfWork : IDisposable
+    public class OficinaUnityOfWork : IDisposable
     {
         private OficinaDbContext _contexto = new OficinaDbContext();
         private VeiculoRepositorio _veiculoRepositorio;
