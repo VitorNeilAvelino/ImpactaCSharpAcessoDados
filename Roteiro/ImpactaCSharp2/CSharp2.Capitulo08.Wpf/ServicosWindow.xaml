@@ -43,5 +43,6 @@
                 <DataGridTextColumn Header="Sigla" Binding="{Binding Path=Sigla}" MinWidth="100"  />
             </DataGrid.Columns>
         </DataGrid>
+        
     </Grid>
 </Window>
