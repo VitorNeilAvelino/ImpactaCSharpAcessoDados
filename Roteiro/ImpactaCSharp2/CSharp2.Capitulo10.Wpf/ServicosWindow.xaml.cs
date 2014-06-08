@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Impacta.Dominio;
 
 namespace CSharp2.Capitulo10.Wpf
 {
@@ -24,5 +25,7 @@ namespace CSharp2.Capitulo10.Wpf
         {
             InitializeComponent();
         }
+
+        public Veiculo Veiculo { get; set; }
     }
 }
