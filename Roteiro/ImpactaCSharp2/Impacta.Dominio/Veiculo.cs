@@ -7,7 +7,7 @@ namespace Impacta.Dominio
     {
         public Veiculo()
         {
-            this.Servicos = new List<Servico>();
+            this.Servicos = new HashSet<Servico>();
             this.Clientes = new HashSet<Cliente>();
         }
     
