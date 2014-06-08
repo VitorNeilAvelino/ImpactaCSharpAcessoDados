@@ -3,8 +3,10 @@ using System.Windows;
 using System.ComponentModel;
 using System.Xml.Linq;
 using Impacta.Infra.Apoio;
-using System.Threading;
-using Impacta.Repositorios.Ef.Designer;
+using Impacta.Repositorios.Ef.CodeFirst;
+using Impacta.Dominio;
+using System;
+using System.Collections.ObjectModel;
 
 namespace CSharp2.Capitulo08.Wpf
 {
@@ -17,11 +19,11 @@ namespace CSharp2.Capitulo08.Wpf
             placaTextBox.Focus();
         }
 
-        OficinaEntities _contexto = new OficinaEntities();
+        OficinaUnityOfWork _oficinaUow = new OficinaUnityOfWork();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        ConsultaPrecoServiceReference.StockQuoteSoapClient _servicoConsulta;
+        ConsultaPrecoServiceReference.StockQuoteSoapClient _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
 
         private Veiculo _veiculo;
 
@@ -32,23 +34,41 @@ namespace CSharp2.Capitulo08.Wpf
             {
                 _veiculo = value;
                 //PropertyChanged(this, new PropertyChangedEventArgs("Veiculo"));
+                //OnPropertyChanged("Veiculo");
             }
+        }
+
+        public ObservableCollection<Servico> Servicos
+        {
+            get { return Veiculo != null ? new ObservableCollection<Servico>(Veiculo.Servicos) : null; }
         }
 
         private void consultarPlacaButton_Click(object sender, RoutedEventArgs e)
         {
-            Veiculo = _contexto.Veiculo.Where(x => x.Placa == placaTextBox.Text).FirstOrDefault();
+            Veiculo = _oficinaUow.VeiculoRepositorio.PesquisarPorPlaca(placaTextBox.Text);
+            OnPropertyChanged("Veiculo");
+            OnPropertyChanged("Servicos");
 
-            ThreadPool.QueueUserWorkItem(delegate { ObterCotacao(); });
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
 
-            PropertyChanged(this, new PropertyChangedEventArgs("Veiculo"));
+            backgroundWorker.DoWork += delegate { ObterCotacao(); };
+            backgroundWorker.RunWorkerAsync();
+            backgroundWorker.RunWorkerCompleted += delegate { OnPropertyChanged("Servicos"); };
+
+            //PropertyChanged(this, new PropertyChangedEventArgs("Veiculo"));
+        }
+
+        public void MudarAno()
+        {
+            Veiculo.AnoModelo = ObterCotacao("GOOG").ParaInteiro() + DateTime.Now.Second;
+            //Veiculo.AnoModelo = 1327;
+            Veiculo.Servicos.First().Custo = ObterCotacao("GOOG").ParaInteiro() + DateTime.Now.Second;
+            //Veiculo.Servicos.First().Custo = DateTime.Now.Second;
         }
 
         private void ObterCotacao()
         {
-            _servicoConsulta = new ConsultaPrecoServiceReference.StockQuoteSoapClient("StockQuoteSoap");
-
-            foreach (var servico in Veiculo.Servico)
+            foreach (var servico in Veiculo.Servicos)
             {
                 servico.Custo = ObterCotacao(servico.Sigla);
             }
@@ -60,7 +80,6 @@ namespace CSharp2.Capitulo08.Wpf
         //    var respostaMs = ObterCotacao("MSFT");
         //    var respostaGoogle = ObterCotacao("GOOG");
         //    var respostaApple = ObterCotacao("AAPL");
-        //    //Veiculo.Servicos. = (respostaMs + respostaGoogle + respostaApple) / 3;
         //}
 
         private decimal ObterCotacao(string sigla)
@@ -68,13 +87,13 @@ namespace CSharp2.Capitulo08.Wpf
             return XDocument.Parse(_servicoConsulta.GetQuote(sigla)).Descendants("Last").First().Value.Replace(".", ",").ParaDecimal();
         }
 
-        //protected void OnPropertyChanged(string propertyName)
-        //{
-        //    PropertyChangedEventHandler handler = PropertyChanged;
-        //    if (handler != null)
-        //    {
-        //        handler(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        //}
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

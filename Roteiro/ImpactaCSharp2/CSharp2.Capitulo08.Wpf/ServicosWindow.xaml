@@ -25,7 +25,7 @@
         <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="459,12,0,0" Name="textBox2" TabIndex="1" VerticalAlignment="Top" Width="120" Text="{Binding Veiculo.Cor.Descricao}" VerticalContentAlignment="Center" />
         <TextBox Height="23" HorizontalAlignment="Left" IsReadOnly="True" Margin="613,12,0,0" Name="textBox3" TabIndex="1" VerticalAlignment="Top" Width="120" Text="{Binding Veiculo.AnoModelo}" VerticalContentAlignment="Center" />
         <DataGrid Height="391" HorizontalAlignment="Left" Margin="10,44,0,0" Name="dataGrid1" VerticalAlignment="Top" Width="723"
-                  ItemsSource="{Binding Veiculo.Servicos}" AutoGenerateColumns="False">
+                  ItemsSource="{Binding Servicos}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tipo" Binding="{Binding Path=TipoServico.Descricao}" MinWidth="100" />
                 <DataGridTextColumn Header="Início" Binding="{Binding Path=DataInicio, StringFormat=\{0:d\}}" MinWidth="100" />
@@ -40,7 +40,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>-->
                 <DataGridTextColumn Header="Custo" Binding="{Binding Path=Custo, StringFormat=\{0:c\}}" MinWidth="100"  />
-                <!--<DataGridTextColumn Header="Sigla" Binding="{Binding Path=Sigla}" MinWidth="100"  />-->
+                <DataGridTextColumn Header="Sigla" Binding="{Binding Path=Sigla}" MinWidth="100"  />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
