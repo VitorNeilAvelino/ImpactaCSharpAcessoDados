@@ -1,4 +1,4 @@
-﻿<Window x:Name="principalWindow" x:Class="CSharp2.Capitulo10.Wpf.MainWindow"
+﻿<Window x:Name="principalWindow" x:Class="CSharp2.Capitulo10.Wpf.ServicosWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Serviços" Height="604" Width="800" WindowStartupLocation="CenterScreen"
@@ -13,30 +13,46 @@
         </Grid.Background>
         <Label Content="Placa"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,14,0,0" />
         <TextBox x:Name="placaTextBox" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="42,12,0,0"/>
-        <Button Content="Pesquisar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="167,14,0,0" IsDefault="True"/>
+        <Button x:Name="pesquisarButton" Content="Pesquisar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="167,14,0,0" IsDefault="True" Click="pesquisarButton_Click"/>
         <Label Content="Modelo" HorizontalAlignment="Left" Margin="247,14,0,0" VerticalAlignment="Top"/>
         <Label Content="Cor" HorizontalAlignment="Left" Margin="418,14,0,0" VerticalAlignment="Top"/>
         <Label Content="Ano" HorizontalAlignment="Left" Margin="567,14,0,0" VerticalAlignment="Top"/>
         <TextBox Text="{Binding Veiculo.Modelo.Descricao}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="293,11,0,0" IsReadOnly="True"/>
         <TextBox Text="{Binding Veiculo.Cor.Descricao}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="442,11,0,0" IsReadOnly="True"/>
         <TextBox Text="{Binding Veiculo.AnoModelo}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="594,11,0,0" IsReadOnly="True" />
-        <DataGrid ItemsSource="{Binding Veiculo.Servicos}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10,39">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Tipo" Binding="{Binding Path=TipoServico.Descricao}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Início" Binding="{Binding Path=DataInicio}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fim" Binding="{Binding Path=DataFim}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Valor" Binding="{Binding Path=Valor}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Custo" Binding="{Binding Path=Custo}"></DataGridTextColumn>
+        <DataGrid ItemsSource="{Binding Servicos}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10,39" >
+            <DataGrid.Columns  >
+                <DataGridTextColumn Header="Tipo" Binding="{Binding Path=TipoServico.Descricao}" MinWidth="100">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="BorderBrush" Value="Gray"></Setter>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Início" Binding="{Binding Path=DataInicio, StringFormat=\{0:dd/MM/yyyy\}}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Fim" Binding="{Binding Path=DataFim, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Valor" Binding="{Binding Path=Valor, StringFormat=\{0:c\}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Custo" Binding="{Binding Path=Custo, StringFormat=\{0:c\}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Sigla" Binding="{Binding Path=Sigla}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StatusBar VerticalAlignment="Bottom" Height="25" Background="Black">
-            <StatusBarItem Width="200">
+            <StatusBarItem >
                 <Label Content="Total:"></Label>
+            </StatusBarItem>
+            <StatusBarItem >
+                <TextBox x:Name="totalTextBox" IsReadOnly="True" Width="100"></TextBox>
             </StatusBarItem>
             <Separator></Separator>
             <StatusBarItem HorizontalAlignment="Right">
-                <ProgressBar x:Name="custoProgressBar" Width="100"/>
+                <ProgressBar x:Name="custoProgressBar" Height="17" Width="100" >
+                    <ProgressBar.Style>
+                        <Style TargetType="ProgressBar">
+                            <Setter Property="Foreground" Value="DarkGreen"/>
+                            <Setter Property="Background" Value="DarkGray"/>
+                        </Style>
+                    </ProgressBar.Style>
+                </ProgressBar>
             </StatusBarItem>
         </StatusBar>
     </Grid>
