@@ -3,7 +3,7 @@ namespace Impacta.Dominio
     using System;
     using System.Collections.Generic;
     
-    public partial class Veiculo : IEntidade
+    public class Veiculo : IEntidade
     {
         public Veiculo()
         {

@@ -35,7 +35,6 @@
                 <DataGridTextColumn Header="Início" Binding="{Binding Path=DataInicio, StringFormat=\{0:dd/MM/yyyy\}}" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Fim" Binding="{Binding Path=DataFim, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Valor" Binding="{Binding Path=Valor, StringFormat=\{0:c\}}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Custo" Binding="{Binding Path=Custo, StringFormat=\{0:c\}}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StatusBar VerticalAlignment="Bottom" Height="25" Background="Black">
