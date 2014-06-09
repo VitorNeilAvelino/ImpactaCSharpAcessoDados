@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Serviços" Height="604" Width="800" WindowStartupLocation="CenterScreen"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <!--<Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>-->
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -20,20 +23,19 @@
         <TextBox Text="{Binding Veiculo.Modelo.Descricao}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="293,11,0,0" IsReadOnly="True"/>
         <TextBox Text="{Binding Veiculo.Cor.Descricao}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="442,11,0,0" IsReadOnly="True"/>
         <TextBox Text="{Binding Veiculo.AnoModelo}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="594,11,0,0" IsReadOnly="True" />
-        <DataGrid ItemsSource="{Binding Servicos}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10,39" >
+        <DataGrid ItemsSource="{Binding Veiculo.Servicos}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10,39" x:Name="servidosDataGrid">
             <DataGrid.Columns  >
                 <DataGridTextColumn Header="Tipo" Binding="{Binding Path=TipoServico.Descricao}" MinWidth="100">
-                    <DataGridTextColumn.CellStyle>
+                    <!--<DataGridTextColumn.CellStyle>
                         <Style TargetType="DataGridCell">
                             <Setter Property="BorderBrush" Value="Gray"></Setter>
                         </Style>
-                    </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn.CellStyle>-->
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Início" Binding="{Binding Path=DataInicio, StringFormat=\{0:dd/MM/yyyy\}}" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Fim" Binding="{Binding Path=DataFim, StringFormat=\{0:dd/MM/yyyy\}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Valor" Binding="{Binding Path=Valor, StringFormat=\{0:c\}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Custo" Binding="{Binding Path=Custo, StringFormat=\{0:c\}}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Sigla" Binding="{Binding Path=Sigla}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StatusBar VerticalAlignment="Bottom" Height="25" Background="Black">
@@ -45,7 +47,7 @@
             </StatusBarItem>
             <Separator></Separator>
             <StatusBarItem HorizontalAlignment="Right">
-                <ProgressBar x:Name="custoProgressBar" Height="17" Width="100" >
+                <ProgressBar x:Name="totalRegistrosProgressBar" Height="17" Width="100" >
                     <ProgressBar.Style>
                         <Style TargetType="ProgressBar">
                             <Setter Property="Foreground" Value="DarkGreen"/>

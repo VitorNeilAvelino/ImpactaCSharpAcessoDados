@@ -4,8 +4,6 @@ using Impacta.Dominio;
 using Impacta.Repositorios.Ef.CodeFirst;
 using System.ComponentModel;
 using System.Linq;
-using System.Xml.Linq;
-using System.Collections.ObjectModel;
 
 namespace CSharp2.Capitulo10.Wpf
 {
@@ -18,17 +16,11 @@ namespace CSharp2.Capitulo10.Wpf
         }
 
         OficinaUnityOfWork _oficinaUow = new OficinaUnityOfWork();
-
-        BolsaServiceReference.StockQuoteSoapClient _bolsaServico = new BolsaServiceReference.StockQuoteSoapClient("StockQuoteSoap");
-
         BackgroundWorker _bgWorker;
 
-        public Veiculo Veiculo { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<Servico> Servicos
-        {
-            get { return Veiculo != null ? new ObservableCollection<Servico>(Veiculo.Servicos) : null; }
-        }
+        public Veiculo Veiculo { get; set; }
 
         private void pesquisarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -36,14 +28,22 @@ namespace CSharp2.Capitulo10.Wpf
             {
                 MessageBox.Show("Informe uma placa.");
                 placaTextBox.Focus();
+                return;
             }
 
             Veiculo = _oficinaUow.VeiculoRepositorio.PesquisarPorPlaca(placaTextBox.Text.Trim());
             PropertyChanged(this, new PropertyChangedEventArgs("Veiculo"));
-            PropertyChanged(this, new PropertyChangedEventArgs("Servicos"));
+
+            totalRegistrosProgressBar.Value = 0;
+
+            if (Veiculo == null)
+            {
+                totalTextBox.Text = null;
+                MessageBox.Show("Veículo não encontrado.");
+                return;
+            }
 
             totalTextBox.Text = Veiculo.Servicos.Sum(s => s.Valor).Value.ToString("c");
-            custoProgressBar.Value = 0;
 
             DefinirBackgroundWorker();
         }
@@ -51,12 +51,28 @@ namespace CSharp2.Capitulo10.Wpf
         private void DefinirBackgroundWorker()
         {
             _bgWorker = new BackgroundWorker();
-            _bgWorker.DoWork += delegate { ObterCotacao(); };
+            _bgWorker.DoWork += _bgWorker_DoWork;
             _bgWorker.WorkerReportsProgress = true;
-            _bgWorker.ProgressChanged += (s, e) => custoProgressBar.Value = e.ProgressPercentage;
-            _bgWorker.RunWorkerCompleted += delegate { PropertyChanged(this, new PropertyChangedEventArgs("Servicos")); };
-            
+            _bgWorker.ProgressChanged += (s, e) => totalRegistrosProgressBar.Value = e.ProgressPercentage;
+
             _bgWorker.RunWorkerAsync();
+        }
+
+        void _bgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            decimal contador = 0;
+
+            while (contador < 1000000)
+            {
+                contador++;
+
+                var percentual = contador / 1000000 * 100;
+
+                if (contador % 1000 == 0)
+                {
+                    _bgWorker.ReportProgress(Convert.ToInt32(percentual));
+                }
+            }
         }
 
         //void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -64,36 +80,16 @@ namespace CSharp2.Capitulo10.Wpf
         //    custoProgressBar.Value = e.ProgressPercentage;
         //}
 
-        private void ObterCotacao()
-        {
-            var contador = 0;
-
-            foreach (var servico in Veiculo.Servicos)
-            {
-                servico.Custo = ObterCotacao(servico.Sigla);
-
-                var percentual = Convert.ToDecimal(++contador) / Veiculo.Servicos.Count * 100;
-                _bgWorker.ReportProgress(Convert.ToInt32(percentual));
-            }
-        }
-
-        private decimal ObterCotacao(string sigla)
-        {
-            var stringXml = _bolsaServico.GetQuote(sigla);
-            var xml = XDocument.Parse(stringXml);
-            var cotacao = xml.Descendants("Last").First().Value.Replace(".", ",");
-
-            return Convert.ToDecimal(cotacao);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
 
             _oficinaUow.Dispose();
-            _bgWorker.Dispose();
+
+            if (_bgWorker != null)
+            {
+                _bgWorker.Dispose();
+            }
         }
     }
 }
