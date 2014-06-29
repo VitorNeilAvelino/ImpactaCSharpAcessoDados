@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using Impacta.Infra.Apoio;
 using Impacta.Dominio;
 using System.Configuration;
+using System;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures
 {
@@ -229,6 +230,25 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures
                     }
 
                     transacao.Commit();
+                }
+            }
+        }
+
+        public void ExcluirPorDataDeNascimento(DateTime dataInicial, DateTime dataFinal)
+        {
+            const string instrucao = "Delete from Cliente where DataNascimento between @dataInicial and @dataFinal";
+
+            using (var conexao = new SqlConnection(OficinaConnectionString))
+            {
+                conexao.Open();
+
+                using (var comando = conexao.CreateCommand())
+                {
+                    comando.CommandText = instrucao;
+                    comando.Parameters.AddWithValue("@dataInicial", dataInicial);
+                    comando.Parameters.AddWithValue("@dataFinal", dataFinal);
+
+                    comando.ExecuteNonQuery();
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using Impacta.Dominio;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Impacta.Infra.Repositorios.SqlServer.Procedures;
+using System;
 
 namespace Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
 {
@@ -42,6 +43,12 @@ namespace Impacta.Infra.Repositorios.SqlServer.Procedures.Tests
             var cliente = repositorio.Selecionar(3);
 
             Assert.AreEqual(cliente.Nome, "Avelino");
+        }
+
+        [TestMethod()]
+        public void ExcluirPorDataDeNascimentoTest()
+        {
+            new ClienteRepositorio().ExcluirPorDataDeNascimento(new DateTime(1940,1,1), new DateTime(1950,1,1));
         }
     }
 }
