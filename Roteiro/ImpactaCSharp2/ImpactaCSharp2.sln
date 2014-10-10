@@ -42,9 +42,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Infra.Apoio.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo10.Wpf", "CSharp2.Capitulo10.Wpf\CSharp2.Capitulo10.Wpf.csproj", "{B21BAEEC-A152-4D73-828E-1153960921F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo02.Produtos", "CSharp2.Capitulo02.Produtos\CSharp2.Capitulo02.Produtos.csproj", "{1C551CA1-A76B-422A-AF45-A6885DAD57A8}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 16
+		SccNumberOfProjects = 17
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
@@ -102,6 +104,10 @@ Global
 		SccProjectTopLevelParentUniqueName15 = ImpactaCSharp2.sln
 		SccProjectName15 = CSharp2.Capitulo10.Wpf
 		SccLocalPath15 = CSharp2.Capitulo10.Wpf
+		SccProjectUniqueName16 = CSharp2.Capitulo02.Produtos\\CSharp2.Capitulo02.Produtos.csproj
+		SccProjectTopLevelParentUniqueName16 = ImpactaCSharp2.sln
+		SccProjectName16 = CSharp2.Capitulo02.Produtos
+		SccLocalPath16 = CSharp2.Capitulo02.Produtos
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ImpactaCSharp2.vsmdi
@@ -265,6 +271,16 @@ Global
 		{B21BAEEC-A152-4D73-828E-1153960921F4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B21BAEEC-A152-4D73-828E-1153960921F4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B21BAEEC-A152-4D73-828E-1153960921F4}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -280,5 +296,6 @@ Global
 		{75C78DE8-0B63-44E2-BA29-282A936B8B86} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
 		{939BA8B9-62E2-439D-863A-BC4D7D4A119D} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
 		{B21BAEEC-A152-4D73-828E-1153960921F4} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
+		{1C551CA1-A76B-422A-AF45-A6885DAD57A8} = {B1BCBA21-2D9A-4D0B-BF44-88795A04ACCE}
 	EndGlobalSection
 EndGlobal
