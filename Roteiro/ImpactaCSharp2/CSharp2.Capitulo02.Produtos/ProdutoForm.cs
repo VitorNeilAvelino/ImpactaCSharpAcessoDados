@@ -52,7 +52,21 @@ namespace CSharp2.Capitulo02.Produtos
 
         private void GravarProduto()
         {
-            throw new NotImplementedException();
+            //var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Pedidos;Integrated Security=True");
+            var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Pedidos;User ID=PedidosApp;Password=123");
+            conexao.Open();
+
+            var instrucao = "Insert Produto(Descricao, Tipo, Custo) values(@Descricao, @Tipo, @Custo)";
+
+            var comando = new SqlCommand(instrucao, conexao);
+
+            comando.Parameters.AddWithValue("@Descricao", descricaoTextBox.Text.Trim());
+            comando.Parameters.AddWithValue("@Tipo", tipoComboBox.Text.Trim());
+            comando.Parameters.AddWithValue("@Custo", Convert.ToDecimal(custoTextBox.Text.Trim()));
+
+            comando.ExecuteNonQuery();
+
+            conexao.Close();
         }
     }
 }
