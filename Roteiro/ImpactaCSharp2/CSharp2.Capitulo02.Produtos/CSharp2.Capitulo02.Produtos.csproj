@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoProduto.cs" />
     <EmbeddedResource Include="ProdutoForm.resx">
       <DependentUpon>ProdutoForm.cs</DependentUpon>
     </EmbeddedResource>
