@@ -42,9 +42,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo10.Wpf", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2.Capitulo02.Produtos", "CSharp2.Capitulo02.Produtos\CSharp2.Capitulo02.Produtos.csproj", "{1C551CA1-A76B-422A-AF45-A6885DAD57A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impacta.Apoio", "Impacta.Apoio\Impacta.Apoio.csproj", "{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 16
+		SccNumberOfProjects = 17
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs24
 		SccLocalPath0 = .
@@ -103,6 +105,9 @@ Global
 		SccProjectTopLevelParentUniqueName15 = ImpactaCSharp2.sln
 		SccProjectName15 = CSharp2.Capitulo02.Produtos
 		SccLocalPath15 = CSharp2.Capitulo02.Produtos
+		SccProjectUniqueName16 = Impacta.Apoio\\Impacta.Apoio.csproj
+		SccProjectName16 = Impacta.Apoio
+		SccLocalPath16 = Impacta.Apoio
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ImpactaCSharp2.vsmdi
@@ -266,6 +271,16 @@ Global
 		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1C551CA1-A76B-422A-AF45-A6885DAD57A8}.Release|x86.ActiveCfg = Release|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FD6F45C4-9958-4EDE-A068-BE52DBDC1DB8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
