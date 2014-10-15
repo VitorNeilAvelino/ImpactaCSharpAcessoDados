@@ -57,10 +57,6 @@
     <Compile Include="VeiculoRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\CSharp1\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
-      <Project>{fd6f45c4-9958-4ede-a068-be52dbdc1db8}</Project>
-      <Name>Impacta.Infra.Apoio</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
       <Project>{ca5c0d85-79cc-47ca-9d34-3c7722d983ef}</Project>
       <Name>Impacta.Dominio</Name>

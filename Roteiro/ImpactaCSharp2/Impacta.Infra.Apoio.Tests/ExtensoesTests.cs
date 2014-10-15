@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Impacta.Apoio;
 
 namespace Impacta.Infra.Apoio.Tests
 {

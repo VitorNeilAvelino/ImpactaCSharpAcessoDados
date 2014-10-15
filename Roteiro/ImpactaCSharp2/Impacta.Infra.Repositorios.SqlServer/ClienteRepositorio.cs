@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using Impacta.Infra.Apoio;
+using Impacta.Apoio;
 using Impacta.Dominio;
 using System.Configuration;
 using System;
