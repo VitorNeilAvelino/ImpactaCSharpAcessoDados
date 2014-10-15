@@ -82,6 +82,7 @@
     <Compile Include="Chuck.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="Desktop.cs" />
+    <Compile Include="Enumerador.cs" />
     <Compile Include="Extensoes.cs" />
     <Compile Include="Formulario.cs" />
     <Compile Include="Imagens.cs" />

@@ -2,6 +2,7 @@
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace CSharp2.Capitulo02.Produtos
 {
@@ -18,7 +19,9 @@ namespace CSharp2.Capitulo02.Produtos
 
         private void PopularControles()
         {
-            tipoComboBox.DataSource = TipoProduto.ParaLista<>();
+            //tipoComboBox.DataSource = new TipoProduto().ParaLista<TipoProduto>();
+            tipoComboBox.DataSource = Enumerador.ParaLista<TipoProduto>();
+            tipoComboBox.SelectedIndex = -1;
         }
 
         private void gravarButton_Click(object sender, EventArgs e)

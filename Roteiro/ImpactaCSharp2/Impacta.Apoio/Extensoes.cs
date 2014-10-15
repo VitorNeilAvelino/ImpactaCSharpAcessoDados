@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Impacta.Apoio
 {
@@ -90,6 +92,11 @@ namespace Impacta.Apoio
         public static T ParaTipo<T>(this object valor)
         {
             return (T)Convert.ChangeType(valor, typeof(T));
+        }
+
+        public static List<T> ParaLista<T>(this Enum enumerador)
+        {
+            return Enum.GetValues(typeof(T)).Cast<T>().OrderBy(x => x.ToString()).ToList();
         }
     }
 }
