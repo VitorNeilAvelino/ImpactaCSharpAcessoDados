@@ -153,10 +153,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\CSharp1\ImpactaCSharp1\Roteiro\ImpactaCSharp1\Impacta.Infra.Apoio\Impacta.Infra.Apoio.csproj">
-      <Project>{fd6f45c4-9958-4ede-a068-be52dbdc1db8}</Project>
-      <Name>Impacta.Infra.Apoio</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
       <Project>{CA5C0D85-79CC-47CA-9D34-3C7722D983EF}</Project>
       <Name>Impacta.Dominio</Name>

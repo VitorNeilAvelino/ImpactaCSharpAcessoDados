@@ -84,6 +84,7 @@
             this.custoTextBox.Size = new System.Drawing.Size(121, 20);
             this.custoTextBox.TabIndex = 5;
             this.custoTextBox.Tag = "*DECIMAL";
+            this.custoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.custoTextBox_KeyPress);
             // 
             // tipoComboBox
             // 

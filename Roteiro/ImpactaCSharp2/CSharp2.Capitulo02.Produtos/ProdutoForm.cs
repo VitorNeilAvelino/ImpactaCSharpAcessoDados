@@ -1,4 +1,4 @@
-﻿using Impacta.Infra.Apoio;
+﻿using Impacta.Apoio;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -13,6 +13,12 @@ namespace CSharp2.Capitulo02.Produtos
         {
             InitializeComponent();
             log4net.Config.XmlConfigurator.Configure();
+            PopularControles();
+        }
+
+        private void PopularControles()
+        {
+            tipoComboBox.DataSource = TipoProduto.ParaLista<>();
         }
 
         private void gravarButton_Click(object sender, EventArgs e)
@@ -53,7 +59,8 @@ namespace CSharp2.Capitulo02.Produtos
         private void GravarProduto()
         {
             //var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Pedidos;Integrated Security=True");
-            var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Pedidos;User ID=PedidosApp;Password=123");
+            //var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Pedidos;uid=PedidosApp;Password=123");
+            var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Pedidos;User Id=PedidosApp;Password=123");
             conexao.Open();
 
             var instrucao = "Insert Produto(Descricao, Tipo, Custo) values(@Descricao, @Tipo, @Custo)";
@@ -67,6 +74,14 @@ namespace CSharp2.Capitulo02.Produtos
             comando.ExecuteNonQuery();
 
             conexao.Close();
+        }
+
+        private void custoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
         }
     }
 }
