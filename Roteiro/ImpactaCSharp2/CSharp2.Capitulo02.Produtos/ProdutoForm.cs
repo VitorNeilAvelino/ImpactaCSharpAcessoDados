@@ -2,7 +2,6 @@
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace CSharp2.Capitulo02.Produtos
 {
@@ -34,6 +33,9 @@ namespace CSharp2.Capitulo02.Produtos
             try
             {
                 GravarProduto();
+                MessageBox.Show("Produto gravado com sucesso!");
+                Formulario.Limpar(this);
+                descricaoTextBox.Focus();
             }
             catch (SqlException ex)
             {
@@ -71,7 +73,7 @@ namespace CSharp2.Capitulo02.Produtos
             var comando = new SqlCommand(instrucao, conexao);
 
             comando.Parameters.AddWithValue("@Descricao", descricaoTextBox.Text.Trim());
-            comando.Parameters.AddWithValue("@Tipo", tipoComboBox.Text.Trim());
+            comando.Parameters.AddWithValue("@Tipo", (int)tipoComboBox.SelectedItem);
             comando.Parameters.AddWithValue("@Custo", Convert.ToDecimal(custoTextBox.Text.Trim()));
 
             comando.ExecuteNonQuery();
