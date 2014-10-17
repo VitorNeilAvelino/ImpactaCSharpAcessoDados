@@ -18,7 +18,7 @@ namespace CSharp2.Capitulo02.Produtos
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ProdutoForm());
+            Application.Run(new ListagemProdutosForm());
         }
     }
 }

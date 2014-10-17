@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="BaseRepositorio.cs" />
     <Compile Include="ClienteRepositorio.cs" />
+    <Compile Include="ProdutoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VeiculoRepositorio.cs" />
   </ItemGroup>
