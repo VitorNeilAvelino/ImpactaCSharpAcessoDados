@@ -37,7 +37,12 @@
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
             this.gravarButton = new System.Windows.Forms.Button();
             this.produtoErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pedidosDataSet = new CSharp2.Capitulo02.Produtos.PedidosDataSet();
+            this.tipoProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tipoProdutoTableAdapter = new CSharp2.Capitulo02.Produtos.PedidosDataSetTableAdapters.TipoProdutoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.produtoErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pedidosDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoProdutoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -88,12 +93,15 @@
             // 
             // tipoComboBox
             // 
+            this.tipoComboBox.DataSource = this.tipoProdutoBindingSource;
+            this.tipoComboBox.DisplayMember = "Descricao";
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Location = new System.Drawing.Point(73, 52);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(121, 21);
             this.tipoComboBox.TabIndex = 3;
             this.tipoComboBox.Tag = "*";
+            this.tipoComboBox.ValueMember = "Id";
             // 
             // gravarButton
             // 
@@ -111,6 +119,20 @@
             this.produtoErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.produtoErrorProvider.ContainerControl = this;
             // 
+            // pedidosDataSet
+            // 
+            this.pedidosDataSet.DataSetName = "PedidosDataSet";
+            this.pedidosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tipoProdutoBindingSource
+            // 
+            this.tipoProdutoBindingSource.DataMember = "TipoProduto";
+            this.tipoProdutoBindingSource.DataSource = this.pedidosDataSet;
+            // 
+            // tipoProdutoTableAdapter
+            // 
+            this.tipoProdutoTableAdapter.ClearBeforeFill = true;
+            // 
             // ProdutoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,7 +147,10 @@
             this.Controls.Add(this.label1);
             this.Name = "ProdutoForm";
             this.Text = "Produto";
+            this.Load += new System.EventHandler(this.ProdutoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.produtoErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pedidosDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoProdutoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,6 +166,9 @@
         private System.Windows.Forms.ComboBox tipoComboBox;
         private System.Windows.Forms.Button gravarButton;
         private System.Windows.Forms.ErrorProvider produtoErrorProvider;
+        private PedidosDataSet pedidosDataSet;
+        private System.Windows.Forms.BindingSource tipoProdutoBindingSource;
+        private PedidosDataSetTableAdapters.TipoProdutoTableAdapter tipoProdutoTableAdapter;
     }
 }
 

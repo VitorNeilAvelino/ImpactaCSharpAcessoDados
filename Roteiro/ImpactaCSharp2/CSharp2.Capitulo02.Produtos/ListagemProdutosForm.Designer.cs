@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListagemProdutosForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.descricaoToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.pesquisarToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -38,9 +38,12 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.imprimirToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.produtosDataGridView = new System.Windows.Forms.DataGridView();
+            this.produtoIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editarProdutoColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.excluirProdutoColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.produtosDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -107,18 +110,30 @@
             this.produtosDataGridView.AllowUserToDeleteRows = false;
             this.produtosDataGridView.AllowUserToOrderColumns = true;
             this.produtosDataGridView.AllowUserToResizeRows = false;
-            this.produtosDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.produtosDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.produtosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.produtosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.produtoIdColumn,
             this.Column1,
             this.Column2,
-            this.Column3});
+            this.Column3,
+            this.editarProdutoColumn,
+            this.excluirProdutoColumn});
             this.produtosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.produtosDataGridView.Location = new System.Drawing.Point(0, 25);
             this.produtosDataGridView.Name = "produtosDataGridView";
             this.produtosDataGridView.ReadOnly = true;
             this.produtosDataGridView.Size = new System.Drawing.Size(865, 361);
             this.produtosDataGridView.TabIndex = 1;
+            this.produtosDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.produtosDataGridView_CellContentClick);
+            // 
+            // produtoIdColumn
+            // 
+            this.produtoIdColumn.DataPropertyName = "Id";
+            this.produtoIdColumn.HeaderText = "";
+            this.produtoIdColumn.Name = "produtoIdColumn";
+            this.produtoIdColumn.ReadOnly = true;
+            this.produtoIdColumn.Visible = false;
             // 
             // Column1
             // 
@@ -126,26 +141,39 @@
             this.Column1.HeaderText = "Descrição";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 80;
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "Tipo";
+            this.Column2.DataPropertyName = "DescricaoTipoProduto";
             this.Column2.HeaderText = "Tipo";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 53;
             // 
             // Column3
             // 
             this.Column3.DataPropertyName = "Custo";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column3.HeaderText = "Custo";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 59;
+            // 
+            // editarProdutoColumn
+            // 
+            this.editarProdutoColumn.HeaderText = "";
+            this.editarProdutoColumn.Name = "editarProdutoColumn";
+            this.editarProdutoColumn.ReadOnly = true;
+            this.editarProdutoColumn.Text = "Editar";
+            this.editarProdutoColumn.UseColumnTextForButtonValue = true;
+            // 
+            // excluirProdutoColumn
+            // 
+            this.excluirProdutoColumn.HeaderText = "";
+            this.excluirProdutoColumn.Name = "excluirProdutoColumn";
+            this.excluirProdutoColumn.ReadOnly = true;
+            this.excluirProdutoColumn.Text = "Excluir";
+            this.excluirProdutoColumn.UseColumnTextForButtonValue = true;
             // 
             // ListagemProdutosForm
             // 
@@ -174,8 +202,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton imprimirToolStripButton;
         private System.Windows.Forms.DataGridView produtosDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn produtoIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewButtonColumn editarProdutoColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn excluirProdutoColumn;
     }
 }
