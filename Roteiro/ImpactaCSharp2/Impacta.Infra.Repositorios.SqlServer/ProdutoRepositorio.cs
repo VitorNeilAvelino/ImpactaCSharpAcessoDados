@@ -14,27 +14,16 @@ namespace Impacta.Repositorios.SqlServer.Proc
             {
                 conexao.Open();
 
-                /*
-                 SELECT [id], 
-                           [descricao], 
-                           [tipo], 
-                           CASE 
-                             WHEN tipo = 1 THEN 'Papelaria' 
-                             WHEN tipo = 2 THEN 'Presentes' 
-                             WHEN tipo = 3 THEN 'Brinquedos' 
-                           END AS DescricaoTipo, 
-                           [custo] 
-                    FROM   [dbo].[produto] 
-                    WHERE  descricao LIKE '%' + @descricao + '%'   
-                 */
-
-                const string instrucao = @"SELECT [Id]
-                      ,[Descricao]
-                      ,[Tipo]
-                      ,[Custo]
-                    FROM [dbo].[Produto]
-                    Where Descricao like '%' + @descricao + '%'
-                    Order by Descricao";
+                const string instrucao = @"SELECT produto.id, 
+                           produto.tipoproduto_id, 
+                           produto.descricao, 
+                           produto.custo, 
+                           tipoproduto.descricao AS DescricaoTipoProduto 
+                    FROM   produto 
+                           INNER JOIN tipoproduto 
+                                   ON produto.tipoproduto_id = tipoproduto.id 
+                    WHERE  ( produto.descricao LIKE '%' + @descricao + '%' ) 
+                    ORDER  BY produto.descricao";
 
                 using (var comando = new SqlCommand(instrucao, conexao))
                 {
@@ -48,6 +37,11 @@ namespace Impacta.Repositorios.SqlServer.Proc
             }
 
             return dataTable;
+        }
+
+        public void Excluir(int produtoId)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

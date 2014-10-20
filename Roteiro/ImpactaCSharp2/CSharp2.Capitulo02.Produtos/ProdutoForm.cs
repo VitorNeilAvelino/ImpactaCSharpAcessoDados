@@ -13,14 +13,6 @@ namespace CSharp2.Capitulo02.Produtos
         {
             InitializeComponent();
             log4net.Config.XmlConfigurator.Configure();
-            PopularControles();
-        }
-
-        private void PopularControles()
-        {
-            //tipoComboBox.DataSource = new TipoProduto().ParaLista<TipoProduto>();
-            tipoComboBox.DataSource = Enumerador.ParaLista<TipoProduto>();
-            tipoComboBox.SelectedIndex = -1;
         }
 
         private void gravarButton_Click(object sender, EventArgs e)
@@ -68,12 +60,12 @@ namespace CSharp2.Capitulo02.Produtos
             var conexao = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Pedidos;User Id=PedidosApp;Password=123");
             conexao.Open();
 
-            var instrucao = "Insert Produto(Descricao, Tipo, Custo) values(@Descricao, @Tipo, @Custo)";
+            var instrucao = "Insert Produto(Descricao, TipoProduto_Id, Custo) values(@Descricao, @TipoProduto_Id, @Custo)";
 
             var comando = new SqlCommand(instrucao, conexao);
 
             comando.Parameters.AddWithValue("@Descricao", descricaoTextBox.Text.Trim());
-            comando.Parameters.AddWithValue("@Tipo", (int)tipoComboBox.SelectedItem);
+            comando.Parameters.AddWithValue("@TipoProduto_Id", tipoComboBox.SelectedValue);
             comando.Parameters.AddWithValue("@Custo", Convert.ToDecimal(custoTextBox.Text.Trim()));
 
             comando.ExecuteNonQuery();
@@ -87,6 +79,12 @@ namespace CSharp2.Capitulo02.Produtos
             {
                 e.Handled = true;
             }
+        }
+
+        private void ProdutoForm_Load(object sender, EventArgs e)
+        {
+            this.tipoProdutoTableAdapter.Fill(this.pedidosDataSet.TipoProduto);
+            tipoComboBox.SelectedIndex = -1;
         }
     }
 }
