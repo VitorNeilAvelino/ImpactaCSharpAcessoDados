@@ -57,10 +57,12 @@
     <Compile Include="IVeiculoRepositorio.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="Montadora.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuantidadeEixos.cs" />
     <Compile Include="Servico.cs" />
     <Compile Include="TipoCliente.cs" />
+    <Compile Include="TipoProduto.cs" />
     <Compile Include="TipoServico.cs" />
     <Compile Include="Veiculo.cs" />
   </ItemGroup>

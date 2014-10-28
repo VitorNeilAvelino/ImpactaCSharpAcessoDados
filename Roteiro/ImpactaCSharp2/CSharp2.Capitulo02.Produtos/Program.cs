@@ -14,7 +14,7 @@ namespace CSharp2.Capitulo02.Produtos
         [STAThread]
         static void Main()
         {
-            //log4net.Config.XmlConfigurator.Configure(); 
+            log4net.Config.XmlConfigurator.Configure(); 
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

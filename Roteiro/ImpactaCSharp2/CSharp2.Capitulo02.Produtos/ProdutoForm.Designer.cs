@@ -35,14 +35,14 @@
             this.descricaoTextBox = new System.Windows.Forms.TextBox();
             this.custoTextBox = new System.Windows.Forms.TextBox();
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pedidosDataSet = new CSharp2.Capitulo02.Produtos.PedidosDataSet();
             this.gravarButton = new System.Windows.Forms.Button();
             this.produtoErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pedidosDataSet = new CSharp2.Capitulo02.Produtos.PedidosDataSet();
-            this.tipoProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipoProdutoTableAdapter = new CSharp2.Capitulo02.Produtos.PedidosDataSetTableAdapters.TipoProdutoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.produtoErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pedidosDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoProdutoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pedidosDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -95,6 +95,7 @@
             // 
             this.tipoComboBox.DataSource = this.tipoProdutoBindingSource;
             this.tipoComboBox.DisplayMember = "Descricao";
+            this.tipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Location = new System.Drawing.Point(73, 52);
             this.tipoComboBox.Name = "tipoComboBox";
@@ -102,6 +103,16 @@
             this.tipoComboBox.TabIndex = 3;
             this.tipoComboBox.Tag = "*";
             this.tipoComboBox.ValueMember = "Id";
+            // 
+            // tipoProdutoBindingSource
+            // 
+            this.tipoProdutoBindingSource.DataMember = "TipoProduto";
+            this.tipoProdutoBindingSource.DataSource = this.pedidosDataSet;
+            // 
+            // pedidosDataSet
+            // 
+            this.pedidosDataSet.DataSetName = "PedidosDataSet";
+            this.pedidosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // gravarButton
             // 
@@ -118,16 +129,6 @@
             // 
             this.produtoErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.produtoErrorProvider.ContainerControl = this;
-            // 
-            // pedidosDataSet
-            // 
-            this.pedidosDataSet.DataSetName = "PedidosDataSet";
-            this.pedidosDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tipoProdutoBindingSource
-            // 
-            this.tipoProdutoBindingSource.DataMember = "TipoProduto";
-            this.tipoProdutoBindingSource.DataSource = this.pedidosDataSet;
             // 
             // tipoProdutoTableAdapter
             // 
@@ -148,9 +149,9 @@
             this.Name = "ProdutoForm";
             this.Text = "Produto";
             this.Load += new System.EventHandler(this.ProdutoForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.produtoErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pedidosDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoProdutoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pedidosDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtoErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

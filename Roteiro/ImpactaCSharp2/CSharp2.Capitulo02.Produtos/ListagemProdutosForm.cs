@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Impacta.Repositorios.SqlServer.Proc;
 using Impacta.Apoio;
+using System.Data.SqlClient;
 
 namespace CSharp2.Capitulo02.Produtos
 {
@@ -28,7 +29,14 @@ namespace CSharp2.Capitulo02.Produtos
                 return;
             }
 
-            produtosDataGridView.DataSource = _produtoRepositorio.Selecionar(descricaoToolStripTextBox.Text);
+            try
+            {
+                produtosDataGridView.DataSource = _produtoRepositorio.Selecionar(descricaoToolStripTextBox.Text);
+            }
+            catch (Exception ex)
+            {
+                Global.TratarErro("Houve um erro e a pesquisa não foi realizada! O suporte já foi comunicado.", ex);
+            }
         }
 
         private void DefinirPropriedadesControles()
@@ -64,24 +72,60 @@ namespace CSharp2.Capitulo02.Produtos
                     break;
                 case AcaoFormulario.Excluir:
                     var resposta = MessageBox.Show("Deseja realmente excluir este Produto?", "Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
                     if (resposta == DialogResult.Yes)
                     {
-                        _produtoRepositorio.Excluir(produtoId);
+                        ExcluirProduto(produtoId);
                     }
+
                     break;
             }
 
             Pesquisar();
         }
 
-        private void AbrirFormularioParaEdicao(int clienteId)
+        private void ExcluirProduto(int produtoId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _produtoRepositorio.Excluir(produtoId);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Message.Contains("FK_ItensPedido_Produto"))
+                {
+                    MessageBox.Show("Não é possível excluir um produto que já foi incluído em um pedido.");
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            catch (Exception ex)
+            {
+                Global.TratarErro("Houve um erro e a exclusão não foi realizada! O suporte já foi comunicado.", ex);
+            }
+        }
+
+        private void AbrirFormularioParaEdicao(int produtoId)
+        {
+            var produtoForm = new ProdutoForm(produtoId);
+            produtoForm.ShowDialog();
         }
 
         private AcaoFormulario DefinirAcaoFormulario(DataGridViewCell celulaClicada)
         {
-            throw new NotImplementedException();
+            if (celulaClicada.OwningColumn.Index == editarProdutoColumn.Index)
+            {
+                return AcaoFormulario.Editar;
+            }
+
+            if (celulaClicada.OwningColumn.Index == excluirProdutoColumn.Index)
+            {
+                return AcaoFormulario.Excluir;
+            }
+
+            return AcaoFormulario.NaoDefinida;
         }
     }
 }

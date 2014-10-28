@@ -1,18 +1,41 @@
 ﻿using Impacta.Apoio;
+using Impacta.Dominio;
+using Impacta.Repositorios.SqlServer.Proc;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace CSharp2.Capitulo02.Produtos
 {
     public partial class ProdutoForm : Form
     {
         private static readonly log4net.ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private Produto _produto;
 
         public ProdutoForm()
         {
-            InitializeComponent();
-            log4net.Config.XmlConfigurator.Configure();
+            InitializeComponent();            
+        }
+
+        public ProdutoForm(int produtoId)
+            : this()
+        {
+            try
+            {
+                _produto = new ProdutoRepositorio().Selecionar(produtoId);
+                PopularFormulario(_produto);
+            }
+            catch (Exception ex)
+            {
+                Global.TratarErro("Ooops!", ex);
+            }
+        }
+
+        private void PopularFormulario(Produto produto)
+        {
+            descricaoTextBox.Text = produto.Descricao;
+            custoTextBox.Text = produto.Custo.ToString();
         }
 
         private void gravarButton_Click(object sender, EventArgs e)
@@ -37,7 +60,7 @@ namespace CSharp2.Capitulo02.Produtos
                 }
                 else
                 {
-                    TratarErro(ex);
+                    throw;
                 }
             }
             catch (Exception ex)
@@ -84,7 +107,15 @@ namespace CSharp2.Capitulo02.Produtos
         private void ProdutoForm_Load(object sender, EventArgs e)
         {
             this.tipoProdutoTableAdapter.Fill(this.pedidosDataSet.TipoProduto);
-            tipoComboBox.SelectedIndex = -1;
+            
+            if (_produto == null)
+            {
+                tipoComboBox.SelectedIndex = -1;
+            }
+            else
+            {
+                tipoComboBox.SelectedValue = _produto.Tipo.Id;
+            }
         }
     }
 }
