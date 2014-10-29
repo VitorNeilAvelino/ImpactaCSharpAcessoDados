@@ -3,10 +3,11 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Impacta.Dominio;
 using System;
+using System.Collections.Generic;
 
 namespace Impacta.Repositorios.SqlServer.Proc
 {
-    public class ProdutoRepositorio
+    public class ProdutoRepositorio : RepositorioBase
     {
         public DataTable Selecionar(string descricao)
         {
@@ -50,8 +51,10 @@ namespace Impacta.Repositorios.SqlServer.Proc
                 using (var comando = conexao.CreateCommand())
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "ExcluirProduto";
+                    comando.CommandText = NomeProcedure.ExcluirProduto.ToString();
+                    
                     comando.Parameters.AddWithValue("@produtoId", produtoId);
+                    
                     comando.ExecuteNonQuery();
                 }
             }
@@ -68,7 +71,7 @@ namespace Impacta.Repositorios.SqlServer.Proc
                 using (var comando = conexao.CreateCommand())
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = "SelecionarProduto";
+                    comando.CommandText = NomeProcedure.SelecionarProduto.ToString();
                     comando.Parameters.AddWithValue("@produtoId", produtoId);
 
                     using (var registro = comando.ExecuteReader())
@@ -96,6 +99,40 @@ namespace Impacta.Repositorios.SqlServer.Proc
             produto.Tipo.Descricao = registro["DescricaoTipoProduto"].ToString();
 
             return produto;
+        }
+
+        public void Atualizar(Produto produto)
+        {
+            using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["PedidosConnectionString"].ConnectionString))
+            {
+                conexao.Open();
+
+                using (var comando = conexao.CreateCommand())
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.CommandText = NomeProcedure.AtualizarProduto.ToString();
+
+                    foreach (var parametro in Mapear(produto))
+                    {
+                        comando.Parameters.Add(parametro);
+                    }
+
+                    comando.ExecuteNonQuery();
+                }
+            }
+            //base.ExecuteNonQuery(NomeProcedure.AtualizarProduto, Mapear(produto));
+        }
+
+        private List<SqlParameter> Mapear(Produto produto)
+        {
+            var parametros = new List<SqlParameter>();
+
+            parametros.Add(new SqlParameter("@id", produto.Id));
+            parametros.Add(new SqlParameter("@descricao", produto.Descricao));
+            parametros.Add(new SqlParameter("@custo", produto.Custo));
+            parametros.Add(new SqlParameter("@tipoProduto_Id", produto.Tipo.Id));
+
+            return parametros;
         }
     }
 }
