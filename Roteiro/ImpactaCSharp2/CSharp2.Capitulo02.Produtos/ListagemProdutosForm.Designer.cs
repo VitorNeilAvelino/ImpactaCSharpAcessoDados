@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListagemProdutosForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.descricaoToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.pesquisarToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -90,6 +90,7 @@
             this.novoToolStripButton.Name = "novoToolStripButton";
             this.novoToolStripButton.Size = new System.Drawing.Size(56, 22);
             this.novoToolStripButton.Text = "Novo";
+            this.novoToolStripButton.Click += new System.EventHandler(this.novoToolStripButton_Click);
             // 
             // toolStripSeparator2
             // 
@@ -103,6 +104,7 @@
             this.imprimirToolStripButton.Name = "imprimirToolStripButton";
             this.imprimirToolStripButton.Size = new System.Drawing.Size(73, 22);
             this.imprimirToolStripButton.Text = "Imprimir";
+            this.imprimirToolStripButton.Click += new System.EventHandler(this.imprimirToolStripButton_Click);
             // 
             // produtosDataGridView
             // 
@@ -152,9 +154,9 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "Custo";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column3.HeaderText = "Custo";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
