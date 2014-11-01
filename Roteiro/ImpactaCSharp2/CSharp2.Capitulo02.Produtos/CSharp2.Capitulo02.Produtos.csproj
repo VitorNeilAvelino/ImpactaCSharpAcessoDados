@@ -42,12 +42,15 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +81,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatorioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioForm.Designer.cs">
+      <DependentUpon>RelatorioForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TipoProdutoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +99,7 @@
     <EmbeddedResource Include="ProdutoForm.resx">
       <DependentUpon>ProdutoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -99,6 +109,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RelatorioForm.resx">
+      <DependentUpon>RelatorioForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TipoProdutoForm.resx">
       <DependentUpon>TipoProdutoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +127,7 @@
     <None Include="PedidosDataSet.xss">
       <DependentUpon>PedidosDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\Impacta.Dominio.Produto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

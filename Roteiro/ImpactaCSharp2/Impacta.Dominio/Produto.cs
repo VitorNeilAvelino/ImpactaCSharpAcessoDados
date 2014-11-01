@@ -1,5 +1,7 @@
-﻿namespace Impacta.Dominio
+﻿using System;
+namespace Impacta.Dominio
 {
+    //[Serializable]
     public class Produto
     {
         public Produto()

@@ -134,5 +134,38 @@ namespace Impacta.Repositorios.SqlServer.Proc
 
             return parametros;
         }
+
+        public List<Produto> Selecionar()
+        {
+            List<Produto> produtos = null;
+
+            using (var conexao = PedidosConexao)
+            {
+                conexao.Open();
+
+                using (var comando = conexao.CreateCommand())
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.CommandText = NomeProcedure.SelecionarProduto.ToString();
+                    
+                    comando.Parameters.AddWithValue("@produtoId", DBNull.Value);
+
+                    using (var registro = comando.ExecuteReader())
+                    {
+                        if (registro.HasRows)
+                        {
+                            produtos = new List<Produto>();
+                        }
+
+                        while (registro.Read())
+                        {
+                            produtos.Add(Mapear(registro));
+                        }
+                    }
+                }
+            }
+
+            return produtos;
+        }
     }
 }

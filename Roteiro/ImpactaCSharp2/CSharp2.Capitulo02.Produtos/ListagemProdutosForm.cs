@@ -109,8 +109,10 @@ namespace CSharp2.Capitulo02.Produtos
 
         private void AbrirFormularioParaEdicao(int produtoId)
         {
-            var produtoForm = new ProdutoForm(produtoId);
-            produtoForm.ShowDialog();
+            using (var produtoForm = new ProdutoForm(produtoId))
+            {
+                produtoForm.ShowDialog();
+            }
         }
 
         private AcaoFormulario DefinirAcaoFormulario(DataGridViewCell celulaClicada)
@@ -126,6 +128,22 @@ namespace CSharp2.Capitulo02.Produtos
             }
 
             return AcaoFormulario.NaoDefinida;
+        }
+
+        private void novoToolStripButton_Click(object sender, EventArgs e)
+        {
+            using (var produtoForm = new ProdutoForm())
+            {
+                produtoForm.ShowDialog();
+            }
+        }
+
+        private void imprimirToolStripButton_Click(object sender, EventArgs e)
+        {
+            using (var relatorioForm = new RelatorioForm())
+            {
+                relatorioForm.ShowDialog();
+            }
         }
     }
 }

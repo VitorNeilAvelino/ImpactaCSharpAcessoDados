@@ -7,9 +7,16 @@ namespace Impacta.Repositorios.SqlServer.Proc
 {
     public class RepositorioBase
     {
+        public SqlConnection PedidosConexao
+        {
+            get
+            {
+                return new SqlConnection(ConfigurationManager.ConnectionStrings["PedidosConnectionString"].ConnectionString);
+            }
+        }
         public void ExecuteNonQuery(NomeProcedure nomeProcedure, List<SqlParameter> parametros)
         {
-            using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["PedidosConnectionString"].ConnectionString))
+            using (var conexao = PedidosConexao)
             {
                 conexao.Open();
 
@@ -17,12 +24,12 @@ namespace Impacta.Repositorios.SqlServer.Proc
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.CommandText = nomeProcedure.ToString();
-                    
+
                     foreach (var parametro in parametros)
                     {
                         comando.Parameters.Add(parametro);
                     }
-                    
+
                     comando.ExecuteNonQuery();
                 }
             }
