@@ -52,9 +52,9 @@ namespace Impacta.Repositorios.SqlServer.Proc
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.CommandText = NomeProcedure.ExcluirProduto.ToString();
-                    
+
                     comando.Parameters.AddWithValue("@produtoId", produtoId);
-                    
+
                     comando.ExecuteNonQuery();
                 }
             }
@@ -147,7 +147,7 @@ namespace Impacta.Repositorios.SqlServer.Proc
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.CommandText = NomeProcedure.SelecionarProduto.ToString();
-                    
+
                     comando.Parameters.AddWithValue("@produtoId", DBNull.Value);
 
                     using (var registro = comando.ExecuteReader())
@@ -166,6 +166,45 @@ namespace Impacta.Repositorios.SqlServer.Proc
             }
 
             return produtos;
+        }
+
+        public void AtualizarComTransacao()
+        {
+            using (var conexao = PedidosConexao)
+            {
+                conexao.Open();
+
+                // using: promove o rollback se o commit não for alcaçado.
+                // IsolationLevel: The default is ReadCommitted.
+                using (var transacao = conexao.BeginTransaction())
+                {
+                    var instrucao1 = "Update Produto set Descricao = 'Caneta' where Id = 3";
+                    var instrucao2 = "Update Produto set Descricao = 'Lápis' where Id = 6";
+
+                    using (var comando = conexao.CreateCommand())
+                    {
+                        comando.Transaction = transacao;
+                        comando.CommandText = instrucao1;
+                        comando.ExecuteNonQuery();
+                    }
+
+                    //throw new Exception();
+
+                    using (var comando = conexao.CreateCommand())
+                    {
+                        comando.Transaction = transacao;
+                        comando.CommandText = instrucao2;
+                        comando.ExecuteNonQuery();
+                    }
+
+                    //if (true)
+                    //{
+                    //    transacao.Rollback();
+                    //}
+
+                    transacao.Commit();
+                }
+            }
         }
     }
 }
