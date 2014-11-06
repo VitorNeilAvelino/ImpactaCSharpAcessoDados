@@ -12,16 +12,13 @@ namespace Impacta.Repositorios.Ef.Designer
     using System;
     using System.Collections.Generic;
     
-    public partial class Cliente
+    public partial class ItensPedido
     {
-        public Cliente()
-        {
-            this.Pedidoes = new HashSet<Pedido>();
-        }
-    
         public int Id { get; set; }
+        public int Quantidade { get; set; }
+        public decimal PrecoUnitario { get; set; }
     
-        public virtual Pessoa Pessoa { get; set; }
-        public virtual ICollection<Pedido> Pedidoes { get; set; }
+        public virtual Pedido Pedido { get; set; }
+        public virtual Produto Produto { get; set; }
     }
 }
