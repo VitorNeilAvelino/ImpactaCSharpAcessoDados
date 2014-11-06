@@ -107,10 +107,10 @@
     <Compile Include="Pessoa.cs">
       <DependentUpon>Pedidos.tt</DependentUpon>
     </Compile>
-    <Compile Include="PessoaDocumento.cs">
+    <Compile Include="PessoaDocumentos.cs">
       <DependentUpon>Pedidos.tt</DependentUpon>
     </Compile>
-    <Compile Include="PessoaEndereco.cs">
+    <Compile Include="PessoaEnderecos.cs">
       <DependentUpon>Pedidos.tt</DependentUpon>
     </Compile>
     <Compile Include="Produto.cs">

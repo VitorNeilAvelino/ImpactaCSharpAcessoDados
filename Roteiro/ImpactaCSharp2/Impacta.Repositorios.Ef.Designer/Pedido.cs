@@ -16,7 +16,7 @@ namespace Impacta.Repositorios.Ef.Designer
     {
         public Pedido()
         {
-            this.ItensPedidoes = new HashSet<ItensPedido>();
+            this.ItensPedido = new HashSet<ItensPedido>();
         }
     
         public int Id { get; set; }
@@ -24,7 +24,7 @@ namespace Impacta.Repositorios.Ef.Designer
         public int Situacao { get; set; }
     
         public virtual Cliente Cliente { get; set; }
-        public virtual ICollection<ItensPedido> ItensPedidoes { get; set; }
+        public virtual ICollection<ItensPedido> ItensPedido { get; set; }
         public virtual Vendedor Vendedor { get; set; }
     }
 }

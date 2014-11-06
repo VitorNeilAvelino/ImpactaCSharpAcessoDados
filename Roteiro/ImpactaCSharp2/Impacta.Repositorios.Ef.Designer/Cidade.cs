@@ -16,13 +16,13 @@ namespace Impacta.Repositorios.Ef.Designer
     {
         public Cidade()
         {
-            this.PessoaEnderecos = new HashSet<PessoaEndereco>();
+            this.PessoaEnderecos = new HashSet<PessoaEnderecos>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
     
         public virtual Estado Estado { get; set; }
-        public virtual ICollection<PessoaEndereco> PessoaEnderecos { get; set; }
+        public virtual ICollection<PessoaEnderecos> PessoaEnderecos { get; set; }
     }
 }

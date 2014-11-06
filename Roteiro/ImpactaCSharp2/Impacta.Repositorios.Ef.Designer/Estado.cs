@@ -16,12 +16,12 @@ namespace Impacta.Repositorios.Ef.Designer
     {
         public Estado()
         {
-            this.Cidades = new HashSet<Cidade>();
+            this.Cidade = new HashSet<Cidade>();
         }
     
         public int Id { get; set; }
         public string Uf { get; set; }
     
-        public virtual ICollection<Cidade> Cidades { get; set; }
+        public virtual ICollection<Cidade> Cidade { get; set; }
     }
 }

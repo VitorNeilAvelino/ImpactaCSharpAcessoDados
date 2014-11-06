@@ -1,193 +1,263 @@
-﻿//using System;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using System.Linq;
-//using System.Collections.Generic;
+﻿using System;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-//namespace Impacta.Repositorios.Ef.Designer.Testes
-//{
-//    [TestClass]
-//    public class LinqTeste
-//    {
-//        [TestMethod]
-//        public void OrderByTeste()
-//        {
-//            using (var db = new OficinaEntities())
-//            {
-//                //var lista = from veiculo in _contexto.Veiculo
-//                //            //orderby veiculo.AnoModelo descending, veiculo.Modelo.Descricao
-//                //            orderby veiculo.AnoModelo
-//                //            select veiculo;
+namespace Impacta.Repositorios.Ef.Designer.Testes
+{
+    [TestClass]
+    public class LinqTeste
+    {
+        [TestMethod]
+        public void OrderByTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = "Select * from Produto order by Descricao, Custo desc";
 
-//                //var veiculos = db.Veiculo.OrderBy(v => v.AnoFabricacao);
-//                //var veiculos = db.Veiculo.OrderBy(v => v.AnoFabricacao).ThenBy(v => v.Modelo.Descricao);
-//                var veiculos = db.Veiculo.OrderBy(v => new { v.AnoFabricacao, v.Modelo.Descricao });
-//                //var veiculos = db.Veiculo.OrderByDescending(v => v.AnoFabricacao).ThenByDescending(v => v.Modelo.Descricao);
+                var produtos = from p in db.Produto
+                               orderby p.Descricao
+                               orderby p.Custo descending
+                               select p;
 
-//                foreach (var veiculo in veiculos)
-//                {
-//                    Console.WriteLine("{0} - {1} - {2}", veiculo.Placa, veiculo.AnoFabricacao, veiculo.Modelo.Descricao);
-//                }
-//            }
-//        }
+                //var produtosLambda = db.Produto.OrderBy(p => p.Id).OrderByDescending(p => p.Custo).ThenBy( p => p.Id);
+                var produtosLambda = db.Produto.OrderBy(p => new { p.Id, p.Descricao });
 
-//        [TestMethod]
-//        public void CountTeste()
-//        {
-//            using (var db = new OficinaEntities())
-//            {
-//                Console.WriteLine(db.Veiculo.Count());
-//                Console.WriteLine(db.Veiculo.Count(v => v.AnoFabricacao == 2014));
-//            }
-//        }
 
-//        [TestMethod]
-//        public void MinTeste()
-//        {
-//            using (var db = new OficinaEntities())
-//            {
-//                Console.WriteLine("Menor data de nascimento: {0}", db.Cliente.Min(c => c.DataNascimento));
+                foreach (var produto in produtos)
+                {
+                    Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
+                }
 
-//                var clienteMaisAntigo = db.Cliente.OrderBy(c => c.DataNascimento).First();
-//                Console.WriteLine("Cliente mais antigo: {0} - {1}", clienteMaisAntigo.Nome, clienteMaisAntigo.DataNascimento);
-//            }
-//        }
+                Console.WriteLine(new string('-', 50));
 
-//        [TestMethod]
-//        public void LikeTeste()
-//        {
-//            using (var db = new OficinaEntities())
-//            {
-//                db.Modelo
-//                    .Where(m => m.Descricao.Contains("c"))
-//                    .Where(m => m.Descricao.StartsWith("c"))
-//                    .Where(m => m.Descricao.EndsWith("c"))
-//                    .ToList()
-//                    .ForEach(m => Console.WriteLine(m.Descricao));
-//            }
-//        }
+                foreach (var produto in produtosLambda)
+                {
+                    Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
+                }
 
-//        [TestMethod]
-//        public void GroupByTeste()
-//        {
-//            using (var db = new OficinaEntities())
-//            {
-//                var agrupamento = db.Veiculo
-//                    .GroupBy(v => v.AnoModelo)
-//                    .Select(g => new { AnoModelo = g.Key, Total = g.Count() });
+                var produtosSql = db.Database.SqlQuery<Produto>(sql);
 
-//                agrupamento = db.Veiculo
-//                    .GroupBy(v => v.AnoModelo)
-//                    .Where(g => g.Count() > 1)
-//                    .Select(g => new { AnoModelo = g.Key, Total = g.Count() });
+                Console.WriteLine(new string('-', 50));
 
-//                var agrupamentoComDescricao = db.Veiculo
-//                    .GroupBy(v => new { v.AnoModelo, v.Modelo.Descricao })
-//                    .Select(g => new { AnoModelo = g.Key.AnoModelo, Descricao = g.Key.Descricao, Total = g.Count() });
+                foreach (var produto in produtosSql)
+                {
+                    Console.WriteLine("{0} - {1} - {2}", produto.Id, produto.Descricao, produto.Custo);
+                }
+            }
+        }
 
-//                foreach (var item in agrupamentoComDescricao)
-//                {
-//                    Console.WriteLine("{0} - {1} - {2}", item.Total, item.AnoModelo, item.Descricao);
-//                }
+        [TestMethod]
+        public void CountTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = "Select Count(*) from Produto";
 
-//                var agrupamentoSoma = db.Servico
-//                    .GroupBy(s => s.Veiculo)
-//                    .Select(g => new { g.Key.Placa, Total = g.Sum(s => s.Valor) });
+                var quantidadeProdutos = (from p in db.Produto
+                                          select p).Count();
 
-//                foreach (var veiculo in agrupamentoSoma)
-//                {
-//                    Console.WriteLine("{0} - {1}", veiculo.Placa, veiculo.Total);
-//                }
-//            }
-//        }
+                var quantidadeLambda = db.Produto.Count(p => p.TipoProduto.Descricao == "Papelaria");
 
-//        [TestMethod]
-//        public void DistinctTeste()
-//        {
-//            using (var db = new OficinaEntities())
-//            {
-//                foreach (var cor in db.Veiculo.Select(v => v.Cor).Distinct())
-//                {
-//                    Console.WriteLine(cor.Descricao);
-//                }
-//            }
-//        }
+                var quantidadeSql = db.Database.SqlQuery<int>(sql).FirstOrDefault();
 
-//        [TestMethod]
-//        public void JoinTeste()
-//        {
-//            var veiculos = new[] { 
-//                new { Placa = "ABC1111", ModeloId = 1 }, 
-//                new { Placa = "ABC2222", ModeloId = 2 }, 
-//                new { Placa = "ABC3333", ModeloId = 3 } 
-//            };
-//            var modelos = new[] { 
-//                new { Id = 1, Descricao = "Fiesta" }, 
-//                new { Id = 2, Descricao = "Corsa" } 
-//            };
+                Console.WriteLine("{0} - {1} - {2}", quantidadeProdutos, quantidadeLambda, quantidadeSql);
+            }
+        }
 
-//            var consulta = veiculos.Join(
-//                modelos,
-//                v => v.ModeloId,
-//                m => m.Id,
-//                (v, m) => new { Placa = v.Placa, Modelo = m.Descricao });
+        [TestMethod]
+        public void LikeTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = "Select * from Produto where Descricao like '%p%'";
 
-//            foreach (var item in consulta)
-//            {
-//                Console.WriteLine("{0} - {1}", item.Placa, item.Modelo);
-//            }
-//        }
+                var produtos = from p in db.Produto
+                               where p.Descricao.Contains("can")
+                               select p;
 
-//        [TestMethod]
-//        public void SelectManyTeste()
-//        {
-//            using (var db = new OficinaEntities())
-//            {
-//                foreach (var servico in db.Veiculo.Select(v => v.Servico))
-//                {
-//                    Console.WriteLine(servico);
-//                }
-//                foreach (var servico in db.Veiculo.SelectMany(v => v.Servico))
-//                {
-//                    Console.WriteLine(servico.Valor);
-//                }
-//            }
-//        }
+                var produtosLambda = db.Produto.Where(p => p.Descricao.Contains("bor"));
 
-//        [TestMethod]
-//        public void LeftJoinTeste()
-//        {
-//            var veiculos = new[] { 
-//                new { Placa = "ABC1111", ModeloId = 1 }, 
-//                new { Placa = "ABC2222", ModeloId = 2 }, 
-//                new { Placa = "ABC3333", ModeloId = 3 } 
-//            };
-//            var modelos = new[] { 
-//                new { Id = 1, Descricao = "Fiesta" }, 
-//                new { Id = 2, Descricao = "Corsa" } 
-//            };
+                var produtosSql = db.Database.SqlQuery<Produto>(sql);
 
-//            var consulta = veiculos.GroupJoin(
-//                modelos,
-//                v => v.ModeloId,
-//                m => m.Id,
-//                (v, ms) => new { Veiculo = v, Modelos = ms.DefaultIfEmpty() })
-//                .SelectMany(join => join.Modelos.Select(m => new { Placa = join.Veiculo.Placa, Modelo = m != null ? m.Descricao : null }));
+                foreach (var produto in produtosSql)
+                {
+                    Console.WriteLine(produto.Descricao);
+                }
+            }
+        }
 
-//            foreach (var item in consulta)
-//            {
-//                Console.WriteLine("{0} - {1}", item.Placa, item.Modelo);
-//            }
+        [TestMethod]
+        public void MinTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = "Select Min(Custo) from Produto";
 
-//            //foreach (var item in consulta)
-//            //{
-//            //    var modelo = item.Modelos.SingleOrDefault(m => m != null && m.Id == item.Veiculo.ModeloId);
-//            //    Console.WriteLine("{0} - {1}", item.Veiculo.Placa, modelo != null ? modelo.Descricao : null);
-//            //}
-//        }
-        
-//        // Transação
-//        //SQL
-//        // SEM LAMBDA
-//        //quando vai ao banco?
-//    }
-//}
+                var maiorCusto = (from p in db.Produto
+                                  select p).Max(p => p.Custo);
+
+                var custoMedio = db.Produto.Average(p => p.Custo);
+
+                var menorCusto = db.Database.SqlQuery<decimal>(sql).FirstOrDefault();
+
+                Console.WriteLine("{0} - {1} - {2}", maiorCusto, custoMedio, menorCusto);
+            }
+        }
+
+        [TestMethod]
+        public void GroupByTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = @"Select Count(P.TipoProduto_Id) as Total, TP.Descricao as Tipo from Produto P 
+                            inner join TipoProduto TP on TP.Id = P.TipoProduto_Id
+                            group by TP.Id, TP.Descricao";
+
+                var agrupamento = from p in db.Produto
+                                  group p by p.TipoProduto into grupo
+                                  //orderby grupo.Key.Descricao
+                                  //where grupo.Count() > 1
+                                  select new { Tipo = grupo.Key.Descricao, Total = grupo.Count() };
+
+                var agrupamentoLambda = db.Produto.GroupBy(p => p.TipoProduto).Select(grupo => new { Tipo = grupo.Key.Descricao, Total = grupo.Count() });
+
+                var agrupamentoSql = db.Database.SqlQuery<Agrupamento>(sql);
+
+                foreach (var item in agrupamentoSql)
+                {
+                    Console.WriteLine("{0}: {1}", item.Tipo, item.Total);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void DistinctTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = @"Select distinct TP.Descricao from Produto P 
+                            inner join TipoProduto TP on TP.Id = P.TipoProduto_Id";
+
+                var tiposDistintos = (from p in db.Produto
+                                      select p.TipoProduto.Descricao).Distinct();
+
+                var tiposDistintosLambda = db.Produto.Select(p => p.TipoProduto.Descricao).Distinct();
+
+                var tiposDistintosSql = db.Database.SqlQuery<string>(sql);
+
+                foreach (var tipo in tiposDistintosSql)
+                {
+                    Console.WriteLine(tipo);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void InTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = @"Select * from Produto where Id in(1, 6, 5, 9)";
+
+                var listaIds = new[] { 1, 6, 5, 9 };
+
+                var produtos = from p in db.Produto
+                               where listaIds.Contains(p.Id)
+                               select p;
+
+                var produtosLambda = db.Produto.Where(p => listaIds.Contains(p.Id));
+
+                var produtosSql = db.Database.SqlQuery<Produto>(sql);
+
+                foreach (var produto in produtosSql)
+                {
+                    Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void UnionTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = @"Select * from Produto where Id in(1, 6, 5, 9)
+                            union /*all*/ Select * from Produto where Id in(6, 17, 11)";
+
+                var listaIds1 = new[] { 1, 6, 5, 9 };
+                var listaIds2 = new[] { /*6,*/ 17, 11 };
+
+                var produtos1 = from p in db.Produto
+                               where listaIds1.Contains(p.Id)
+                               select p;
+
+                var produtos2 = from p in db.Produto
+                               where listaIds2.Contains(p.Id)
+                               select p;
+
+                var produtos = produtos1.Union(produtos2);
+
+                var produtosLambda = db.Produto.Where(p => listaIds1.Contains(p.Id))
+                    .Union(db.Produto.Where(p => listaIds2.Contains(p.Id)));
+                    //.Concat(db.Produto.Where(p => listaIds2.Contains(p.Id)));
+
+                var produtosSql = db.Database.SqlQuery<Produto>(sql);
+
+                foreach (var produto in produtosSql)
+                {
+                    Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TakeTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sql = @"Rodar o Express Profiler";
+
+                var produtos = (from p in db.Produto
+                                orderby p.Descricao
+                               select p).Skip(5).Take(5);
+
+                var produtosLambda = db.Produto.OrderBy(p => p.Descricao).Skip(2).Take(2);
+
+                foreach (var produto in produtosLambda)
+                {
+                    Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void JoinTeste()
+        {
+            var veiculos = new[] { 
+                            new { Placa = "ABC1111", ModeloId = 1 }, 
+                            new { Placa = "ABC2222", ModeloId = 2 }, 
+                            new { Placa = "ABC3333", ModeloId = 3 } 
+                        };
+
+            var modelos = new[] { 
+                            new { Id = 1, Descricao = "Fiesta" }, 
+                            new { Id = 2, Descricao = "Corsa" } 
+                        };
+
+            var consulta = from v in veiculos
+                           join m in modelos on v.ModeloId equals m.Id
+                           select new { Placa = v.Placa, Modelo = m.Descricao };
+
+            var consultaLambda = veiculos.Join(
+                modelos,
+                v => v.ModeloId,
+                m => m.Id,
+                (v, m) => new { Placa = v.Placa, Modelo = m.Descricao });
+
+            foreach (var item in consulta)
+            {
+                Console.WriteLine("{0} - {1}", item.Placa, item.Modelo);
+            }
+        }
+    }
+}
