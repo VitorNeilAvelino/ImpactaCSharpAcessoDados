@@ -25,16 +25,16 @@ namespace Impacta.Repositorios.Ef.Designer
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Cidade> Cidades { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Estado> Estadoes { get; set; }
-        public DbSet<ItensPedido> ItensPedidoes { get; set; }
-        public DbSet<Pedido> Pedidoes { get; set; }
-        public DbSet<Pessoa> Pessoas { get; set; }
-        public DbSet<PessoaDocumento> PessoaDocumentos { get; set; }
-        public DbSet<PessoaEndereco> PessoaEnderecos { get; set; }
-        public DbSet<Produto> Produtoes { get; set; }
-        public DbSet<TipoProduto> TipoProdutoes { get; set; }
-        public DbSet<Vendedor> Vendedors { get; set; }
+        public DbSet<Cidade> Cidade { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Estado> Estado { get; set; }
+        public DbSet<ItensPedido> ItensPedido { get; set; }
+        public DbSet<Pedido> Pedido { get; set; }
+        public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<PessoaDocumentos> PessoaDocumentos { get; set; }
+        public DbSet<PessoaEnderecos> PessoaEnderecos { get; set; }
+        public DbSet<Produto> Produto { get; set; }
+        public DbSet<TipoProduto> TipoProduto { get; set; }
+        public DbSet<Vendedor> Vendedor { get; set; }
     }
 }

@@ -16,19 +16,19 @@ namespace Impacta.Repositorios.Ef.Designer
     {
         public Pessoa()
         {
-            this.Clientes = new HashSet<Cliente>();
-            this.PessoaDocumentos = new HashSet<PessoaDocumento>();
-            this.PessoaEnderecos = new HashSet<PessoaEndereco>();
-            this.Vendedors = new HashSet<Vendedor>();
+            this.Cliente = new HashSet<Cliente>();
+            this.PessoaDocumentos = new HashSet<PessoaDocumentos>();
+            this.PessoaEnderecos = new HashSet<PessoaEnderecos>();
+            this.Vendedor = new HashSet<Vendedor>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
     
-        public virtual ICollection<Cliente> Clientes { get; set; }
-        public virtual ICollection<PessoaDocumento> PessoaDocumentos { get; set; }
-        public virtual ICollection<PessoaEndereco> PessoaEnderecos { get; set; }
-        public virtual ICollection<Vendedor> Vendedors { get; set; }
+        public virtual ICollection<Cliente> Cliente { get; set; }
+        public virtual ICollection<PessoaDocumentos> PessoaDocumentos { get; set; }
+        public virtual ICollection<PessoaEnderecos> PessoaEnderecos { get; set; }
+        public virtual ICollection<Vendedor> Vendedor { get; set; }
     }
 }

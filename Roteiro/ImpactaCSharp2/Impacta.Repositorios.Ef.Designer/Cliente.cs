@@ -16,12 +16,12 @@ namespace Impacta.Repositorios.Ef.Designer
     {
         public Cliente()
         {
-            this.Pedidoes = new HashSet<Pedido>();
+            this.Pedido = new HashSet<Pedido>();
         }
     
         public int Id { get; set; }
     
         public virtual Pessoa Pessoa { get; set; }
-        public virtual ICollection<Pedido> Pedidoes { get; set; }
+        public virtual ICollection<Pedido> Pedido { get; set; }
     }
 }

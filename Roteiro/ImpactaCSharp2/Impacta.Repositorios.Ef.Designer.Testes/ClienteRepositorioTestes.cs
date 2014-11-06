@@ -21,7 +21,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
 
                 cliente.Pessoa = pessoa;
 
-                db.Clientes.Add(cliente);
+                db.Cliente.Add(cliente);
                 db.SaveChanges();
             }
         }
@@ -31,9 +31,9 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         {
             using (var db = new PedidosEntities())
             {
-                var cliente = db.Clientes.Single(c => c.Id == 3);
+                var cliente = db.Cliente.Single(c => c.Id == 3);
 
-                var documento = new PessoaDocumento();
+                var documento = new PessoaDocumentos();
                 documento.Numero = "12845662858";
                 documento.Tipo = (int)TipoDocumento.Cpf;
 
@@ -49,7 +49,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         {
             using (var db = new PedidosEntities())
             {
-                var clientes = db.Clientes.Where(c => c.Pessoa.Nome.Contains("v"));
+                var clientes = db.Cliente.Where(c => c.Pessoa.Nome.Contains("v"));
 
                 foreach (var cliente in clientes)
                 {
@@ -70,11 +70,11 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         {
             using (var db = new PedidosEntities())
             {
-                var cliente = db.Clientes.Single(c => c.Id == 8);
+                var cliente = db.Cliente.Single(c => c.Id == 8);
                 var pessoa = cliente.Pessoa;
 
-                db.Clientes.Remove(cliente);
-                db.Pessoas.Remove(pessoa);
+                db.Cliente.Remove(cliente);
+                db.Pessoa.Remove(pessoa);
 
                 db.SaveChanges();
             }

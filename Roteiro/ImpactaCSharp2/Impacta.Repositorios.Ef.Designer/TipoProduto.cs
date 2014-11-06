@@ -16,12 +16,12 @@ namespace Impacta.Repositorios.Ef.Designer
     {
         public TipoProduto()
         {
-            this.Produtoes = new HashSet<Produto>();
+            this.Produto = new HashSet<Produto>();
         }
     
         public int Id { get; set; }
         public string Descricao { get; set; }
     
-        public virtual ICollection<Produto> Produtoes { get; set; }
+        public virtual ICollection<Produto> Produto { get; set; }
     }
 }
