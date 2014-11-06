@@ -50,11 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cidade.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Cliente.cs">
-      <DependentUpon>Oficina.tt</DependentUpon>
+      <DependentUpon>Pedidos.tt</DependentUpon>
     </Compile>
     <Compile Include="Cor.cs">
       <DependentUpon>Oficina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Estado.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItensPedido.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo.cs">
       <DependentUpon>Oficina.tt</DependentUpon>
@@ -77,15 +86,51 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Oficina.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pedido.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pedidos.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pedidos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pedidos.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pessoa.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PessoaDocumento.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PessoaEndereco.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Produto.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servico.cs">
       <DependentUpon>Oficina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoProduto.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoServico.cs">
       <DependentUpon>Oficina.tt</DependentUpon>
     </Compile>
     <Compile Include="Veiculo.cs">
       <DependentUpon>Oficina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedor.cs">
+      <DependentUpon>Pedidos.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +155,23 @@
       <LastGenOutput>Oficina.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <EntityDeploy Include="Pedidos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Pedidos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Pedidos.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Pedidos.edmx</DependentUpon>
+      <LastGenOutput>Pedidos.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Pedidos.edmx.diagram">
+      <DependentUpon>Pedidos.edmx</DependentUpon>
+    </None>
+    <None Include="Pedidos.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Pedidos.edmx</DependentUpon>
+      <LastGenOutput>Pedidos.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

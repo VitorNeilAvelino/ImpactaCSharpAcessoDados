@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="767e6455b5f540f3a1c915adf9f7278d" Name="Diagram1">
+        <EntityTypeShape EntityType="PedidosModel.Cidade" Width="1.5" PointX="3.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.Cliente" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.Estado" Width="1.5" PointX="1.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.ItensPedido" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.Pedido" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.Pessoa" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.PessoaDocumento" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.PessoaEndereco" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.Produto" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.TipoProduto" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PedidosModel.Vendedor" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="PedidosModel.FK_Cidade_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_PessoaEnderecos_Cidade" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_Cliente_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_Pedido_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_ItensPedido_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_ItensPedido_Produto" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_Pedido_Vendedor" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_PessoaDocumentos_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_PessoaEnderecos_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_Vendedor_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="PedidosModel.FK_Produto_TipoProduto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -64,10 +64,15 @@
     <Compile Include="DelegateTestes.cs" />
     <Compile Include="ModeloRepositorioTeste.cs" />
     <Compile Include="LinqTeste.cs" />
+    <Compile Include="ClienteRepositorioTestes.cs" />
     <Compile Include="VeiculoRepositorioTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
+      <Project>{ca5c0d85-79cc-47ca-9d34-3c7722d983ef}</Project>
+      <Name>Impacta.Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Impacta.Repositorios.Ef.Designer\Impacta.Repositorios.Ef.Designer.csproj">
       <Project>{f5c82a1f-849d-481f-ad36-4da72462d73e}</Project>
       <Name>Impacta.Repositorios.Ef.Designer</Name>

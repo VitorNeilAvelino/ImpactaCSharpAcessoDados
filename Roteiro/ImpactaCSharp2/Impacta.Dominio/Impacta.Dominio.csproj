@@ -62,6 +62,7 @@
     <Compile Include="QuantidadeEixos.cs" />
     <Compile Include="Servico.cs" />
     <Compile Include="TipoCliente.cs" />
+    <Compile Include="TipoDocumento.cs" />
     <Compile Include="TipoProduto.cs" />
     <Compile Include="TipoServico.cs" />
     <Compile Include="Veiculo.cs" />
