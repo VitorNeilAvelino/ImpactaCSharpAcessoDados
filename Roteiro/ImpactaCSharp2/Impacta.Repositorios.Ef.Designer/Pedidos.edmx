@@ -4,101 +4,44 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PedidosModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="PedidosModelStoreContainer">
-          <EntitySet Name="Cidade" EntityType="PedidosModel.Store.Cidade" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Cliente" EntityType="PedidosModel.Store.Cliente" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Estado" EntityType="PedidosModel.Store.Estado" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ItensPedido" EntityType="PedidosModel.Store.ItensPedido" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Pedido" EntityType="PedidosModel.Store.Pedido" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Pessoa" EntityType="PedidosModel.Store.Pessoa" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PessoaDocumentos" EntityType="PedidosModel.Store.PessoaDocumentos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PessoaEnderecos" EntityType="PedidosModel.Store.PessoaEnderecos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Produto" EntityType="PedidosModel.Store.Produto" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TipoProduto" EntityType="PedidosModel.Store.TipoProduto" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Vendedor" EntityType="PedidosModel.Store.Vendedor" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Cidade_Estado" Association="PedidosModel.Store.FK_Cidade_Estado">
-            <End Role="Estado" EntitySet="Estado" />
-            <End Role="Cidade" EntitySet="Cidade" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cliente_Pessoa" Association="PedidosModel.Store.FK_Cliente_Pessoa">
-            <End Role="Pessoa" EntitySet="Pessoa" />
-            <End Role="Cliente" EntitySet="Cliente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItensPedido_Pedido" Association="PedidosModel.Store.FK_ItensPedido_Pedido">
-            <End Role="Pedido" EntitySet="Pedido" />
-            <End Role="ItensPedido" EntitySet="ItensPedido" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ItensPedido_Produto" Association="PedidosModel.Store.FK_ItensPedido_Produto">
-            <End Role="Produto" EntitySet="Produto" />
-            <End Role="ItensPedido" EntitySet="ItensPedido" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedido_Cliente" Association="PedidosModel.Store.FK_Pedido_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Pedido" EntitySet="Pedido" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedido_Vendedor" Association="PedidosModel.Store.FK_Pedido_Vendedor">
-            <End Role="Vendedor" EntitySet="Vendedor" />
-            <End Role="Pedido" EntitySet="Pedido" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PessoaDocumentos_Pessoa" Association="PedidosModel.Store.FK_PessoaDocumentos_Pessoa">
-            <End Role="Pessoa" EntitySet="Pessoa" />
-            <End Role="PessoaDocumentos" EntitySet="PessoaDocumentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PessoaEnderecos_Cidade" Association="PedidosModel.Store.FK_PessoaEnderecos_Cidade">
-            <End Role="Cidade" EntitySet="Cidade" />
-            <End Role="PessoaEnderecos" EntitySet="PessoaEnderecos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PessoaEnderecos_Pessoa" Association="PedidosModel.Store.FK_PessoaEnderecos_Pessoa">
-            <End Role="Pessoa" EntitySet="Pessoa" />
-            <End Role="PessoaEnderecos" EntitySet="PessoaEnderecos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Produto_TipoProduto" Association="PedidosModel.Store.FK_Produto_TipoProduto">
-            <End Role="TipoProduto" EntitySet="TipoProduto" />
-            <End Role="Produto" EntitySet="Produto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vendedor_Pessoa" Association="PedidosModel.Store.FK_Vendedor_Pessoa">
-            <End Role="Pessoa" EntitySet="Pessoa" />
-            <End Role="Vendedor" EntitySet="Vendedor" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="PedidosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cidade">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Estado_Id" Type="int" Nullable="false" />
-          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pessoa_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Estado">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Uf" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uf" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="ItensPedido">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pedido_Id" Type="int" Nullable="false" />
           <Property Name="Produto_Id" Type="int" Nullable="false" />
           <Property Name="Quantidade" Type="int" Nullable="false" />
-          <Property Name="PrecoUnitario" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="PrecoUnitario" Type="decimal" Precision="9" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cliente_Id" Type="int" Nullable="false" />
           <Property Name="Vendedor_Id" Type="int" Nullable="false" />
           <Property Name="DataEmissao" Type="datetime" Nullable="false" />
@@ -108,57 +51,58 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="DataNascimento" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="PessoaDocumentos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pessoa_Id" Type="int" Nullable="false" />
           <Property Name="Tipo" Type="int" Nullable="false" />
-          <Property Name="Numero" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Numero" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PessoaEnderecos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pessoa_Id" Type="int" Nullable="false" />
           <Property Name="Cidade_Id" Type="int" Nullable="false" />
           <Property Name="Tipo" Type="int" Nullable="false" />
-          <Property Name="Logradouro" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Bairro" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Cep" Type="char" Nullable="false" MaxLength="8" />
+          <Property Name="Logradouro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bairro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cep" Type="char" MaxLength="8" Nullable="false" />
         </EntityType>
         <EntityType Name="Produto">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoProduto_Id" Type="int" Nullable="false" />
-          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Custo" Type="decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Custo" Type="decimal" Precision="9" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoProduto">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Vendedor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pessoa_Id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Cidade_Estado">
-          <End Role="Estado" Type="PedidosModel.Store.Estado" Multiplicity="1" />
-          <End Role="Cidade" Type="PedidosModel.Store.Cidade" Multiplicity="*" />
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Estado">
               <PropertyRef Name="Id" />
@@ -169,8 +113,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cliente_Pessoa">
-          <End Role="Pessoa" Type="PedidosModel.Store.Pessoa" Multiplicity="1" />
-          <End Role="Cliente" Type="PedidosModel.Store.Cliente" Multiplicity="*" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pessoa">
               <PropertyRef Name="Id" />
@@ -181,8 +125,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ItensPedido_Pedido">
-          <End Role="Pedido" Type="PedidosModel.Store.Pedido" Multiplicity="1" />
-          <End Role="ItensPedido" Type="PedidosModel.Store.ItensPedido" Multiplicity="*" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="ItensPedido" Type="Self.ItensPedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pedido">
               <PropertyRef Name="Id" />
@@ -193,8 +137,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ItensPedido_Produto">
-          <End Role="Produto" Type="PedidosModel.Store.Produto" Multiplicity="1" />
-          <End Role="ItensPedido" Type="PedidosModel.Store.ItensPedido" Multiplicity="*" />
+          <End Role="Produto" Type="Self.Produto" Multiplicity="1" />
+          <End Role="ItensPedido" Type="Self.ItensPedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Produto">
               <PropertyRef Name="Id" />
@@ -205,8 +149,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pedido_Cliente">
-          <End Role="Cliente" Type="PedidosModel.Store.Cliente" Multiplicity="1" />
-          <End Role="Pedido" Type="PedidosModel.Store.Pedido" Multiplicity="*" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cliente">
               <PropertyRef Name="Id" />
@@ -217,8 +161,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pedido_Vendedor">
-          <End Role="Vendedor" Type="PedidosModel.Store.Vendedor" Multiplicity="1" />
-          <End Role="Pedido" Type="PedidosModel.Store.Pedido" Multiplicity="*" />
+          <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vendedor">
               <PropertyRef Name="Id" />
@@ -229,10 +173,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PessoaDocumentos_Pessoa">
-          <End Role="Pessoa" Type="PedidosModel.Store.Pessoa" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PessoaDocumentos" Type="PedidosModel.Store.PessoaDocumentos" Multiplicity="*" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="1" />
+          <End Role="PessoaDocumentos" Type="Self.PessoaDocumentos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pessoa">
               <PropertyRef Name="Id" />
@@ -243,8 +185,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PessoaEnderecos_Cidade">
-          <End Role="Cidade" Type="PedidosModel.Store.Cidade" Multiplicity="1" />
-          <End Role="PessoaEnderecos" Type="PedidosModel.Store.PessoaEnderecos" Multiplicity="*" />
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="1" />
+          <End Role="PessoaEnderecos" Type="Self.PessoaEnderecos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cidade">
               <PropertyRef Name="Id" />
@@ -255,10 +197,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PessoaEnderecos_Pessoa">
-          <End Role="Pessoa" Type="PedidosModel.Store.Pessoa" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PessoaEnderecos" Type="PedidosModel.Store.PessoaEnderecos" Multiplicity="*" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="1" />
+          <End Role="PessoaEnderecos" Type="Self.PessoaEnderecos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pessoa">
               <PropertyRef Name="Id" />
@@ -269,8 +209,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Produto_TipoProduto">
-          <End Role="TipoProduto" Type="PedidosModel.Store.TipoProduto" Multiplicity="1" />
-          <End Role="Produto" Type="PedidosModel.Store.Produto" Multiplicity="*" />
+          <End Role="TipoProduto" Type="Self.TipoProduto" Multiplicity="1" />
+          <End Role="Produto" Type="Self.Produto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoProduto">
               <PropertyRef Name="Id" />
@@ -281,8 +221,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Vendedor_Pessoa">
-          <End Role="Pessoa" Type="PedidosModel.Store.Pessoa" Multiplicity="1" />
-          <End Role="Vendedor" Type="PedidosModel.Store.Vendedor" Multiplicity="*" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="1" />
+          <End Role="Vendedor" Type="Self.Vendedor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pessoa">
               <PropertyRef Name="Id" />
@@ -292,8 +232,64 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityContainer Name="PedidosModelStoreContainer">
+          <EntitySet Name="Cidade" EntityType="Self.Cidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItensPedido" EntityType="Self.ItensPedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PessoaDocumentos" EntityType="Self.PessoaDocumentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PessoaEnderecos" EntityType="Self.PessoaEnderecos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoProduto" EntityType="Self.TipoProduto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendedor" EntityType="Self.Vendedor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cidade_Estado" Association="Self.FK_Cidade_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Pessoa" Association="Self.FK_Cliente_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItensPedido_Pedido" Association="Self.FK_ItensPedido_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="ItensPedido" EntitySet="ItensPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItensPedido_Produto" Association="Self.FK_ItensPedido_Produto">
+            <End Role="Produto" EntitySet="Produto" />
+            <End Role="ItensPedido" EntitySet="ItensPedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Cliente" Association="Self.FK_Pedido_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Vendedor" Association="Self.FK_Pedido_Vendedor">
+            <End Role="Vendedor" EntitySet="Vendedor" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PessoaDocumentos_Pessoa" Association="Self.FK_PessoaDocumentos_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="PessoaDocumentos" EntitySet="PessoaDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PessoaEnderecos_Cidade" Association="Self.FK_PessoaEnderecos_Cidade">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="PessoaEnderecos" EntitySet="PessoaEnderecos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PessoaEnderecos_Pessoa" Association="Self.FK_PessoaEnderecos_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="PessoaEnderecos" EntitySet="PessoaEnderecos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produto_TipoProduto" Association="Self.FK_Produto_TipoProduto">
+            <End Role="TipoProduto" EntitySet="TipoProduto" />
+            <End Role="Produto" EntitySet="Produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendedor_Pessoa" Association="Self.FK_Vendedor_Pessoa">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Vendedor" EntitySet="Vendedor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PedidosModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -411,6 +407,7 @@
           <NavigationProperty Name="PessoaDocumentos" Relationship="PedidosModel.FK_PessoaDocumentos_Pessoa" FromRole="Pessoa" ToRole="PessoaDocumentos" />
           <NavigationProperty Name="PessoaEnderecos" Relationship="PedidosModel.FK_PessoaEnderecos_Pessoa" FromRole="Pessoa" ToRole="PessoaEnderecos" />
           <NavigationProperty Name="Vendedor" Relationship="PedidosModel.FK_Vendedor_Pessoa" FromRole="Pessoa" ToRole="Vendedor" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="PessoaDocumentos">
           <Key>
@@ -557,6 +554,7 @@
           <EntitySetMapping Name="Pessoa">
             <EntityTypeMapping TypeName="PedidosModel.Pessoa">
               <MappingFragment StoreEntitySet="Pessoa">
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -712,6 +710,7 @@
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
