@@ -188,18 +188,18 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                 var listaIds2 = new[] { /*6,*/ 17, 11 };
 
                 var produtos1 = from p in db.Produto
-                               where listaIds1.Contains(p.Id)
-                               select p;
+                                where listaIds1.Contains(p.Id)
+                                select p;
 
                 var produtos2 = from p in db.Produto
-                               where listaIds2.Contains(p.Id)
-                               select p;
+                                where listaIds2.Contains(p.Id)
+                                select p;
 
                 var produtos = produtos1.Union(produtos2);
 
                 var produtosLambda = db.Produto.Where(p => listaIds1.Contains(p.Id))
                     .Union(db.Produto.Where(p => listaIds2.Contains(p.Id)));
-                    //.Concat(db.Produto.Where(p => listaIds2.Contains(p.Id)));
+                //.Concat(db.Produto.Where(p => listaIds2.Contains(p.Id)));
 
                 var produtosSql = db.Database.SqlQuery<Produto>(sql);
 
@@ -219,7 +219,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
 
                 var produtos = (from p in db.Produto
                                 orderby p.Descricao
-                               select p).Skip(5).Take(5);
+                                select p).Skip(5).Take(5);
 
                 var produtosLambda = db.Produto.OrderBy(p => p.Descricao).Skip(2).Take(2);
 
@@ -231,12 +231,37 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         }
 
         [TestMethod]
+        public void WhereVsSelectTeste()
+        {
+            using (var db = new PedidosEntities())
+            {
+                var sqlWhere = @"Select * from Produto where Custo > 12.50";
+                var sqlSelect = "Select Id, Descricao from Produto";
+
+                var produtosWhere = from p in db.Produto
+                                    where p.Custo > 12.5M
+                                    select p;
+
+                var produtosSelect = from p in db.Produto
+                                     select new { p.Id, p.Descricao };
+
+                var whereLambda = db.Produto.Where(p => p.Custo > 12.5M);
+                var selectLambda = db.Produto.Select(p => new { p.Id, p.Descricao });
+
+                foreach (var produto in db.Produto)
+                {
+                    Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
+                }
+            }
+        }
+
+        [TestMethod]
         public void JoinTeste()
         {
             var veiculos = new[] { 
-                            new { Placa = "ABC1111", ModeloId = 1 }, 
-                            new { Placa = "ABC2222", ModeloId = 2 }, 
-                            new { Placa = "ABC3333", ModeloId = 3 } 
+                            new { Placa = "ABC1111", Modelo_Id = 1 }, 
+                            new { Placa = "ABC2222", Modelo_Id = 2 }, 
+                            new { Placa = "ABC3333", Modelo_Id = 3 } 
                         };
 
             var modelos = new[] { 
@@ -245,14 +270,43 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                         };
 
             var consulta = from v in veiculos
-                           join m in modelos on v.ModeloId equals m.Id
+                           join m in modelos on v.Modelo_Id equals m.Id
                            select new { Placa = v.Placa, Modelo = m.Descricao };
 
             var consultaLambda = veiculos.Join(
                 modelos,
-                v => v.ModeloId,
+                v => v.Modelo_Id,
                 m => m.Id,
                 (v, m) => new { Placa = v.Placa, Modelo = m.Descricao });
+
+            foreach (var item in consulta)
+            {
+                Console.WriteLine("{0} - {1}", item.Placa, item.Modelo);
+            }
+        }
+
+        [TestMethod]
+        public void LeftJoinTeste()
+        {
+            var veiculos = new[] { 
+                            new { Placa = "ABC1111", Modelo_Id = 1 }, 
+                            new { Placa = "ABC2222", Modelo_Id = 2 }, 
+                            new { Placa = "ABC3333", Modelo_Id = 3 } 
+                        };
+
+            var modelos = new[] { 
+                            new { Id = 1, Descricao = "Fiesta" }, 
+                            new { Id = 2, Descricao = "Corsa" } 
+                        };
+
+            var consulta = from v in veiculos
+                           join m in modelos on v.Modelo_Id equals m.Id into leftJoin
+                           from modeloLeft in leftJoin.DefaultIfEmpty()
+                           select new
+                           {
+                               Placa = v.Placa,
+                               Modelo = (modeloLeft == null ? string.Empty : modeloLeft.Descricao)
+                           };
 
             foreach (var item in consulta)
             {
