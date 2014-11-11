@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Impacta.Dominio;
+using System.Transactions;
 
 namespace Impacta.Repositorios.Ef.Designer.Testes
 {
@@ -11,7 +12,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         [TestMethod]
         public void InserirTeste()
         {
-            using (var db = new PedidosEntities())
+            using (var contexto = new PedidosEntities())
             {
                 var cliente = new Cliente();
 
@@ -21,8 +22,8 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
 
                 cliente.Pessoa = pessoa;
 
-                db.Cliente.Add(cliente);
-                db.SaveChanges();
+                contexto.Cliente.Add(cliente);
+                contexto.SaveChanges();
             }
         }
 
@@ -77,6 +78,38 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                 db.Pessoa.Remove(pessoa);
 
                 db.SaveChanges();
+            }
+        }
+
+        [TestMethod]
+        public void AtualizarComTransacao()
+        {
+            using (var contexto = new PedidosEntities())
+            {
+                //contexto.SaveChanges() é transacionado com READ COMMITED.
+
+                using (var transacao = new TransactionScope(TransactionScopeOption.Required,
+                    new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
+                {
+                    var vendedor = new Vendedor();
+
+                    var pessoa = new Pessoa();
+                    pessoa.Email = "avelino.vitor@gmail.com";
+                    pessoa.Nome = "Outro Vendedor";
+
+                    vendedor.Pessoa = pessoa;
+
+                    contexto.Vendedor.Add(vendedor);
+
+                    //throw new Exception();
+                    //rollback: transacao.Dispose();
+
+                    vendedor.Pessoa.PessoaDocumentos.Add(new PessoaDocumentos { Numero = "1745", Tipo = (int)TipoDocumento.Cpf });
+
+                    contexto.SaveChanges();
+
+                    transacao.Complete();
+                }
             }
         }
     }

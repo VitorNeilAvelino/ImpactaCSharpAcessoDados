@@ -14,6 +14,7 @@ namespace Impacta.Repositorios.SqlServer.Proc
                 return new SqlConnection(ConfigurationManager.ConnectionStrings["PedidosConnectionString"].ConnectionString);
             }
         }
+
         public void ExecuteNonQuery(NomeProcedure nomeProcedure, List<SqlParameter> parametros)
         {
             using (var conexao = PedidosConexao)

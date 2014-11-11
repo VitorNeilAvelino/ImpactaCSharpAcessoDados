@@ -25,7 +25,6 @@ namespace Impacta.Repositorios.Ef.Designer
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
-        public System.DateTime DataNascimento { get; set; }
     
         public virtual ICollection<Cliente> Cliente { get; set; }
         public virtual ICollection<PessoaDocumentos> PessoaDocumentos { get; set; }
