@@ -13,9 +13,9 @@
         </Grid.Background>
         <GroupBox Header="Pedido" VerticalAlignment="Top" Margin="10,0" Padding="10">
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                <Label Content="Vendedor"/>
-                <ComboBox x:Name="vendedorComboBox" Width="200" ItemsSource="{Binding Vendedores}" DisplayMemberPath="{Binding Pessoa.Nome}" SelectedValuePath="Id"/>
-                <Label Content="CPF do Cliente"/>
+                <Label Content="Vendedor" VerticalAlignment="Center"/>
+                <ComboBox x:Name="vendedorComboBox" Width="200" ItemsSource="{Binding Vendedores}" DisplayMemberPath="Pessoa.Nome" SelectedValuePath="Id"/>
+                <Label Content="CPF do Cliente" VerticalAlignment="Center"/>
                 <TextBox x:Name="cpfCliente" Height="23" TextWrapping="Wrap" Text="" Width="100" ToolTip="CPF do cliente" />
                 <Label x:Name="nomeCliente" Content="" Width="200" Margin="10,0,0,0"/>
             </StackPanel>

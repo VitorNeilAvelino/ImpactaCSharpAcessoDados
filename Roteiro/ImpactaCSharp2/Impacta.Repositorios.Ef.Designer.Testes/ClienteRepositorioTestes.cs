@@ -96,7 +96,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                     var pessoa = new Pessoa();
                     pessoa.Email = "avelino.vitor@gmail.com";
                     pessoa.Nome = "Outro Vendedor";
-
+                    
                     vendedor.Pessoa = pessoa;
 
                     contexto.Vendedor.Add(vendedor);

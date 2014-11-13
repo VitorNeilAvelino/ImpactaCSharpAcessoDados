@@ -15,18 +15,26 @@ namespace CSharp2.Capitulo10.Wpf.Produtos
             PopularPropriedades();
         }
 
+        //PedidosEntities _contexto = new PedidosEntities();
+
         private void PopularPropriedades()
         {
-            using (var contexto = new PedidosEntities())
+            using (var _contexto = new PedidosEntities())
             {
-                Vendedores = new ObservableCollection<Vendedor>(contexto.Vendedor.ToList());
+                Vendedores = _contexto.Vendedor.Include("Pessoa").ToList();
                 PropertyChanged(this, new PropertyChangedEventArgs("Vendedores"));
             }
         }
 
-        public ObservableCollection<Vendedor> Vendedores { get; set; }
+        public List<Vendedor> Vendedores { get; set; }
         public Cliente Cliente { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        //protected override void OnClosing(CancelEventArgs e)
+        //{
+        //    //_contexto.Dispose();
+        //    base.OnClosing(e);
+        //}
     }
 }
