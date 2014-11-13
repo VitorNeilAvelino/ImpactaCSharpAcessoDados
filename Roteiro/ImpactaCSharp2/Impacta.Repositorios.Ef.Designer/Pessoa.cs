@@ -12,7 +12,7 @@ namespace Impacta.Repositorios.Ef.Designer
     using System;
     using System.Collections.Generic;
     
-    [Serializable]
+    //[Serializable]
     public partial class Pessoa
     {
         public Pessoa()
