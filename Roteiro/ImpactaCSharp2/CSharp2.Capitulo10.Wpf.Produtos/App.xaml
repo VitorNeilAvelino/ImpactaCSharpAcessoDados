@@ -1,0 +1,8 @@
+﻿<Application x:Class="CSharp2.Capitulo10.Wpf.Produtos.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="PedidosWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary Source="Temas\ExpressionDark.xaml"></ResourceDictionary>
+    </Application.Resources>
+</Application>
