@@ -32,7 +32,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         {
             using (var db = new PedidosEntities())
             {
-                var cliente = db.Cliente.Single(c => c.Id == 3);
+                var cliente = db.Cliente.Single(c => c.Id == 1);
 
                 var documento = new PessoaDocumentos();
                 documento.Numero = "12845662858";
