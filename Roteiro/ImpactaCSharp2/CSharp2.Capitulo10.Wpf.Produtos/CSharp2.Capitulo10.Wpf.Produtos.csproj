@@ -82,31 +82,31 @@
       <DependentUpon>PedidosWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Temas\BureauBlack.xaml">
+    <Page Include="Themes\BureauBlack.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Temas\BureauBlue.xaml">
+    <Page Include="Themes\BureauBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Temas\ExpressionDark.xaml">
+    <Page Include="Themes\ExpressionDark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Temas\ExpressionLight.xaml">
+    <Page Include="Themes\ExpressionLight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Temas\ShinyBlue.xaml">
+    <Page Include="Themes\ShinyBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Temas\ShinyRed.xaml">
+    <Page Include="Themes\ShinyRed.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Temas\WhistlerBlue.xaml">
+    <Page Include="Themes\WhistlerBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -140,6 +140,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Impacta.Dominio\Impacta.Dominio.csproj">
+      <Project>{ca5c0d85-79cc-47ca-9d34-3c7722d983ef}</Project>
+      <Name>Impacta.Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Impacta.Repositorios.Ef.Designer\Impacta.Repositorios.Ef.Designer.csproj">
       <Project>{f5c82a1f-849d-481f-ad36-4da72462d73e}</Project>
       <Name>Impacta.Repositorios.Ef.Designer</Name>
