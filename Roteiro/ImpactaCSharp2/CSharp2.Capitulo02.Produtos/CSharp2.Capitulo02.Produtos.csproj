@@ -73,6 +73,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PedidosDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ProdutoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProdutoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ProdutoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +104,7 @@
     <EmbeddedResource Include="ProdutoForm.resx">
       <DependentUpon>ProdutoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoProcedureReport.rdlc" />
     <EmbeddedResource Include="ProdutoReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -127,6 +133,18 @@
     <None Include="PedidosDataSet.xss">
       <DependentUpon>PedidosDataSet.xsd</DependentUpon>
     </None>
+    <None Include="ProdutoDataSet.xsc">
+      <DependentUpon>ProdutoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProdutoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProdutoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProdutoDataSet.xss">
+      <DependentUpon>ProdutoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Produtos.rdl" />
     <None Include="Properties\DataSources\Impacta.Dominio.Produto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
