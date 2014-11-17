@@ -13,8 +13,9 @@ namespace CSharp2.Capitulo02.Produtos
 
         private void RelatorioForm_Load(object sender, EventArgs e)
         {
+            this.SelecionarProdutoTableAdapter.Fill(this.ProdutoDataSet.SelecionarProduto, null);
+            //ProdutoBindingSource.DataSource = new ProdutoRepositorio().Selecionar();
             this.reportViewer.RefreshReport();
-            ProdutoBindingSource.DataSource = new ProdutoRepositorio().Selecionar();
         }
     }
 }
