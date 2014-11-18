@@ -50,6 +50,7 @@
     <Compile Include="Caminhao.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Cor.cs" />
+    <Compile Include="Cotacao.cs" />
     <Compile Include="IClienteRepositorio.cs" />
     <Compile Include="ICrudBase.cs" />
     <Compile Include="IEntidade.cs" />

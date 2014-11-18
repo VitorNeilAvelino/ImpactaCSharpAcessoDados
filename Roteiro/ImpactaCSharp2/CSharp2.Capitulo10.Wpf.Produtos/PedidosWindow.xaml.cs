@@ -29,7 +29,7 @@ namespace CSharp2.Capitulo10.Wpf.Produtos
             using (var _contexto = new PedidosEntities())
             {
                 Vendedores = _contexto.Vendedor.Include("Pessoa").ToList();
-                Produtos = _contexto.Produto.ToList();
+                Produtos = _contexto.Produto.Include("TipoProduto").ToList();
 
                 PropertyChanged(this, new PropertyChangedEventArgs("Vendedores"));
                 PropertyChanged(this, new PropertyChangedEventArgs("Produtos"));

@@ -1,7 +1,8 @@
 ﻿<Window x:Class="CSharp2.Capitulo10.Wpf.Produtos.PedidosWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
-        Title="Pedidos" Height="433" Width="854.531"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Pedidos" Height="433" Width="1207.531"
         DataContext="{Binding RelativeSource={RelativeSource Self}}" FontSize="14">
     <Grid>
         <Grid.Background>
@@ -18,17 +19,26 @@
                     <ComboBox x:Name="vendedorComboBox" Width="200" ItemsSource="{Binding Vendedores}" 
                           DisplayMemberPath="Pessoa.Nome" SelectedValuePath="Id"/>
                     <Label Content="CPF do Cliente:" VerticalAlignment="Center" Margin="10, 0"/>
-                    <TextBox x:Name="cpfCliente" Height="23" TextWrapping="Wrap" Width="100" KeyDown="cpfCliente_KeyDown" >
-                    </TextBox>
-                    <Label x:Name="nomeCliente" Width="200" Margin="10,0" 
-                       VerticalAlignment="Center" />
+                    <TextBox x:Name="cpfCliente" Height="23" TextWrapping="Wrap" Width="100" KeyDown="cpfCliente_KeyDown" />
+                    <Label x:Name="nomeCliente" Width="200" Margin="10,0" VerticalAlignment="Center" />
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Itens" VerticalAlignment="Top" Margin="10,10,10,0" Padding="10">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Produto:" VerticalAlignment="Center" Margin="10, 0"/>
-                    <ComboBox x:Name="produtosComboBox" Width="200" ItemsSource="{Binding Produtos}" 
+                    <ComboBox x:Name="produtosComboBox" Width="150" ItemsSource="{Binding Produtos}" 
                           DisplayMemberPath="Descricao" SelectedValuePath="Id" IsEditable="True"/>
+                    <Label DataContext="{Binding ElementName=produtosComboBox, Path=SelectedItem}" Content="{Binding Path=TipoProduto.Descricao}" Width="100" Margin="10,0" 
+                           VerticalAlignment="Center" />
+                    <Label Content="Quantidade:" VerticalAlignment="Center" Margin="10, 0"/>
+                    <TextBox x:Name="quantidadeTextBox" Height="23" TextWrapping="Wrap" Width="50" Text="1" TextAlignment="Center"/>
+                    <Label Content="Preço:" VerticalAlignment="Center" Margin="10, 0"/>
+                    <Label DataContext="{Binding ElementName=produtosComboBox, Path=SelectedItem}" Content="{Binding Path=Custo}" Margin="10,0" 
+                           VerticalAlignment="Center" />
+                    <Label Content="Total:" VerticalAlignment="Center" Margin="10, 0"/>
+                    <TextBox Height="23" TextWrapping="Wrap" IsReadOnly="True" DataContext="{Binding ElementName=produtosComboBox, Path=SelectedItem}" Width="100"
+                             Text="{Binding Path=Custo}"/>
+                    <Button Content="+" FontSize="20" Width="40" Margin="10, 0" ToolTip="Adicionar"/>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
