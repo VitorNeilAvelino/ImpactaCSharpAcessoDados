@@ -20,7 +20,7 @@
         </DataGrid>
         <StatusBar VerticalAlignment="Bottom" Height="25">
             <StatusBarItem HorizontalAlignment="Right">
-                <ProgressBar x:Name="cotacoesProgressBar" Height="17" Width="100" >
+                <ProgressBar x:Name="cotacoesProgressBar" Height="17" Width="100" ValueChanged="cotacoesProgressBar_ValueChanged" >
                     <ProgressBar.Style>
                         <Style TargetType="{x:Type ProgressBar}">
                             <Setter Property="Foreground" Value="DarkGreen"/>

@@ -5,6 +5,8 @@ using System.Xml.Linq;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CSharp2.Capitulo08.Threads
 {
@@ -18,6 +20,7 @@ namespace CSharp2.Capitulo08.Threads
         public List<Cotacao> Cotacoes { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         private CotacoesServiceReference.StockQuoteSoapClient _cotacaoServico = new CotacoesServiceReference.StockQuoteSoapClient("StockQuoteSoap12");
+        DateTime _inicio = DateTime.Now;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -34,25 +37,46 @@ namespace CSharp2.Capitulo08.Threads
 
         private void ObterCotacoes()
         {
-            //var processoUi = Application.Current.Dispatcher;
+            var processoUi = Application.Current.Dispatcher;
 
-            //foreach (var cotacao in Cotacoes)
-            //{
-            //    ThreadPool.QueueUserWorkItem(
+            //ThreadPool.QueueUserWorkItem(
             //    delegate // t =>
             //    {
-            //        ObterCotacao(cotacao);
-            //        processoUi.BeginInvoke(new Action(AtualizarInterface));
+            //        Parallel.ForEach<Cotacao>(Cotacoes, c =>
+            //        {
+            //            ObterCotacao(c);
+            //            processoUi.BeginInvoke(new Action(AtualizarInterface));
+            //        });
             //    });
-            //}
+
+            //Cotacoes.AsParallel().ForAll<Cotacao>(c => { ObterCotacao(c); processoUi.BeginInvoke(new Action(AtualizarInterface)); });
+
+            //Parallel.ForEach<Cotacao>(Cotacoes, c =>
+            //{
+            //    ObterCotacao(c);
+            //    processoUi.BeginInvoke(new Action(AtualizarInterface));
+            //});
 
             foreach (var cotacao in Cotacoes)
             {
-                ObterCotacao(cotacao);
+                ThreadPool.QueueUserWorkItem(
+                delegate // t =>
+                {
+                    ObterCotacao(cotacao);
+                    processoUi.BeginInvoke(new Action(AtualizarInterface));
+                    //processoUi.BeginInvoke(new Action(() => AtualizarInterface()));
+                    //processoUi.Invoke(new Action(AtualizarInterface));
+                });
             }
 
-            PropertyChanged(this, new PropertyChangedEventArgs("Cotacoes"));
-            cotacaoesBusyIndicator.IsBusy = false;
+            //foreach (var cotacao in Cotacoes)
+            //{
+            //    ObterCotacao(cotacao);
+            //}
+
+            //PropertyChanged(this, new PropertyChangedEventArgs("Cotacoes"));
+            //cotacaoesBusyIndicator.IsBusy = false;
+            //MessageBox.Show((DateTime.Now - _inicio).ToString());
         }
 
         private void AtualizarInterface()
@@ -76,6 +100,14 @@ namespace CSharp2.Capitulo08.Threads
 
             cotacao.Valor = Convert.ToDecimal(valor);
             cotacao.NomeEmpresa = nome;
+        }
+
+        private void cotacoesProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (e.NewValue >= 100)
+            {
+                MessageBox.Show((DateTime.Now - _inicio).ToString());
+            }
         }
     }
 }
