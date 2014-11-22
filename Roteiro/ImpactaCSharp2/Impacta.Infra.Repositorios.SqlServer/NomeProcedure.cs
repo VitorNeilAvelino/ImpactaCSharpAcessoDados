@@ -4,6 +4,7 @@
     {
         ExcluirProduto = 1,
         AtualizarProduto = 2,
-        SelecionarProduto = 3
+        SelecionarProduto = 3,
+        ContarProdutos
     }
 }

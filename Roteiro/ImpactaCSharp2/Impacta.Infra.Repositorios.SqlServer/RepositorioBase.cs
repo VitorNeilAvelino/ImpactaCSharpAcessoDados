@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -33,6 +34,47 @@ namespace Impacta.Repositorios.SqlServer.Proc
 
                     comando.ExecuteNonQuery();
                 }
+            }
+        }
+
+        protected IEnumerable<T> ExecuteReader<T>(NomeProcedure nomeProcedure, List<SqlParameter> parametros,
+            Func<SqlDataReader, T> metodoDeMapeamento)
+        {
+            using (var conexao = PedidosConexao)
+            using (var comando = conexao.CreateCommand())
+            {
+                conexao.Open();
+
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.CommandText = nomeProcedure.ToString();
+                parametros.ForEach(p => comando.Parameters.Add(p));
+
+                using (var registro = comando.ExecuteReader())
+                {
+                    while (registro.Read())
+                    {
+                        yield return metodoDeMapeamento(registro);
+                    }
+                }
+            }
+        }
+
+        protected object ExecuteScalar(NomeProcedure nomeProcedure, List<SqlParameter> parametros)
+        {
+            using (var conexao = PedidosConexao)
+            using (var comando = conexao.CreateCommand())
+            {
+                conexao.Open();
+
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.CommandText = nomeProcedure.ToString();
+
+                if (parametros != null)
+                {
+                    parametros.ForEach(p => comando.Parameters.Add(p));
+                }
+
+                return comando.ExecuteScalar();
             }
         }
     }
