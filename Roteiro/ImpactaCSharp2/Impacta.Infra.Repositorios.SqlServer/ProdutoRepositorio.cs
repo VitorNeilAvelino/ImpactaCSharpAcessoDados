@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Impacta.Dominio;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Impacta.Repositorios.SqlServer.Proc
@@ -135,37 +136,44 @@ namespace Impacta.Repositorios.SqlServer.Proc
             return parametros;
         }
 
+        //public List<Produto> Selecionar()
+        //{
+        //    List<Produto> produtos = null;
+
+        //    using (var conexao = PedidosConexao)
+        //    {
+        //        conexao.Open();
+
+        //        using (var comando = conexao.CreateCommand())
+        //        {
+        //            comando.CommandType = CommandType.StoredProcedure;
+        //            comando.CommandText = NomeProcedure.SelecionarProduto.ToString();
+
+        //            comando.Parameters.AddWithValue("@produtoId", DBNull.Value);
+
+        //            using (var registro = comando.ExecuteReader())
+        //            {
+        //                if (registro.HasRows)
+        //                {
+        //                    produtos = new List<Produto>();
+        //                }
+
+        //                while (registro.Read())
+        //                {
+        //                    produtos.Add(Mapear(registro));
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return produtos;
+        //}
+
         public List<Produto> Selecionar()
         {
-            List<Produto> produtos = null;
+            var parametros = new List<SqlParameter> { new SqlParameter("@produtoId", DBNull.Value) };
 
-            using (var conexao = PedidosConexao)
-            {
-                conexao.Open();
-
-                using (var comando = conexao.CreateCommand())
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.CommandText = NomeProcedure.SelecionarProduto.ToString();
-
-                    comando.Parameters.AddWithValue("@produtoId", DBNull.Value);
-
-                    using (var registro = comando.ExecuteReader())
-                    {
-                        if (registro.HasRows)
-                        {
-                            produtos = new List<Produto>();
-                        }
-
-                        while (registro.Read())
-                        {
-                            produtos.Add(Mapear(registro));
-                        }
-                    }
-                }
-            }
-
-            return produtos;
+            return ExecuteReader<Produto>(NomeProcedure.SelecionarProduto, parametros, Mapear).ToList();
         }
 
         public void AtualizarComTransacao()
@@ -205,6 +213,11 @@ namespace Impacta.Repositorios.SqlServer.Proc
                     transacao.Commit();
                 }
             }
+        }
+
+        public int ContarProdutos()
+        {
+            return Convert.ToInt32(ExecuteScalar(NomeProcedure.ContarProdutos, null));
         }
     }
 }
