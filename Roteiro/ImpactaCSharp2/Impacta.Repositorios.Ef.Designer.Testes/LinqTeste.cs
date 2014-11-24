@@ -57,10 +57,11 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                                           select p).Count();
 
                 var quantidadeLambda = db.Produto.Count(p => p.TipoProduto.Descricao == "Papelaria");
+                var quantidadeLambdaEquals = db.Produto.Count(p => p.TipoProduto.Descricao.Equals("Papelaria"));
 
                 var quantidadeSql = db.Database.SqlQuery<int>(sql).FirstOrDefault();
 
-                Console.WriteLine("{0} - {1} - {2}", quantidadeProdutos, quantidadeLambda, quantidadeSql);
+                Console.WriteLine("{0} - {1} - {2} - {3}", quantidadeProdutos, quantidadeLambda, quantidadeSql, quantidadeLambdaEquals);
             }
         }
 
