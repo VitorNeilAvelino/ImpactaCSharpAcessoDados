@@ -99,9 +99,11 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
 
                 var custoMedio = db.Produto.Average(p => p.Custo);
 
+                var soma = db.Produto.Sum(p => (p.Custo * 1.1m));
+
                 var menorCusto = db.Database.SqlQuery<decimal>(sql).FirstOrDefault();
 
-                Console.WriteLine("{0} - {1} - {2}", maiorCusto, custoMedio, menorCusto);
+                Console.WriteLine("{0} - {1} - {2} - {3}", maiorCusto, custoMedio, menorCusto, soma);
             }
         }
 
@@ -146,7 +148,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
 
                 var tiposDistintosSql = db.Database.SqlQuery<string>(sql);
 
-                foreach (var tipo in tiposDistintosSql)
+                foreach (var tipo in tiposDistintos)
                 {
                     Console.WriteLine(tipo);
                 }
@@ -204,7 +206,7 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
 
                 var produtosSql = db.Database.SqlQuery<Produto>(sql);
 
-                foreach (var produto in produtosSql)
+                foreach (var produto in produtos)
                 {
                     Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
                 }
@@ -236,8 +238,8 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
         {
             using (var db = new PedidosEntities())
             {
-                var sqlWhere = @"Select * from Produto where Custo > 12.50";
-                var sqlSelect = "Select Id, Descricao from Produto";
+                const string sqlWhere = @"Select * from Produto where Custo > 12.50";
+                const string sqlSelect = "Select Id, Descricao from Produto";
 
                 var produtosWhere = from p in db.Produto
                                     where p.Custo > 12.5M
@@ -249,7 +251,9 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                 var whereLambda = db.Produto.Where(p => p.Custo > 12.5M);
                 var selectLambda = db.Produto.Select(p => new { p.Id, p.Descricao });
 
-                foreach (var produto in db.Produto)
+                var produtosSql = db.Database.SqlQuery<Produto>(sqlSelect); // Erro: propriedade Custo não encontrada.
+
+                foreach (var produto in produtosSql)
                 {
                     Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
                 }
@@ -301,12 +305,12 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
                         };
 
             var consulta = from v in veiculos
-                           join m in modelos on v.Modelo_Id equals m.Id into leftJoin
-                           from modeloLeft in leftJoin.DefaultIfEmpty()
+                           join m in modelos on v.Modelo_Id equals m.Id into modeloJoin
+                           from mj in modeloJoin.DefaultIfEmpty()
                            select new
                            {
                                Placa = v.Placa,
-                               Modelo = (modeloLeft == null ? string.Empty : modeloLeft.Descricao)
+                               Modelo = (mj == null ? string.Empty : mj.Descricao)
                            };
 
             foreach (var item in consulta)
