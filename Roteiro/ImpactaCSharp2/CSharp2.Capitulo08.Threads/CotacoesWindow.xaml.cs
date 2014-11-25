@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace CSharp2.Capitulo08.Threads
 {
@@ -19,7 +20,7 @@ namespace CSharp2.Capitulo08.Threads
 
         public List<Cotacao> Cotacoes { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
-        private CotacoesServiceReference.StockQuoteSoapClient _cotacaoServico = new CotacoesServiceReference.StockQuoteSoapClient("StockQuoteSoap12");
+        //private StockQuoteServiceReference.StockQuoteServiceClient _cotacaoServico = new StockQuoteServiceReference.StockQuoteServiceClient();
         DateTime _inicio = DateTime.Now;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -37,7 +38,7 @@ namespace CSharp2.Capitulo08.Threads
 
         private void ObterCotacoes()
         {
-            var processoUi = Application.Current.Dispatcher;
+            var processoUi = Application.Current.Dispatcher; //expedidor
 
             //ThreadPool.QueueUserWorkItem(
             //    delegate // t =>
@@ -64,6 +65,7 @@ namespace CSharp2.Capitulo08.Threads
                 {
                     ObterCotacao(cotacao);
                     processoUi.BeginInvoke(new Action(AtualizarInterface));
+                    //processoUi.InvokeAsync(new Action(AtualizarInterface));
                     //processoUi.BeginInvoke(new Action(() => AtualizarInterface()));
                     //processoUi.Invoke(new Action(AtualizarInterface));
                 });
@@ -93,13 +95,13 @@ namespace CSharp2.Capitulo08.Threads
 
         private void ObterCotacao(Cotacao cotacao)
         {
-            var response = _cotacaoServico.GetQuote(cotacao.Sigla);
-            var xml = XDocument.Parse(response);
-            var valor = xml.Descendants("Last").First().Value.Replace(".", ",");
-            var nome = xml.Descendants("Name").First().Value;
+            using (var _cotacaoServico = new StockQuoteServiceReference.StockQuoteServiceClient())
+            {
+                var response = _cotacaoServico.GetStockQuote(cotacao.Sigla);
 
-            cotacao.Valor = Convert.ToDecimal(valor);
-            cotacao.NomeEmpresa = nome;
+                cotacao.Valor = Convert.ToDecimal(response.Last, new CultureInfo("en-US"));
+                cotacao.NomeEmpresa = response.Name;
+            }
         }
 
         private void cotacoesProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

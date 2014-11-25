@@ -5,7 +5,8 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="Cotações" Height="350" Width="525" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="cotacaoDataGrid" ItemsSource="{Binding Cotacoes}" AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Top">
+        <DataGrid x:Name="cotacaoDataGrid" ItemsSource="{Binding Cotacoes}" AutoGenerateColumns="False" IsReadOnly="True" 
+                  VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Empresa" Binding="{Binding NomeEmpresa}" MinWidth="200">
                     <!--<DataGridTextColumn.CellStyle>
@@ -15,7 +16,7 @@
                     </DataGridTextColumn.CellStyle>-->
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Sigla" Binding="{Binding Sigla}" MinWidth="100"/>
-                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=\{0:c\}}" MinWidth="150"/>
+                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=\{0:n2\}}" MinWidth="150"/>
             </DataGrid.Columns>
         </DataGrid>
         <StatusBar VerticalAlignment="Bottom" Height="25">
