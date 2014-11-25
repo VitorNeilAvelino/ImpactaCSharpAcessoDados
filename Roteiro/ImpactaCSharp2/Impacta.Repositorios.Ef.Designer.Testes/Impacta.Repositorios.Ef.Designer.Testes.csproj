@@ -66,7 +66,6 @@
     <Compile Include="DelegateTestes.cs" />
     <Compile Include="LinqTeste.cs" />
     <Compile Include="ModeloRepositorioTeste.cs" />
-    <Compile Include="LinqTeste_.cs" />
     <Compile Include="ClienteRepositorioTestes.cs" />
     <Compile Include="VeiculoRepositorioTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
