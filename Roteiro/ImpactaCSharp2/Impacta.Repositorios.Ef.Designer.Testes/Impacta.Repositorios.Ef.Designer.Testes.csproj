@@ -67,6 +67,7 @@
     <Compile Include="LinqTeste.cs" />
     <Compile Include="ModeloRepositorioTeste.cs" />
     <Compile Include="ClienteRepositorioTestes.cs" />
+    <Compile Include="LambdaTestes.cs" />
     <Compile Include="VeiculoRepositorioTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
