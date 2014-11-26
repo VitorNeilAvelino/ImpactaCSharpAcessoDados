@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
@@ -7,37 +8,39 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
     [TestClass]
     public class LambdaTestes
     {
-        private List<Produto> _produtos;
         //public delegate bool Filtro(Produto produto, object valor);
         public delegate bool Filtro<T>(Produto produto, T valor);
 
-        [TestInitialize]
-        public void Inicializar()
-        {
-            _produtos = new List<Produto>();
-
-            _produtos.Add(new Produto { Id = 1, Descricao = "Borracha" });
-            _produtos.Add(new Produto { Id = 2, Descricao = "Lápis" });
-            _produtos.Add(new Produto { Id = 3, Descricao = "Caneta" });
-            _produtos.Add(new Produto { Id = 4, Descricao = "Apagador" });
-        }
-
         // 5o.
         [TestMethod]
-        public void FiltrarProduto()
+        public void FiltrarProdutoTeste()
         {
+            var produtos = new List<Produto>();
+
+            produtos.Add(new Produto { Id = 1, Descricao = "Borracha" });
+            produtos.Add(new Produto { Id = 2, Descricao = "Lápis" });
+            produtos.Add(new Produto { Id = 3, Descricao = "Caneta" });
+            produtos.Add(new Produto { Id = 4, Descricao = "Apagador" });
+
             //var produtosPorId = FiltrarPorId(_produtos, 2);
             //var produtosPorDescricao = FiltrarPorDescricao(_produtos, "c");
 
-            var produtosPorId = Filtrar(_produtos, 2, FiltrarPorId);
-            var produtosPorDescricao = Filtrar(_produtos, "e", FiltrarPorDescricao);
+            var produtosPorId = Filtrar(produtos, 2, FiltrarPorId);
+            var produtosPorDescricao = Filtrar(produtos, "e", FiltrarPorDescricao);
 
-            foreach (var produto in produtosPorDescricao)
+            produtosPorId = Filtrar(produtos, 1, delegate(Produto produto, int id) { return produto.Id == id; /* return FiltrarPorId(produto, id)*/ });
+            produtosPorId = Filtrar(produtos, 1, (Produto produto, int id) => { return produto.Id == id; });
+            
+            var produtoFind = produtos.Find(delegate(Produto produto) { return produto.Id == 2; });
+            Console.WriteLine("{0} - {1}", produtoFind.Id, produtoFind.Descricao);
+
+            produtosPorId = produtos.Where((Produto p) => p.Descricao.Contains("i")).ToList();
+
+            foreach (var produto in produtosPorId)
             {
                 Console.WriteLine("{0} - {1}", produto.Id, produto.Descricao);
             }
         }
-
 
         // 4o.
         public List<Produto> Filtrar<T>(List<Produto> produtos, T valor, Filtro<T> filtro)
@@ -80,8 +83,6 @@ namespace Impacta.Repositorios.Ef.Designer.Testes
 
         //    return retorno;
         //}
-
-
 
         //// 1o.
         //public List<Produto> FiltrarPorId(List<Produto> produtos, int id)
