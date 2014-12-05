@@ -30,7 +30,9 @@ namespace CSharp2.Capitulo08.Threads
                 new Cotacao { Sigla = "GOOG" },
                 new Cotacao { Sigla = "INTC" },
                 new Cotacao { Sigla = "KO" },
-                new Cotacao { Sigla = "MSFT" }
+                new Cotacao { Sigla = "MSFT" },
+                new Cotacao { Sigla = "TSLA" },
+                new Cotacao { Sigla = "AMZN" }
             };
 
             ObterCotacoes();
@@ -40,24 +42,27 @@ namespace CSharp2.Capitulo08.Threads
         {
             var processoUi = Application.Current.Dispatcher; //expedidor
 
+            //// O foreach é interno, mas o desempenho é similar ao externo - 4,5 contra 4,7.
             //ThreadPool.QueueUserWorkItem(
             //    delegate // t =>
             //    {
-            //        Parallel.ForEach<Cotacao>(Cotacoes, c =>
-            //        {
-            //            ObterCotacao(c);
-            //            processoUi.BeginInvoke(new Action(AtualizarInterface));
-            //        });
+            //        Cotacoes.AsParallel().ForAll<Cotacao>(c => { ObterCotacao(c); processoUi.BeginInvoke(new Action(AtualizarInterface)); });
+            //        //Parallel.ForEach<Cotacao>(Cotacoes, c =>
+            //        //{
+            //        //    ObterCotacao(c);
+            //        //    processoUi.BeginInvoke(new Action(AtualizarInterface));
+            //        //});
             //    });
 
+            //// Rápidos, mas travam a interface.
             //Cotacoes.AsParallel().ForAll<Cotacao>(c => { ObterCotacao(c); processoUi.BeginInvoke(new Action(AtualizarInterface)); });
-
             //Parallel.ForEach<Cotacao>(Cotacoes, c =>
             //{
             //    ObterCotacao(c);
             //    processoUi.BeginInvoke(new Action(AtualizarInterface));
             //});
 
+            //// 2o.
             foreach (var cotacao in Cotacoes)
             {
                 ThreadPool.QueueUserWorkItem(
@@ -71,6 +76,7 @@ namespace CSharp2.Capitulo08.Threads
                 });
             }
 
+            //// 1o.
             //foreach (var cotacao in Cotacoes)
             //{
             //    ObterCotacao(cotacao);
@@ -95,6 +101,15 @@ namespace CSharp2.Capitulo08.Threads
 
         private void ObterCotacao(Cotacao cotacao)
         {
+            //decimal contador = 0;
+
+            //while (contador < 20000000)
+            //{
+            //    contador++;
+            //}
+
+            //cotacao.Valor = Convert.ToDecimal(new Random().Next(0, 1212));
+
             using (var _cotacaoServico = new StockQuoteServiceReference.StockQuoteServiceClient())
             {
                 var response = _cotacaoServico.GetStockQuote(cotacao.Sigla);
@@ -106,7 +121,7 @@ namespace CSharp2.Capitulo08.Threads
 
         private void cotacoesProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (e.NewValue >= 100)
+            if (e.NewValue >= 98)
             {
                 MessageBox.Show((DateTime.Now - _inicio).ToString());
             }
