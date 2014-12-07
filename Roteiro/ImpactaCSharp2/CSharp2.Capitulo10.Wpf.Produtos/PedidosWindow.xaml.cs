@@ -43,12 +43,12 @@ namespace CSharp2.Capitulo10.Wpf.Produtos
         {
             //using (var _contexto = new PedidosEntities())
             //{
-                Vendedores = _contexto.Vendedor.Include("Pessoa").ToList();
-                Produtos = _contexto.Produto.Include("TipoProduto").ToList();
-                Pedido = new Impacta.Repositorios.Ef.Designer.Pedido();
+            Vendedores = _contexto.Vendedor.Include("Pessoa").ToList();
+            Produtos = _contexto.Produto.Include("TipoProduto").ToList();
+            Pedido = new Impacta.Repositorios.Ef.Designer.Pedido();
 
-                PropertyChanged(this, new PropertyChangedEventArgs("Vendedores"));
-                PropertyChanged(this, new PropertyChangedEventArgs("Produtos"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Vendedores"));
+            PropertyChanged(this, new PropertyChangedEventArgs("Produtos"));
             //}
         }
 
@@ -66,20 +66,20 @@ namespace CSharp2.Capitulo10.Wpf.Produtos
         {
             //using (var _contexto = new PedidosEntities())
             //{
-                Pedido.Cliente = _contexto.Cliente.Include("Pessoa")
-                    .SingleOrDefault(
-                        c => c.Pessoa.PessoaDocumentos.Any(
-                            d => d.Tipo == (int)TipoDocumento.Cpf && d.Numero == cpfCliente.Text));
+            Pedido.Cliente = _contexto.Cliente.Include("Pessoa")
+                .SingleOrDefault(
+                    c => c.Pessoa.PessoaDocumentos.Any(
+                        d => d.Tipo == (int)TipoDocumento.Cpf && d.Numero == cpfCliente.Text));
 
-                if (Pedido.Cliente == null)
-                {
-                    nomeCliente.Content = "CPF não encontrado";
-                    cpfCliente.BorderBrush = Brushes.Red;
-                    return;
-                }
+            if (Pedido.Cliente == null)
+            {
+                nomeCliente.Content = "CPF não encontrado";
+                cpfCliente.BorderBrush = Brushes.Red;
+                return;
+            }
 
-                cpfCliente.BorderBrush = Brushes.Black;
-                nomeCliente.Content = Pedido.Cliente.Pessoa.Nome;
+            cpfCliente.BorderBrush = Brushes.Black;
+            nomeCliente.Content = Pedido.Cliente.Pessoa.Nome;
             //}
         }
 
@@ -117,17 +117,49 @@ namespace CSharp2.Capitulo10.Wpf.Produtos
         {
             //using (var contexto = new PedidosEntities())
             //{
-                Pedido.Vendedor = (Impacta.Repositorios.Ef.Designer.Vendedor)vendedorComboBox.SelectedItem;
-                Pedido.DataEmissao = DateTime.Now;
 
-                _contexto.Pedido.Add(Pedido);
+            Pedido.Vendedor = (Impacta.Repositorios.Ef.Designer.Vendedor)vendedorComboBox.SelectedItem;
+            Pedido.DataEmissao = DateTime.Now;
 
-                _contexto.SaveChanges();
+            if (!ValidarFormulario())
+            {
+                return;
+            }
 
-                MessageBox.Show("Pedido realizado com sucesso.");
+            _contexto.Pedido.Add(Pedido);
 
-                LimparFormulario();
+            _contexto.SaveChanges();
+
+            MessageBox.Show("Pedido realizado com sucesso.");
+
+            LimparFormulario();
             //}
+        }
+
+        private bool ValidarFormulario()
+        {
+            if (Pedido.Vendedor == null)
+            {
+                MessageBox.Show("Selecione um vendedor.");
+                vendedorComboBox.Focus();
+                return false;
+            }
+
+            if (Pedido.Cliente == null)
+            {
+                MessageBox.Show("Digite o CPF do cliente.");
+                cpfCliente.Focus();
+                return false;
+            }
+
+            if (Pedido.ItensPedido.Count == 0)
+            {
+                MessageBox.Show("Adicione ao menos um produto.");
+                produtosComboBox.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void LimparFormulario()
@@ -135,7 +167,7 @@ namespace CSharp2.Capitulo10.Wpf.Produtos
             cpfCliente.Text = string.Empty;
             nomeCliente.Content = string.Empty;
             produtosComboBox.SelectedIndex = -1;
-            
+
             Pedido = new Pedido();
             PropertyChanged(this, new PropertyChangedEventArgs("Pedido"));
             PropertyChanged(this, new PropertyChangedEventArgs("TotalPedido"));

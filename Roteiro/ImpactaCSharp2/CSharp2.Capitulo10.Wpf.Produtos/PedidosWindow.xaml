@@ -6,9 +6,9 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}" FontSize="14" Width="755" Height="578" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -85,7 +85,7 @@
         <GroupBox Header="Total" Margin="10,10,10,0" Padding="10" Grid.Row="2" VerticalAlignment="Top" Height="85">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label Content="Total:" FontSize="20" VerticalAlignment="Center" Margin="10, 0"/>
-                <TextBox FontSize="20" Text="{Binding TotalPedido, Mode=OneWay}" IsReadOnly="True" Width="150" HorizontalContentAlignment="Center"/>
+                <TextBox FontSize="20" Text="{Binding TotalPedido, Mode=OneWay, StringFormat=\{0:c\}}" IsReadOnly="True" Width="150" HorizontalContentAlignment="Center"/>
                 <Button Content="Fechar pedido" FontSize="20" Width="150" Margin="10, 0" x:Name="fecharPedidoButton" Click="fecharPedidoButton_Click" />
             </StackPanel>
         </GroupBox>
