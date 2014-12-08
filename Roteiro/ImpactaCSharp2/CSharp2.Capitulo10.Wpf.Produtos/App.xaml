@@ -7,6 +7,9 @@
                 <ResourceDictionary Source="Themes\ExpressionDark.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <PedidosConverters:MultiplicadorConverter x:Key="MultiplicadorConverter"/>
+            <PedidosConverters:VisibilidadePedidoConverter x:Key="VisibilidadePedidoConverter"/>
+            <PedidosConverters:ValorConverter x:Key="ValorConverter"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <Style x:Key="verticalCenterDataGridCell" TargetType="{x:Type DataGridCell}">
                 <Setter Property="Template">
                     <Setter.Value>

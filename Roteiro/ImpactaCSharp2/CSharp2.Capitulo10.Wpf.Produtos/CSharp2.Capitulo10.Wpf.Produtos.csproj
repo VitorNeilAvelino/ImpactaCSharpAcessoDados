@@ -114,7 +114,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\VisibilidadePedidoConverter.cs" />
     <Compile Include="Converters\MultiplicadorConverter.cs" />
+    <Compile Include="Converters\ValorConverter.cs" />
     <Compile Include="PedidosWindow.xaml.cs">
       <DependentUpon>PedidosWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

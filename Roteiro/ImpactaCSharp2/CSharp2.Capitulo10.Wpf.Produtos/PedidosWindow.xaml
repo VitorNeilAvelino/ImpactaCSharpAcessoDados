@@ -53,6 +53,16 @@
                             </TextBox.Text>
                         </TextBox>
                         <Button Content="+" FontSize="20" Width="40" Margin="10, 0" ToolTip="Adicionar" x:Name="adicionarButton" Click="adicionarButton_Click" />
+                        <Label x:Name="situacaoPedidoLabel" Width="200" Margin="10,0" VerticalAlignment="Center" Content="Situação">
+                            <Label.Visibility>
+                                <MultiBinding Converter="{StaticResource VisibilidadePedidoConverter}">
+                                    <MultiBinding.Bindings>
+                                        <Binding Path="Pedido.Situacao" />
+                                        <Binding Path="PodeFecharPedido" />
+                                    </MultiBinding.Bindings>
+                                </MultiBinding>
+                            </Label.Visibility>
+                        </Label>
                     </StackPanel>
                     <DataGrid x:Name="itensPedidoDataGrid" ItemsSource="{Binding Path=Pedido.ItensPedido}" AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Center" PreviewMouseWheel="itensPedidoDataGrid_PreviewMouseWheel">
                         <DataGrid.Columns>

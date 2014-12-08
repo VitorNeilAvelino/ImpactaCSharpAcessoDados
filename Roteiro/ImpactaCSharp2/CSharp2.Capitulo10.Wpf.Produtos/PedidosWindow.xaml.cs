@@ -35,6 +35,7 @@ namespace CSharp2.Capitulo10.Wpf.Produtos
                 return Pedido.ItensPedido.Sum(i => (i.PrecoUnitario * i.Quantidade));
             }
         }
+        public bool PodeFecharPedido { get; set; }
         #endregion
 
         PedidosEntities _contexto = new PedidosEntities();
